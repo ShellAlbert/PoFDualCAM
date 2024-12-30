@@ -1,0 +1,186 @@
+<HTML>
+<HEAD>
+<TITLE>Lattice TCL Log</TITLE>
+<link href="file:///F:/MySoftware/Lattice/radiant/data/theme/css/light/report.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="file:///F:/MySoftware/Lattice/radiant/data/theme/css/print/report.css" rel="stylesheet" type="text/css" media="print"/>
+<style type="text/css">
+#toc {
+  position: fixed;
+  right: 2px;
+  top: 2px;
+  padding: 2px 5px 2px 5px;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+}
+#toc_list {
+  display: none;
+  }
+</style>
+
+<script type="text/javascript">
+<!--
+function showTocList() {
+var a = document.getElementById("toc_list");
+a.style.display = "block";
+}
+
+function hideTocList() {
+var a = document.getElementById("toc_list");
+if (a)
+    a.style.display = "none";
+}
+
+//-->
+</script>
+
+</HEAD>
+
+<BODY>
+
+<DIV id="content" onclick="hideTocList()"><PRE>
+<A name="pn241111102002"></A><B><U><big>pn241111102002</big></U></B>
+#Start recording tcl command: 11/11/2024 08:49:31
+#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_create -name "PoFDualCAM" -impl "impl_1" -dev LIFCL-40-9MG121I -performance "9_High-Performance_1.0V" -synthesis "lse"
+prj_save 
+prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/MyADC.ipx"
+prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/mytest1.vm"
+prj_remove_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/mytest1.vm"
+prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/MyOSC.ipx"
+prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v"
+prj_run Synthesis -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/ZPIN_ASSIGNMENT.pdc"
+prj_enable_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/ZPIN_ASSIGNMENT.pdc"
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+#Stop recording: 11/11/2024 10:20:02
+
+
+
+<A name="pn241112170531"></A><B><U><big>pn241112170531</big></U></B>
+#Start recording tcl command: 11/11/2024 10:22:08
+#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+prj_run PAR -impl impl_1
+prj_remove_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/MyADC.ipx"
+prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/MyADC.ipx"
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run Map -impl impl_1
+prj_run PAR -impl impl_1
+prj_run Export -impl impl_1
+launch_programmer_prj "F:/MySoftware/Lattice/radiant"
+#Stop recording: 11/12/2024 17:05:31
+
+
+
+<A name="pn241114171631"></A><B><U><big>pn241114171631</big></U></B>
+#Start recording tcl command: 11/14/2024 14:02:27
+#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+prj_run Map -impl impl_1
+prj_set_device -part LIFCL-40-9BG256I -performance "9_High-Performance_1.0V"
+prj_run Synthesis -impl impl_1
+#Stop recording: 11/14/2024 17:16:31
+
+
+
+<A name="pn241115162202"></A><B><U><big>pn241115162202</big></U></B>
+#Start recording tcl command: 11/15/2024 15:18:23
+#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+prj_run Synthesis -impl impl_1
+#Stop recording: 11/15/2024 16:22:02
+
+
+
+<A name="pn241206163602"></A><B><U><big>pn241206163602</big></U></B>
+#Start recording tcl command: 12/6/2024 11:17:40
+#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 12/6/2024 16:36:02
+
+
+
+</PRE></DIV>
+
+<DIV id="toc" class="radiant"><span onmousemove="showTocList()">Contents</span>
+<UL id="toc_list">
+<LI><A href=#pn241111102002>pn241111102002</A></LI>
+<LI><A href=#pn241112170531>pn241112170531</A></LI>
+<LI><A href=#pn241114171631>pn241114171631</A></LI>
+<LI><A href=#pn241115162202>pn241115162202</A></LI>
+<LI><A href=#pn241206163602>pn241206163602</A></LI>
+</UL>
+</DIV>
+
+<button id="back_to_top" class="radiant" onclick="scrollToTop()">&lt;</button>
+<script type="text/javascript">
+<!--
+var scrollStep = 0;
+function scrollToTop(){
+  var funScroll = function() {
+    var top = document.body.scrollTop;
+    if (top == 0) {
+      scrollStep = 0;
+      return;
+    }
+    if (scrollStep == 0)
+      scrollStep = top/20 + 1;
+    top -= scrollStep;
+    if (top < 0)
+      top = 0;
+    document.body.scrollTop = top;
+    requestAnimationFrame(funScroll);
+  };
+  funScroll();
+}
+
+window.addEventListener('scroll', function(e) {
+  var backToTop = document.getElementById('back_to_top')
+  if (document.body.scrollTop > 0) {
+    backToTop.style.display = 'block';
+  } else {	backToTop.style.display = 'none'  }});
+
+//-->
+</script>
+
+<style type="text/css">
+#back_to_top {
+  bottom:20px; right:20px;
+  width:30px; height:30px;
+  font-size: 20px;
+  padding: 2px 5px 2px 5px;
+  position:fixed;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+  display:none;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin:50% 50%;
+}
+#back_to_top:focus {
+  outline-width:0px;
+}
+</style>
+
+</BODY>
+

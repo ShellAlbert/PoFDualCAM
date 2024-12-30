@@ -1,0 +1,28 @@
+ldc_set_sysconfig {CONFIGIO_VOLTAGE_BANK1=1.8 SLAVE_SPI_PORT=DISABLE JTAG_PORT=ENABLE DONE_PORT=ENABLE INITN_PORT=ENABLE PROGRAMN_PORT=ENABLE BOOTMODE=SINGLE CONFIGIO_VOLTAGE_BANK0=1.8 MASTER_SPI_PORT=SERIAL}
+ldc_set_vcc -bank 0 1.79999995231628
+ldc_set_vcc -bank 1 1.79999995231628
+ldc_set_vcc -bank 3 1.79999995231628
+ldc_set_vcc -bank 4 1.79999995231628
+ldc_set_vcc -bank 5 1.79999995231628
+ldc_set_vcc -bank 0 -derate 0
+ldc_set_vcc -bank 1 -derate 0
+ldc_set_vcc -bank 3 -derate 0
+ldc_set_vcc -bank 4 -derate 0
+ldc_set_vcc -bank 5 -derate 0
+ldc_set_vcc -core -derate 0
+ldc_set_vcc -dphy DPHY0 -derate 0
+ldc_set_vcc -dphy DPHY1 -derate 0
+ldc_set_vcc -core 1
+ldc_set_location -site {G11} [get_ports {adc_c0[0]}]
+ldc_set_location -site {G10} [get_ports {adc_c0[1]}]
+ldc_set_location -site {H11} [get_ports {adc_c1[0]}]
+ldc_set_location -site {H10} [get_ports {adc_c1[1]}]
+ldc_set_location -site {L11} [get_ports {adc_c8[0]}]
+ldc_set_location -site {L10} [get_ports {adc_c8[1]}]
+ldc_set_location -site {J11} [get_ports {adc_c9[0]}]
+ldc_set_location -site {J10} [get_ports {adc_c9[1]}]
+ldc_set_location -site {J12} [get_ports oLED1]
+ldc_set_port -iobuf {DRIVE=8 IO_TYPE=LVCMOS33} [get_ports oLED1]
+ldc_set_location -site {K12} [get_ports clk2ram]
+ldc_set_port -iobuf {VREF=OFF TERMINATION=OFF OPENDRAIN=OFF GLITCHFILTER=OFF HYSTERESIS=NA DIFFRESISTOR=OFF CLAMP=OFF DIFFDRIVE=NA IO_TYPE=LVCMOS33 SLEWRATE=FAST} [get_ports clk2ram]
+ldc_set_port -sso {SSO_Noise=0.00} [get_ports clk2ram]

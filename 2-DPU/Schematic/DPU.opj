@@ -1,0 +1,184 @@
+(ExpressProject "DPU"
+  (ProjectVersion "19981106")
+  (SoftwareVersion "22.1 P001 (4063652)  [10/6/2022]-[12/27/24]")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File ".\latticeplds.olb"
+        (Type "Schematic Library"))
+      (File ".\library1.olb"
+        (Type "Schematic Library")))
+    ("Allegro Netlist Directory"
+       "F:\MyTemporary\Github\PoFDualCAM\2-DPU\Schematic\Netlist")
+    (DOCKED "TRUE")
+    (DOCKING_POSITION "59420")
+    (NoModify)
+    (File ".\dpu.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (Board_sim_option "VHDL_flow")
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\DPU.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0
+       "{Item}\t{Quantity}\t{Reference}\t{Value}\t{PCB Footprint}")
+    (BOM_Header "Item\tQuantity\tReference\tPart\tPCBFootprint")
+    (BOM_Include_File
+       "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\DPU.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "TRUE")
+    (BOM_View_Output "FALSE")
+    (Netlist_TAB "0")
+    ("Create Allegro Netlist" "TRUE")
+    ("View Allegro Netlist Files" "FALSE")
+    ("Allegro Netlist Create DCF File" "FALSE")
+    ("Update Allegro Board" "FALSE")
+    ("Allegro Netlist Output Board File" ".\allegro\dpu.brd")
+    ("Allegro Netlist Remove Etch" "FALSE")
+    ("Allegro Netlist Place Changed Component" "ALWAYS_REPLACE")
+    ("Allegro Netlist Open Board in Allegro" "ALLEGRO")
+    ("Allegro Setup Backup Versions" "3")
+    ("Allegro Setup Ignore Constraints" "FALSE")
+    ("Allegro Setup Part Type Length" "255")
+    ("Allegro Netlist Combine Property String" "PCB Footprint")
+    ("Allegro Netlist Ignore Fixed Property" "FALSE")
+    ("Allegro Netlist User Defined Property" "FALSE")
+    (Display_Online_DRC_Results "FALSE"))
+  (Folder "Layout")
+  (Folder "Outputs"
+    (File ".\dpu.bom"
+      (Type "Report"))
+    (File ".\netlist\pstxnet.dat"
+      (Type "Report")
+      (DisplayName "pstxnet.dat"))
+    (File ".\netlist\pstxprt.dat"
+      (Type "Report")
+      (DisplayName "pstxprt.dat"))
+    (File ".\netlist\pstchip.dat"
+      (Type "Report")
+      (DisplayName "pstchip.dat")))
+  (Folder "Referenced Projects")
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (Folder "Logs")
+  (PartMRUSelector
+    (GND
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (CONN-1X8P
+      (FullPartName "CONN-1X8P.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (CONN-1X14P
+      (FullPartName "CONN-1X14P.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (OV5640-FPC-24P-MIPI
+      (FullPartName "OV5640-FPC-24P-MIPI.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (CAT25512HU5I-GT3
+      (FullPartName "CAT25512HU5I-GT3.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (CONN-2x15
+      (FullPartName "CONN-2x15.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (CONN-1x6
+      (FullPartName "CONN-1x6.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (VCC_BAR
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (LIFCL-40-BG256
+      (FullPartName "LIFCL-40-BG256N.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LATTICEPLDS.OLB")
+      (DeviceIndex "13"))
+    ("MT48H32M16LFB4-6 IT:C"
+      (FullPartName "MT48H32M16LFB4-6 IT:C.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (CONN-39P
+      (FullPartName "CONN-39P.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (TLV75515PDBVR
+      (FullPartName "TLV75515PDBVR.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (OSCILLATOR
+      (FullPartName "OSCILLATOR.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (FPC-24P
+      (FullPartName "FPC-24P.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (GD25Q128ESIGR
+      (FullPartName "GD25Q128ESIGR.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (INDUCTOR
+      (FullPartName "INDUCTOR.Normal")
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (LIFCL-40-MG121
+      (FullPartName "LIFCL-40-MG121I.Normal")
+      (LibraryName
+         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\LATTICEPLDS.OLB")
+      (DeviceIndex "8")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "f:\mytemporary\github\pofdualcam\2-dpu\schematic\dpu.dsn")
+      (Path "Design Resources"
+         "f:\mytemporary\github\pofdualcam\2-dpu\schematic\dpu.dsn" "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Design Resources" "Library"
+         "f:\mytemporary\github\pofdualcam\2-dpu\schematic\library1.olb")
+      (Path "Outputs")
+      (Select "Design Resources"
+         "f:\mytemporary\github\pofdualcam\2-dpu\schematic\dpu.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 559"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 5 24 5 1108 24 577")
+        (Scroll "1907 3075")
+        (Zoom "248")
+        (Occurrence "/"))
+      (Path "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\DPU.DSN")
+      (Schematic "SCHEMATIC1")
+      (Page "SCHEMATIC")))
+  (MPSSessionName "SNIPER")
+  (ISPCBBASICLICENSE "false"))

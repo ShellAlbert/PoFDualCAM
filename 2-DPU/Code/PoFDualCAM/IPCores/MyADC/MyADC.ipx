@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<RadiantModule architecture="LIFCL" date="2024 11 11 10:36:22" device="LIFCL-40" gen_platform="Radiant" generator="ipgen" library="module" module="adc_core" name="MyADC" package="CSFBGA121" source_format="Verilog" speed="9_High-Performance_1.0V" vendor="latticesemi.com" version="1.3.1">
+ <Package>
+  <File modified="2024 11 11 10:36:22" name="rtl/MyADC_bb.v" type="black_box_verilog"/>
+  <File modified="2024 11 11 10:36:22" name="MyADC.cfg" type="cfg"/>
+  <File modified="2024 11 11 10:36:22" name="misc/MyADC_tmpl.v" type="template_verilog"/>
+  <File modified="2024 11 11 10:36:22" name="misc/MyADC_tmpl.vhd" type="template_vhdl"/>
+  <File modified="2024 11 11 10:36:22" name="rtl/MyADC.v" type="top_level_verilog"/>
+  <File modified="2024 11 11 10:36:22" name="constraints/MyADC.ldc" type="timing_constraints"/>
+  <File modified="2024 11 11 10:36:22" name="testbench/dut_params.v" type="dependency_file"/>
+  <File modified="2024 11 11 10:36:22" name="testbench/dut_inst.v" type="dependency_file"/>
+  <File modified="2024 11 11 10:36:22" name="component.xml" type="IP-XACT_component"/>
+  <File modified="2024 11 11 10:36:22" name="design.xml" type="IP-XACT_design"/>
+  <File modified="2021 09 08 16:55:16" name="testbench/tb_top.v" type="testbench_verilog"/>
+ </Package>
+</RadiantModule>

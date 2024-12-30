@@ -1,0 +1,516 @@
+<?xml version="1.0" ?>
+<ipxact:design xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014" xmlns:lattice="http://www.latticesemi.com/lattice" xmlns:lsccip="http://www.latticesemi.com/XMLSchema/Radiant/ip">
+    <ipxact:vendor>latticesemi.com</ipxact:vendor>
+    <ipxact:library>module</ipxact:library>
+    <ipxact:name>MyADC</ipxact:name>
+    <ipxact:version>1.3.1</ipxact:version>
+    <ipxact:componentInstances>
+        <ipxact:componentInstance>
+            <ipxact:instanceName>lscc_adc_core_inst</ipxact:instanceName>
+            <ipxact:componentRef library="module" name="adc_core" vendor="latticesemi.com" version="1.3.1">
+                <ipxact:configurableElementValues>
+                    <ipxact:configurableElementValue referenceId="FAMILY">LIFCL</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="DEVICE_TYPE">LIFCL-40</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="PACKAGE_TYPE">CSFBGA121</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC_EN">True</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_CLK_DIV">2</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC_DATA_FORMAT_SEL">STRAIGHT_BINARY</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC0_VREF_SEL">INTERNAL</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC0_VREF_VOLTAGE">1.2</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC0_VREF_CFG">1P2_TO_1P4</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC0_CONV_MODE">UNIPOLAR</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC1_VREF_SEL">INTERNAL</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC1_VREF_VOLTAGE">1.2</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC1_VREF_CFG">1P2_TO_1P4</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_ADC1_CONV_MODE">UNIPOLAR</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_COMP1_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_COMP1_SW_CTRL">ENABLED</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_COMP2_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_COMP2_SW_CTRL">ENABLED</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_COMP3_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SETUP_COMP3_SW_CTRL">ENABLED</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_1_EN">True</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_2_EN">True</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_3_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_4_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_5_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_6_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_7_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC0_CHANNEL_8_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_9_EN">True</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_10_EN">True</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_11_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_12_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_13_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_14_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_15_EN">False</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="ADC1_CHANNEL_16_EN">False</ipxact:configurableElementValue>
+                </ipxact:configurableElementValues>
+            </ipxact:componentRef>
+        </ipxact:componentInstance>
+    </ipxact:componentInstances>
+    <ipxact:adHocConnections>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.adc_en_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="adc_en_i"/>
+                <ipxact:externalPortReference portRef="adc_en_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.resetn_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="resetn_i"/>
+                <ipxact:externalPortReference portRef="adc_resetn_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.clk_dclk_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="clk_dclk_i"/>
+                <ipxact:externalPortReference portRef="adc_clk_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.clk_fabric_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="clk_fabric_i"/>
+                <ipxact:externalPortReference portRef="fab_clk_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.cal_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="cal_i"/>
+                <ipxact:externalPortReference portRef="adc_cal_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.soc_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="soc_i"/>
+                <ipxact:externalPortReference portRef="adc_soc_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.calrdy_o</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="calrdy_o"/>
+                <ipxact:externalPortReference portRef="adc_calrdy_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chasel_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chasel_i"/>
+                <ipxact:externalPortReference portRef="adc0_ch_sel_i">
+                    <ipxact:partSelect>
+                        <ipxact:range>
+                            <ipxact:left>3</ipxact:left>
+                            <ipxact:right>0</ipxact:right>
+                        </ipxact:range>
+                    </ipxact:partSelect>
+                </ipxact:externalPortReference>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chbsel_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chbsel_i"/>
+                <ipxact:externalPortReference portRef="adc1_ch_sel_i">
+                    <ipxact:partSelect>
+                        <ipxact:range>
+                            <ipxact:left>3</ipxact:left>
+                            <ipxact:right>0</ipxact:right>
+                        </ipxact:range>
+                    </ipxact:partSelect>
+                </ipxact:externalPortReference>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.cog_o</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="cog_o"/>
+                <ipxact:externalPortReference portRef="adc_cog_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.eoc_o</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="eoc_o"/>
+                <ipxact:externalPortReference portRef="adc_eoc_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.convstop_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="convstop_i"/>
+                <ipxact:externalPortReference portRef="adc_convstop_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.da_o</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="da_o"/>
+                <ipxact:externalPortReference portRef="adc0_o">
+                    <ipxact:partSelect>
+                        <ipxact:range>
+                            <ipxact:left>11</ipxact:left>
+                            <ipxact:right>0</ipxact:right>
+                        </ipxact:range>
+                    </ipxact:partSelect>
+                </ipxact:externalPortReference>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.db_o</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="db_o"/>
+                <ipxact:externalPortReference portRef="adc1_o">
+                    <ipxact:partSelect>
+                        <ipxact:range>
+                            <ipxact:left>11</ipxact:left>
+                            <ipxact:right>0</ipxact:right>
+                        </ipxact:range>
+                    </ipxact:partSelect>
+                </ipxact:externalPortReference>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.dn0_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="dn0_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.dp0_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="dp0_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.dn1_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="dn1_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.dp1_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="dp1_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan1p_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan1p_i"/>
+                <ipxact:externalPortReference portRef="ADC_CP0"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan1n_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan1n_i"/>
+                <ipxact:externalPortReference portRef="ADC_CN0"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan2p_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan2p_i"/>
+                <ipxact:externalPortReference portRef="ADC_CP1"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan2n_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan2n_i"/>
+                <ipxact:externalPortReference portRef="ADC_CN1"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan3p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan3p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan3n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan3n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan4p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan4p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan4n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan4n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan5p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan5p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan5n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan5n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan6p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan6p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan6n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan6n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan7p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan7p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan7n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan7n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan8p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan8p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan8n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan8n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan9p_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan9p_i"/>
+                <ipxact:externalPortReference portRef="ADC_CP8"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan9n_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan9n_i"/>
+                <ipxact:externalPortReference portRef="ADC_CN8"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan10p_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan10p_i"/>
+                <ipxact:externalPortReference portRef="ADC_CP9"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan10n_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan10n_i"/>
+                <ipxact:externalPortReference portRef="ADC_CN9"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan11p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan11p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan11n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan11n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan12p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan12p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan12n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan12n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan13p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan13p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan13n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan13n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan14p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan14p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan14n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan14n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan15p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan15p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan15n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan15n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan16p_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan16p_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.chan16n_i</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="chan16n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp1in_io</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp1in_io"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp1ip_io</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp1ip_io"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp1ol_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp1ol_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp1o_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp1o_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp2in_io</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp2in_io"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp2ip_io</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp2ip_io"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp2ol_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp2ol_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp2o_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp2o_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp3in_io</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp3in_io"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp3ip_io</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp3ip_io"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp3ol_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp3ol_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>MyADC.comp3o_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="MyADC" portRef="comp3o_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+    </ipxact:adHocConnections>
+</ipxact:design>

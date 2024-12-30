@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<RadiantModule architecture="LIFCL" date="2024 11 11 09:47:07" device="LIFCL-40" gen_platform="Radiant" generator="ipgen" library="module" module="osc" name="MyOSC" package="CSFBGA121" source_format="Verilog" speed="9_High-Performance_1.0V" vendor="latticesemi.com" version="1.4.0">
+ <Package>
+  <File modified="2024 11 11 09:47:07" name="rtl/MyOSC_bb.v" type="black_box_verilog"/>
+  <File modified="2024 11 11 09:47:07" name="MyOSC.cfg" type="cfg"/>
+  <File modified="2024 11 11 09:47:07" name="misc/MyOSC_tmpl.v" type="template_verilog"/>
+  <File modified="2024 11 11 09:47:07" name="misc/MyOSC_tmpl.vhd" type="template_vhdl"/>
+  <File modified="2024 11 11 09:47:07" name="rtl/MyOSC.v" type="top_level_verilog"/>
+  <File modified="2024 11 11 09:47:07" name="constraints/MyOSC.ldc" type="timing_constraints"/>
+  <File modified="2024 11 11 09:47:07" name="testbench/dut_params.v" type="dependency_file"/>
+  <File modified="2024 11 11 09:47:07" name="testbench/dut_inst.v" type="dependency_file"/>
+  <File modified="2024 11 11 09:47:07" name="component.xml" type="IP-XACT_component"/>
+  <File modified="2024 11 11 09:47:07" name="design.xml" type="IP-XACT_design"/>
+  <File modified="2022 07 13 02:43:21" name="testbench/tb_top.v" type="testbench_verilog"/>
+ </Package>
+</RadiantModule>
