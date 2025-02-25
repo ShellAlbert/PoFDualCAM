@@ -1,13 +1,13 @@
 (ExpressProject "PSU"
   (ProjectVersion "19981106")
-  (SoftwareVersion "22.1 P001 (4063652)  [10/6/2022]-[12/23/24]")
+  (SoftwareVersion "22.1 P001 (4063652)  [10/6/2022]-[02/25/25]")
   (ProjectType "PCB")
   (Folder "Design Resources"
     (Folder "Library"
       (File ".\library1.olb"
         (Type "Schematic Library")))
     ("Allegro Netlist Directory"
-       "F:\MyTemporary\Github\PoFDualCAM\1-PSU\Schematic\Netlist")
+       "F:\3-MyLaptopDIR\PoFDualCAM\1-PSU\Schematic\Netlist")
     (DOCKED "TRUE")
     (DOCKING_POSITION "59420")
     (NoModify)
@@ -15,10 +15,9 @@
       (Type "Schematic Design"))
     (BuildFileAddedOrDeleted "x")
     (CompileFileAddedOrDeleted "x")
-    (Board_sim_option "VHDL_flow")
     (BOM_Scope "0")
     (BOM_Mode "0")
-    (BOM_Report_File "F:\MYTEMPORARY\GITHUB\POFDUALCAM\1-PSU\SCHEMATIC\PSU.BOM")
+    (BOM_Report_File "F:\3-MyLaptopDIR\PoFDualCAM\1-PSU\PCB\psu.BOM")
     (BOM_Merge_Include "FALSE")
     (BOM_Property_Combine_7.0
        "{Item}\t{Quantity}\t{Reference}\t{Value}\t{PCB Footprint}")
@@ -46,14 +45,15 @@
     ("Allegro Netlist User Defined Property" "FALSE")
     ("Allegro Backannotation Run Genfeed" "TRUE")
     ("Allegro Backannotation Board File"
-       "F:\MyTemporary\Github\PoFDualCAM\1-PSU\PCB\PSU-C-10.brd")
+       "F:\3-MyLaptopDIR\PoFDualCAM\1-PSU\PCB\PSU-C1-6Layers-1.brd")
     ("Allegro Backannotation Netlist Directory"
-       "F:\MyTemporary\Github\PoFDualCAM\1-PSU\Schematic\Netlist")
+       "F:\3-MyLaptopDIR\PoFDualCAM\1-PSU\Schematic\Netlist")
     ("Allegro Backannotation Output File" "allegro\PSU.swp")
     ("Allegro Backannotation Update Schematic" "TRUE")
     ("Allegro Backannotation View Output" "FALSE")
     ("Allegro Setup Output Warnings" "FALSE")
-    (Backannotation_TAB "0"))
+    (Backannotation_TAB "0")
+    (Board_sim_option "VHDL_flow"))
   (Folder "Layout")
   (Folder "Outputs"
     (File ".\psu.bom"
@@ -81,7 +81,9 @@
       (DisplayName "compView.dat"))
     (File ".\allegro\psu.swp"
       (Type "Report")
-      (DisplayName "PSU.swp")))
+      (DisplayName "PSU.swp"))
+    (File "..\pcb\psu.bom"
+      (Type "Report")))
   (Folder "Referenced Projects")
   (Folder "PSpice Resources"
     (Folder "Simulation Profiles")
@@ -94,15 +96,58 @@
   (Folder "Logs"
     (File ".\netlist\swp.log"
       (Type "Log File")
-      (LogFile
-         "F:\MyTemporary\Github\PoFDualCAM\1-PSU\Schematic\Netlist\swp.log")))
+      (LogFile "F:\3-MyLaptopDIR\PoFDualCAM\1-PSU\Schematic\Netlist\swp.log")))
   (PartMRUSelector
-    ("T POINT R"
-      (FullPartName "T POINT R.Normal")
-      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+    (SuperCapacitor
+      (FullPartName "SuperCapacitor.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
       (DeviceIndex "0"))
     (GND
       (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (TPS22995H-Q1
+      (FullPartName "TPS22995H-Q1.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (MAX38650AANT+
+      (FullPartName "MAX38650AANT+.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    ("DIODE ZENER"
+      (FullPartName "DIODE ZENER.Normal")
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (TPS22950YBHR
+      (FullPartName "TPS22950YBHR.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (LTC3542ES6
+      (FullPartName "LTC3542ES6.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (OPA320AIDBVR
+      (FullPartName "OPA320AIDBVR.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (SN74LVC1G14DBVR
+      (FullPartName "SN74LVC1G14DBVR.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (LMV7291MGX/NOPB
+      (FullPartName "LMV7291MGX/NOPB.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (MAX44280AXT+T
+      (FullPartName "MAX44280AXT+T.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (TPS22916BYFPR
+      (FullPartName "TPS22916BYFPR.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    ("T POINT R"
+      (FullPartName "T POINT R.Normal")
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
       (DeviceIndex "0"))
     (CONN-1X8
       (FullPartName "CONN-1X8.Normal")
@@ -128,17 +173,8 @@
     (OFFPAGELEFT-L
       (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
       (DeviceIndex "0"))
-    ("DIODE ZENER"
-      (FullPartName "DIODE ZENER.Normal")
-      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
-      (DeviceIndex "0"))
     (VCC_BAR
       (LibraryName "F:\MYSOFTWARE\CADENCE\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
-      (DeviceIndex "0"))
-    (TPS22950YBHR
-      (FullPartName "TPS22950YBHR.Normal")
-      (LibraryName
-         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
       (DeviceIndex "0"))
     (C
       (FullPartName "C.Normal")
@@ -160,37 +196,27 @@
     (INDUCTOR
       (FullPartName "INDUCTOR.Normal")
       (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
-      (DeviceIndex "0"))
-    (MAX20361
-      (FullPartName "MAX20361.Normal")
-      (LibraryName
-         "F:\MYTEMPORARY\GITHUB\POFDUALCAM\1-PSU\SCHEMATIC\LIBRARY1.OLB")
       (DeviceIndex "0")))
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources" ".\psu.dsn")
-      (Path "Design Resources" ".\psu.dsn" "SCHEMATIC1")
+      (Path "Design Resources"
+         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\psu.dsn")
+      (Path "Design Resources"
+         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\psu.dsn" "SCHEMATIC1")
       (Path "Design Resources" "Library")
+      (Path "Design Resources" "Library"
+         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\library1.olb")
       (Path "Outputs")
       (Path "Logs")
-      (Select "Design Resources" ".\psu.dsn" "SCHEMATIC1" "PSU"))
+      (Select "Design Resources"
+         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\psu.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 559"))
-      (Tab 0))
-    (Doc
-      (Type "COrSchematicDoc")
-      (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 5 1108 24 577")
-        (Scroll "-173 -4")
-        (Zoom "31")
-        (Occurrence "/"))
-      (Path "F:\MYTEMPORARY\GITHUB\POFDUALCAM\1-PSU\SCHEMATIC\PSU.DSN")
-      (Schematic "SCHEMATIC1")
-      (Page "PSU")))
+        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 463"))
+      (Tab 0)))
   (MPSSessionName "SNIPER")
   (LastUsedLibraryBrowseDirectory "C:\Cadence\SPB_22.1\tools\capture\library")
   (ISPCBBASICLICENSE "false"))
