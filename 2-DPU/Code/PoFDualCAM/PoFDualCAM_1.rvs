@@ -1,0 +1,21 @@
+<Project ModBy="Inserter" Name="F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl" Date="2025-01-22">
+    <Core Name="PoFDualCAM_LA0">
+        <Setting>
+            <Capture SamplesPerTrig="1" NumTrigsCap=""/>
+            <Event EventCnt="" CntEnableRun=""/>
+            <TrigSetting PostTrgSamples="" AND_ALL="" TURadix="0" PreTrgSamples=""/>
+        </Setting>
+        <Dataset Name="Base">
+            <Trace>
+                <Bus Radix="0" Name="adc_c0">
+                    <Sig Name="adc_c0:0"/>
+                    <Sig Name="adc_c0:1"/>
+                </Bus>
+            </Trace>
+            <Trigger>
+                <TU Radix="0" ID="1" Name="TU1" Operator="0" Value="10" Index="1"/>
+                <TE Expression="TU1" Enable="1" ID="1" Name="TE1" Index="1"/>
+            </Trigger>
+        </Dataset>
+    </Core>
+</Project>

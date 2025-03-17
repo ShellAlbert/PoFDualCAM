@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<link href="file:///F:/MySoftware/Lattice/radiant/data/theme/css/light/report.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="file:///F:/MySoftware/Lattice/radiant/data/theme/css/print/report.css" rel="stylesheet" type="text/css" media="print"/>
+<style type="text/css">
+#toc {
+  position: fixed;
+  right: 2px;
+  top: 2px;
+  padding: 2px 5px 2px 5px;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+}
+#toc_list {
+  display: none;
+  }
+</style>
+
+<script type="text/javascript">
+<!--
+function showTocList() {
+var a = document.getElementById("toc_list");
+a.style.display = "block";
+}
+
+function hideTocList() {
+var a = document.getElementById("toc_list");
+if (a)
+    a.style.display = "none";
+}
+
+//-->
+</script>
+
+</HEAD>
+
+<BODY>
+
+<DIV id="content" onclick="hideTocList()"><PRE>
+POSTSYN: Post Synthesis Process Radiant Software (64-bit) 2023.1.1.200.1
+Command Line: postsyn -a LIFCL -p LIFCL-40 -t CABGA256 -sp 9_High-Performance_1.0V -oc Industrial -top -w -o PoFDualCAM_impl_1_syn.udb -ldc F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc -gui -msgset F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/promote.xml PoFDualCAM_impl_1.vm 
+   Architecture:     LIFCL
+   Device:           LIFCL-40
+   Package:          CABGA256
+   Performance:      9_High-Performance_1.0V
+Reading input file 'PoFDualCAM_impl_1.vm' ...
+Reading constraint file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc' ...
+WARNING <1026001> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc (4) : No pin matched 'osc1/hf_clk_out_o'.
+WARNING <1026001> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc (5) : No pin matched 'osc1/lf_clk_out_o'.
+WARNING <1027013> - No pin matched 'osc1/hf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/hf_clk_out_o ' in constraint 'create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }]'.
+WARNING <1027013> - No pin matched 'osc1/lf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/lf_clk_out_o ' in constraint 'create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }]'.
+WARNING <1011001> - Remove invalid constraint 'create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }]'.
+WARNING <1011001> - Remove invalid constraint 'create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }]'.
+Removing unused logic ...
+INFO <35811146> - Signal GSR_INST.GSROUT undriven or does not drive anything - clipped
+INFO <35811145> - Instance jtaghub_inst/OBZ_inst.PIC_inst_in is optimized away.
+INFO <35811145> - Instance jtaghub_inst/OBZ_inst.PIC_inst_tristate is optimized away.
+INFO <35811145> - Instance jtaghub_inst/IP_ENABLE_reg[18].ff_inst is optimized away.
+INFO <35811145> - Instance jtaghub_inst/CDN_reg.ff_inst is optimized away.
+INFO <35811146> - Signal jtaghub_inst/IP_ENABLE[18] undriven or does not drive anything - clipped
+INFO <35811146> - Signal jtaghub_inst/CDN undriven or does not drive anything - clipped
+Starting design annotation....
+ 
+Constraint Summary:
+   Total number of constraints: 4
+   Total number of constraints dropped: 2
+ 
+Writing output file 'PoFDualCAM_impl_1_syn.udb'.
+POSTSYN finished successfully.
+Total CPU Time: 1 secs 
+Total REAL Time: 2 secs 
+Peak Memory Usage: 159 MB
+
+
+</PRE></DIV>
+
+<button id="back_to_top" class="radiant" onclick="scrollToTop()">&lt;</button>
+<script type="text/javascript">
+<!--
+var scrollStep = 0;
+function scrollToTop(){
+  var funScroll = function() {
+    var top = document.body.scrollTop;
+    if (top == 0) {
+      scrollStep = 0;
+      return;
+    }
+    if (scrollStep == 0)
+      scrollStep = top/20 + 1;
+    top -= scrollStep;
+    if (top < 0)
+      top = 0;
+    document.body.scrollTop = top;
+    requestAnimationFrame(funScroll);
+  };
+  funScroll();
+}
+
+window.addEventListener('scroll', function(e) {
+  var backToTop = document.getElementById('back_to_top')
+  if (document.body.scrollTop > 0) {
+    backToTop.style.display = 'block';
+  } else {	backToTop.style.display = 'none'  }});
+
+//-->
+</script>
+
+<style type="text/css">
+#back_to_top {
+  bottom:20px; right:20px;
+  width:30px; height:30px;
+  font-size: 20px;
+  padding: 2px 5px 2px 5px;
+  position:fixed;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+  display:none;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin:50% 50%;
+}
+#back_to_top:focus {
+  outline-width:0px;
+}
+</style>
+
+</BODY>
+

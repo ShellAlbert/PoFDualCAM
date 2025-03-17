@@ -1,0 +1,19 @@
+<Project SigType="0" Date="2025-01-22" ModBy="Inserter" Name="F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rvl">
+    <IP Version="1_6_042617"/>
+    <Design DeviceName="LIFCL-40" DesignName="PoFDualCAM" DesignEntry="Schematic/Verilog HDL" DeviceFamily="LIFCL" Synthesis="lse" JTAG="hard"/>
+    <Core Reveal_sig="611105879" Insert="1" InsertDataset="0" ID="0" Name="PoFDualCAM_LA0">
+        <Setting>
+            <Clock EnableClk="" EnableClk_Pri="0" SampleClk="clk_hf" SampleEnable="0"/>
+            <TraceBuffer hasTimeStamp="0" Implementation="0" BufferDepth="256" IncTrigSig="0" BitTimeStamp="0"/>
+            <Capture Mode="0" MinSamplesPerTrig="8"/>
+            <Event CntEnable="0" MaxEventCnt="8"/>
+            <TrigOut Polarity="0" TrigOutNet="reveal_debug_PoFDualCAM_LA0_net" TrigOutNetType="1" EnableTrigOut="0" MinPulseWidth="0"/>
+            <DistRAM Disable="0"/>
+        </Setting>
+        <Dataset Name="Base">
+            <Trigger>
+                <TU Type="0" Serialbits="0" Sig="adc0_ch_sel:2,adc0_ch_sel:3,adc0_ch_sel:1,adc0_ch_sel:0," ID="1"/>
+            </Trigger>
+        </Dataset>
+    </Core>
+</Project>

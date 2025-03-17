@@ -1,0 +1,1099 @@
+
+istflow -prj "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl" -design "PoFDualCAM_impl_1.rvp" 
+all messages logged in file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_error.log
+
+Analyzing Verilog file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v. VERI-1482
+Analyzing Verilog file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v. VERI-1482
+Analyzing Verilog file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v. VERI-1482
+all messages logged in file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_error.log
+
+Analyzing Verilog file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v. VERI-1482
+Analyzing Verilog file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v. VERI-1482
+Analyzing Verilog file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v. VERI-1482
+INFO <35901018> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v(1): compiling module PoFDualCAM. VERI-1018
+WARNING <35901063> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(526): instantiating unknown module ADC. VERI-1063
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v(54): elaborating module 'PoFDualCAM'. VERI-9000
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(41): elaborating module 'MyOSC_uniq_1'. VERI-9000
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(152): elaborating module 'MyADC_uniq_1'. VERI-9000
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(194): elaborating module 'MyOSC_ipgen_lscc_osc_uniq_1'. VERI-9000
+WARNING <35901063> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(168): instantiating unknown module OSCA. VERI-1063
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(527): elaborating module 'MyADC_ipgen_lscc_adc_core_uniq_1'. VERI-9000
+WARNING <35901063> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(338): instantiating unknown module BB_ADC. VERI-1063
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v(54): elaborating module 'PoFDualCAM'. VERI-9000
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(41): elaborating module 'MyOSC_uniq_1'. VERI-9000
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(152): elaborating module 'MyADC_uniq_1'. VERI-9000
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(194): elaborating module 'MyOSC_ipgen_lscc_osc_uniq_1'. VERI-9000
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(527): elaborating module 'MyADC_ipgen_lscc_adc_core_uniq_1'. VERI-9000
+Copyright (c) 2001-2013 Lattice Semiconductor Corporation. All rights reserved.
+Check Reveal Inserter settings...
+INFO <2120344> - The number of EBRs needed is 1.
+INFO <2120346> - The number of DistRAM (logic/ROM/RAM) slices needed is 3.
+Design Rule Check PASSED.
+Finished checking Reveal Inserter settings.
+Generating core template(s)...
+Parameters loaded ok.
+No optional files required.
+IP template generation completed ok.
+
+Finished running Tcl command: "F:/MySoftware/Lattice/radiant/tcltk/windows/bin/tclsh" "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/PoFDualCAM_1_generate.tcl".
+all messages logged in file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_error.log
+(VERI-1482) Analyzing Verilog file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/PoFDualCAM_1/pofdualcam_la0_bb.v'
+all messages logged in file F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_error.log
+(VERI-1482) Analyzing Verilog file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/PoFDualCAM_reveal_coretop.v'
+(VERI-1482) Analyzing Verilog file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v'
+(VERI-1482) Analyzing Verilog file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v'
+(VERI-1482) Analyzing Verilog file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v'
+INFO <2049992> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v(1,8-1,18) (VERI-1018) compiling module &apos;PoFDualCAM&apos;
+WARNING <2049991> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(475,5-526,31) (VERI-1063) instantiating unknown module &apos;ADC&apos;
+WARNING <2049991> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(158,17-168,56) (VERI-1063) instantiating unknown module &apos;OSCA&apos;
+WARNING <2049991> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(337,17-338,49) (VERI-1063) instantiating unknown module &apos;BB_ADC&apos;
+(VERI-1491) Printing library 'work' to file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/PoFDualCAM_rvl_top.v'
+
+"F:/MySoftware/Lattice/radiant/tcltk/windows/bin/tclsh" "PoFDualCAM_impl_1_synthesize.tcl"
+
+cpe -f PoFDualCAM_impl_1.cprj MyOSC.cprj MyADC.cprj -a LIFCL -o PoFDualCAM_impl_1_cpe.ldc
+WARNING <35935050> - input port MBISTCLK is not connected on this instance. VDB-5050
+Top module name (Verilog): MyOSC
+INFO <35901018> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(11): compiling module MyOSC. VERI-1018
+INFO <35901018> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v(97): compiling module MyOSC_ipgen_lscc_osc(LF_OUTPUT_EN=&quot;ENABLED&quot;). VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(6044): compiling module OSCA(LF_OUTPUT_EN=&quot;ENABLED&quot;). VERI-1018
+Last elaborated design is MyOSC()
+Source compile complete.
+SDC Initialization for MyOSC finished.
+SDC Distribution for MyOSC finished.
+WARNING <35935050> - input port MBISTCLK is not connected on this instance. VDB-5050
+Top module name (Verilog): MyADC
+INFO <35901018> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(11): compiling module MyADC. VERI-1018
+INFO <35901018> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v(214): compiling module MyADC_ipgen_lscc_adc_core(FAMILY=&quot;LIFCL&quot;,DEVICE_TYPE=&quot;LIFCL-40&quot;,PACKAGE_TYPE=&quot;CSFBGA121&quot;,SETUP_ADC_EN=&quot;ENABLED&quot;,SETUP_ADC0_VREF_CFG=&quot;1P2_TO_1P4&quot;,SETUP_ADC0_VREF_VOLTAGE=&quot;1.2&quot;,SETUP_ADC0_CONV_MODE=&quot;UNIPOLAR&quot;,SETUP_ADC1_VREF_CFG=&quot;1P2_TO_1P4&quot;,SETUP_ADC1_VREF_VOLTAGE=&quot;1.2&quot;,SETUP_ADC1_CONV_MODE=&quot;UNIPOLAR&quot;,SETUP_COMP1_SW_CTRL=&quot;EN   ....   MP2_SW_CTRL=&quot;ENABLED&quot;,SETUP_COMP3_SW_CTRL=&quot;ENABLED&quot;,ADC0_CHANNEL_1_EN=&quot;ENABLED&quot;,ADC0_CHANNEL_2_EN=&quot;ENABLED&quot;,ADC1_CHANNEL_9_EN=&quot;ENABLED&quot;,ADC1_CHANNEL_10_EN=&quot;ENABLED&quot;). VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(977): compiling module BB_ADC. VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(550): compiling module ADC(CTLCOMPSW1=&quot;ENABLED&quot;,CTLCOMPSW2=&quot;ENABLED&quot;,CTLCOMPSW3=&quot;ENABLED&quot;,EN_COMP1=&quot;DISABLED&quot;,EN_COMP2=&quot;DISABLED&quot;,EN_COMP3=&quot;DISABLED&quot;,OMA=&quot;UNIPOLAR&quot;,OMB=&quot;UNIPOLAR&quot;,VREFACFG=&quot;1P2_TO_1P4&quot;,VREFBCFG=&quot;1P2_TO_1P4&quot;). VERI-1018
+WARNING <35935049> - input port dn0_i remains unconnected for this instance. VDB-5049
+WARNING <35935049> - input port dp0_i remains unconnected for this instance. VDB-5049
+WARNING <35935049> - input port dn1_i remains unconnected for this instance. VDB-5049
+WARNING <35935049> - input port dp1_i remains unconnected for this instance. VDB-5049
+WARNING <35935050> - input port chan3p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan3n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan4p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan4n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan5p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan5n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan6p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan6n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan7p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan7n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan8p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan8n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan11p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan11n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan12p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan12n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan13p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan13n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan14p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan14n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan15p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan15n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan16p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan16n_i is not connected on this instance. VDB-5050
+Last elaborated design is MyADC()
+Source compile complete.
+SDC Initialization for MyADC finished.
+SDC Distribution for MyADC finished.
+INFO <35831038> - Setting PoFDualCAM as top module.
+WARNING <35831026> - No user LDC/SDC file specified in the project.
+WARNING <35935050> - input port MBISTCLK is not connected on this instance. VDB-5050
+Top module name (Verilog): PoFDualCAM
+INFO <35901018> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v(1): compiling module PoFDualCAM. VERI-1018
+INFO <35901018> - MyOSC.v(144): compiling module MyOSC. VERI-1018
+INFO <35901018> - MyADC.v(144): compiling module MyADC. VERI-1018
+Last elaborated design is PoFDualCAM()
+Source compile complete.
+Starting IP constraint check for MyADC.
+Starting IP constraint check for MyOSC.
+Writing output files.
+CPE Completed. PoFDualCAM_impl_1_cpe.ldc and CPEReport.txt produced.
+
+
+synthesis -f PoFDualCAM_impl_1_lattice.synproj
+synthesis:  version Radiant Software (64-bit) 2023.1.1.200.1
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2023 Lattice Semiconductor Corporation,  All rights reserved.
+Wed Jan 22 11:59:41 2025
+
+
+Command Line:  F:\MySoftware\Lattice\radiant\ispfpga\bin\nt64\synthesis.exe -f PoFDualCAM_impl_1_lattice.synproj -gui -msgset F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/promote.xml 
+
+INFO <35002000> - synthesis: Lattice Synthesis Engine Launched.
+Synthesis options:
+The -a option is LIFCL.
+The -t option is CABGA256.
+The -sp option is 9_High-Performance_1.0V.
+The -p option is LIFCL-40.
+                                                          
+
+
+##########################################################
+
+
+### Lattice Family     : LIFCL
+
+
+### Device             : LIFCL-40
+
+
+### Package            : CABGA256
+
+
+### Performance Grade  : 9_High-Performance_1.0V
+
+
+                                                         
+
+
+INFO <35001786> - User-Selected Strategy Settings
+Optimization goal = Timing
+Top-level module name = PoFDualCAM.
+Target frequency = 200.000000 MHz.
+Maximum fanout = 1000.
+Timing path count = 3 (default)
+BRAM utilization = 100.000000 %
+DSP usage = true
+DSP utilization = 100.000000 %
+fsm_encoding_style = auto
+resolve_mixed_drivers = 0
+fix_gated_clocks = 1
+
+
+Mux style = auto (Default)
+Use Carry Chain = true
+carry_chain_length = 0
+Loop Limit = 1950.
+Use IO Insertion = TRUE
+Use IO Reg = AUTO
+
+Resource Sharing = TRUE
+Propagate Constants = TRUE
+Remove Duplicate Registers = TRUE
+force_gsr = yes
+Output HDL file name = PoFDualCAM_impl_1.vm.
+ROM style = auto
+RAM style = auto
+The -comp option is FALSE.
+The -syn option is FALSE.
+Key file = F:/MySoftware/Lattice/radiant/data/reveal/document/reveal_test.dat
+-sdc option: SDC file input is PoFDualCAM_impl_1_cpe.ldc.
+-sdc option: SDC file input is F:/MySoftware/Lattice/radiant/data/reveal/src/ertl/reveal_constraint_JTAGH19SOFT.sdc.
+Hardtimer checking is enabled (default). The -dt option is not used.
+-path F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM (searchpath added)
+-path F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC (searchpath added)
+-path F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC (searchpath added)
+-path F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1 (searchpath added)
+-path F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/PoFDualCAM_1 (searchpath added)
+-path F:/MySoftware/Lattice/radiant/ispfpga/je5d00/data (searchpath added)
+Mixed language design
+Verilog design file = F:/MySoftware/Lattice/radiant/ip/pmi/pmi_lifcl.v
+Verilog design file = F:/MySoftware/Lattice/radiant/data/reveal/src/ertl/ertl.v
+Verilog design file = F:/MySoftware/Lattice/radiant/data/reveal/src/ertl/JTAG_SOFT.v
+Verilog design file = F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_trig_gen.v
+Verilog design file = F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_gen.v
+Verilog design file = F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/PoFDualCAM_rvl_top.v
+VHDL library = pmi
+VHDL design file = F:/MySoftware/Lattice/radiant/ip/pmi/pmi_lifcl.vhd
+The -r option is OFF. [ Remove LOC Properties is OFF. ]
+WARNING <35935050> - input port MBISTCLK is not connected on this instance. VDB-5050
+Compile design.
+Compile Design Begin
+WARNING <35002045> - No Lattice Encryption Key found for encrypted module.
+WARNING <35002045> - No Lattice Encryption Key found for encrypted module.
+Analyzing Verilog file f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v. VERI-1482
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(1): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_addsub.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_addsub.v(40): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/adder_subtractor/rtl/lscc_add_sub.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(2): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_add.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_add.v(50): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/adder/rtl/lscc_adder.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(3): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_complex_mult.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_complex_mult.v(52): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/complex_mult/rtl/lscc_complex_mult.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(4): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_counter.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_counter.v(39): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/counter/rtl/lscc_cntr.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(5): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_dpram.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_dpram.v(43): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/distributed_dpram/rtl/lscc_distributed_dpram.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(6): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_spram.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_spram.v(42): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/distributed_spram/rtl/lscc_distributed_spram.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(7): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_rom.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_rom.v(42): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/distributed_rom/rtl/lscc_distributed_rom.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(8): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_shift_reg.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_distributed_shift_reg.v(41): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/ram_shift_reg/rtl/lscc_shift_register.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(9): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_fifo.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_fifo.v(44): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/fifo/rtl/lscc_fifo.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(10): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_fifo_dc.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_fifo_dc.v(47): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/fifo_dc/rtl/lscc_fifo_dc.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(11): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_mac.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_mac.v(52): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/mult_accumulate/rtl/lscc_mult_accumulate.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(12): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_multaddsubsum.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_multaddsubsum.v(53): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/mult_add_sub_sum/rtl/lscc_mult_add_sub_sum.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(13): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_multaddsub.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_multaddsub.v(52): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/mult_add_sub/rtl/lscc_mult_add_sub.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(14): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_mult.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_mult.v(51): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/multiplier/rtl/lscc_multiplier.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(15): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dp.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dp.v(48): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/ram_dp/rtl/lscc_ram_dp.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(16): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dp_be.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dp_be.v(49): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/ram_dp/rtl/lscc_ram_dp.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(17): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dp_true.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dp_true.v(49): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/ram_dp_true/rtl/lscc_ram_dp_true.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(18): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dq.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dq.v(45): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/ram_dq/rtl/lscc_ram_dq.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(19): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dq_be.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_ram_dq_be.v(45): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/ram_dq/rtl/lscc_ram_dq.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(20): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_rom.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_rom.v(45): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../avant/rom/rtl/lscc_rom.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.v(21): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/pmi_sub.v. VERI-1328
+f:/mysoftware/lattice/radiant/ip/pmi/pmi_sub.v(50): analyzing included file f:/mysoftware/lattice/radiant/ip/pmi/../common/subtractor/rtl/lscc_subtractor.v. VERI-1328
+Analyzing Verilog file f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v. VERI-1482
+Analyzing Verilog file f:/mysoftware/lattice/radiant/data/reveal/src/ertl/jtag_soft.v. VERI-1482
+Analyzing Verilog file f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_trig_gen.v. VERI-1482
+Analyzing Verilog file f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_gen.v. VERI-1482
+Analyzing Verilog file f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v. VERI-1482
+Analyzing VHDL file f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.vhd. VHDL-1481
+Analyzing VHDL file f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.vhd
+
+INFO <35921014> - f:/mysoftware/lattice/radiant/ip/pmi/pmi_lifcl.vhd(4): analyzing package components. VHDL-1014
+The default VHDL library search path is now "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1". VHDL-1504
+Top module language type = Verilog.
+Top module name (Verilog, mixed language): PoFDualCAM
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(235): compiling module PoFDualCAM. VERI-1018
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(904): compiling module MyOSC_uniq_1. VERI-1018
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(990): compiling module MyOSC_ipgen_lscc_osc_uniq_1. VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(6044): compiling module OSCA(LF_OUTPUT_EN=&quot;ENABLED&quot;). VERI-1018
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1039): compiling module MyADC_uniq_1. VERI-1018
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1312): assignment to input chan1n_i. VERI-1214
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1315): assignment to input chan1p_i. VERI-1214
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1318): assignment to input chan2n_i. VERI-1214
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1321): assignment to input chan2p_i. VERI-1214
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1324): assignment to input chan9n_i. VERI-1214
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1327): assignment to input chan9p_i. VERI-1214
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1330): assignment to input chan10n_i. VERI-1214
+WARNING <35901214> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1333): assignment to input chan10p_i. VERI-1214
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1224): compiling module MyADC_ipgen_lscc_adc_core_uniq_1. VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(977): compiling module BB_ADC. VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(550): compiling module ADC(CTLCOMPSW1=&quot;ENABLED&quot;,CTLCOMPSW2=&quot;ENABLED&quot;,CTLCOMPSW3=&quot;ENABLED&quot;,EN_COMP1=&quot;DISABLED&quot;,EN_COMP2=&quot;DISABLED&quot;,EN_COMP3=&quot;DISABLED&quot;,OMA=&quot;UNIPOLAR&quot;,OMB=&quot;UNIPOLAR&quot;,VREFACFG=&quot;1P2_TO_1P4&quot;,VREFBCFG=&quot;1P2_TO_1P4&quot;). VERI-1018
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1302): net comp1in_w does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1303): net comp1ip_w does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1304): net comp2in_w does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1305): net comp2ip_w does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1306): net comp3in_w does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1307): net comp3ip_w does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1309): net adcn_w[15] does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(1310): net adcp_w[15] does not have a driver. VDB-1002
+WARNING <35935049> - input port dn0_i remains unconnected for this instance. VDB-5049
+WARNING <35935049> - input port dp0_i remains unconnected for this instance. VDB-5049
+WARNING <35935049> - input port dn1_i remains unconnected for this instance. VDB-5049
+WARNING <35935049> - input port dp1_i remains unconnected for this instance. VDB-5049
+WARNING <35935050> - input port chan3p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan3n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan4p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan4n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan5p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan5n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan6p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan6n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan7p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan7n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan8p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan8n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan11p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan11n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan12p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan12n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan13p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan13n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan14p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan14n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan15p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan15n_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan16p_i is not connected on this instance. VDB-5050
+WARNING <35935050> - input port chan16n_i is not connected on this instance. VDB-5050
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(11693): compiling module VHI. VERI-1018
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(2): compiling module reveal_coretop. VERI-1018
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_gen.v(12): compiling module pofdualcam_la0. VERI-1018
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): expression size 18 truncated to fit in target size 16. VERI-1209
+INFO <35901018> - f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_trig_gen.v(11): compiling module pofdualcam_la0_trig. VERI-1018
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): expression size 4 truncated to fit in target size 3. VERI-1209
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): expression size 32 truncated to fit in target size 1. VERI-1209
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): expression size 32 truncated to fit in target size 3. VERI-1209
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): expression size 32 truncated to fit in target size 1. VERI-1209
+INFO <35901018> - f:/mysoftware/lattice/radiant/data/reveal/src/ertl/ertl.v(0): compiling module protected. VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(11767): compiling module JTAGH19SOFT(HUB_00=&quot;0b1&quot;). VERI-1018
+INFO <35901018> - F:/MySoftware/Lattice/radiant/ispfpga/../cae_library/synthesis/verilog/lifcl.v(11700): compiling module VLO. VERI-1018
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(267): net adc0_ch_sel[3] does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(268): net adc1_ch_sel[3] does not have a driver. VDB-1002
+f:/3-mylaptopdir/pofdualcam/2-dpu/code/pofdualcam/impl_1/reveal_workspace/tmpreveal/pofdualcam_rvl_top.v(271): net adc_convstop does not have a driver. VDB-1002
+                                                         
+
+
+### Number of Logic Cells: 32256
+
+
+### Number of RAM Blocks: 84
+
+
+### Number of DSP Blocks: 462
+
+
+### Number of PLLs: 3
+
+
+### Number of IO Pins: 185
+
+
+##########################################################
+
+
+                                                         
+
+
+WARNING <35935047> - Unused instance adc_module is removed. VDB-5047
+WARNING <35935047> - Unused instance osc1 is removed. VDB-5047
+WARNING <1026001> - PoFDualCAM_impl_1_cpe.ldc (3) : No pin matched &apos;osc1/hf_clk_out_o&apos;.
+WARNING <1026001> - PoFDualCAM_impl_1_cpe.ldc (5) : No pin matched &apos;osc1/lf_clk_out_o&apos;.
+WARNING <1027013> - No pin matched 'osc1/hf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/hf_clk_out_o ' in constraint 'create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }]'.
+CRITICAL <35001688> - Ignoring Constraint: create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }].
+WARNING <1027013> - No pin matched 'osc1/lf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/lf_clk_out_o ' in constraint 'create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }]'.
+CRITICAL <35001688> - Ignoring Constraint: create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }].
+WARNING <35935047> - Unused instance VHI_reset_u is removed. VDB-5047
+WARNING <35935047> - Unused instance VLO_TDO is removed. VDB-5047
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/trace_dout_1st_bit clock is stuck at Zero. VDB-5040
+
+
+
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_285_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_285_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_287_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_287_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_287_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_286_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_286_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_286_i17 clock is stuck at Zero. VDB-5040
+CRITICAL <35001747> - Bit 5 of Register sub_5_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 4 of Register sub_5_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 3 of Register sub_5_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 2 of Register sub_5_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 1 of Register sub_5_e2 is stuck at Zero
+CRITICAL <35001748> - Bit 0 of Register sub_5_e2 is stuck at One
+CRITICAL <35001747> - Bit 7 of Register sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 6 of Register sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 5 of Register sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 4 of Register sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 3 of Register sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 2 of Register sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 1 of Register sub_7_e2 is stuck at Zero
+CRITICAL <35001748> - Bit 0 of Register sub_7_e2 is stuck at One
+WARNING <35935040> - Register sub_6_add_2_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 4 of Register sub_6_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 3 of Register sub_6_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 2 of Register sub_6_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 1 of Register sub_6_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 0 of Register sub_6_add_2_e2 is stuck at One
+WARNING <35935040> - Register sub_6_add_2_i17 clock is stuck at Zero. VDB-5040
+CRITICAL <35001747> - Bit 1 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/sub_95_e1 is stuck at Zero
+CRITICAL <35001747> - Bit 1 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/sub_95_e2 is stuck at Zero
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/sub_95_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_189_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_189_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_189_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_190_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_190_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_190_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register sub_8_add_2_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 7 of Register sub_8_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 6 of Register sub_8_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 5 of Register sub_8_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 4 of Register sub_8_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 3 of Register sub_8_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 2 of Register sub_8_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 1 of Register sub_8_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 0 of Register sub_8_add_2_e2 is stuck at One
+WARNING <35935040> - Register sub_8_add_2_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_190_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_287_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_190_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register sub_8_add_2_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_287_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_285_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register add_319_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_285_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_286_add_12_i17 clock is stuck at Zero. VDB-5040
+CRITICAL <35001747> - Bit 5 of Register sub_5_sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 4 of Register sub_5_sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 3 of Register sub_5_sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 2 of Register sub_5_sub_7_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 1 of Register sub_5_sub_7_e2 is stuck at Zero
+CRITICAL <35001748> - Bit 0 of Register sub_5_sub_7_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_286_add_12_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_190_add_12_e2 is stuck at One
+WARNING <35935040> - Register sub_6_add_2_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register sub_6_add_2_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register add_319_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_189_add_12_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_189_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/trig_u/te_0/add_189_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register sub_8_add_2_add_12_i17 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_287_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_286_add_12_add_12_e2 is stuck at One
+######## Found 1 RTL RAMs in the design.
+######## Mapping RTL RAM \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/genblk4.tr_mem/mem to 1 EBR blocks in PSEUDO_DUAL_PORT Mode
+
+WARNING <35935040> - Register add_341_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register add_341_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register add_341_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register add_341_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register add_341_add_12_add_12_i17 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register add_341_add_12_add_12_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001748> - Bit 7 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 6 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 5 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 4 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 3 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 2 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 1 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 0 of Register sub_8_add_2_add_12_add_12_add_12_e2 is stuck at One
+CRITICAL <35001748> - Bit 7 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 6 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 5 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 4 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 3 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 2 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 1 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 0 of Register sub_7_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+WARNING <35935040> - Register sub_8_add_2_add_12_add_12_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935041> - Clock on register sub_5_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+CRITICAL <35001748> - Bit 5 of Register sub_5_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 4 of Register sub_5_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 3 of Register sub_5_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 2 of Register sub_5_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 1 of Register sub_5_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 0 of Register sub_5_sub_7_sub_7_sub_7_add_2_e2 is stuck at One
+WARNING <35935040> - Register sub_5_sub_7_sub_7_sub_7_add_2_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_i8 is tied to a constant. VDB-5041
+WARNING <35935040> - Register sub_7_sub_7_sub_7_sub_7_add_2_i2 clock is stuck at Zero. VDB-5040
+CRITICAL <35001747> - Bit 8 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 7 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 6 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 5 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 4 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 3 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 2 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 1 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at Zero
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935041> - Clock on register sub_11_add_2_i8 is tied to a constant. VDB-5041
+CRITICAL <35001748> - Bit 15 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 14 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 13 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 12 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 11 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 10 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 9 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 8 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 7 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 6 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 5 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 4 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 3 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 2 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 1 of Register sub_11_add_2_e2 is stuck at One
+CRITICAL <35001748> - Bit 0 of Register sub_11_add_2_e2 is stuck at One
+WARNING <35935040> - Register sub_11_add_2_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+CRITICAL <35001747> - Bit 7 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 6 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 5 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 4 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 3 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 2 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at Zero
+CRITICAL <35001747> - Bit 1 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at Zero
+CRITICAL <35001748> - Bit 0 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_e2 is stuck at One
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935041> - Clock on register sub_8_add_2_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935041> - Clock on register sub_7_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+CRITICAL <35001747> - Bit 7 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_e1 is stuck at Zero
+CRITICAL <35001747> - Bit 6 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_e1 is stuck at Zero
+CRITICAL <35001747> - Bit 5 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_e1 is stuck at Zero
+CRITICAL <35001747> - Bit 4 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_e1 is stuck at Zero
+CRITICAL <35001747> - Bit 3 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_e1 is stuck at Zero
+CRITICAL <35001747> - Bit 2 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_e1 is stuck at Zero
+CRITICAL <35001747> - Bit 1 of Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/tm_rd_addr_cntr_e1 is stuck at Zero
+WARNING <35935041> - Clock on register sub_7_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_8_add_2_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_11_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_5_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_5_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_11_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_8_add_2_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_7_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_7_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_8_add_2_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_11_add_2_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_i8 is tied to a constant. VDB-5041
+WARNING <35935041> - Clock on register sub_5_sub_7_sub_7_sub_7_add_2_i8 is tied to a constant. VDB-5041
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+######## Missing driver on net encrypted_port. Patching with GND.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+CRITICAL <35002028> - I/O Port encrypted_port 's net has no driver and is unused.
+WARNING <35001263> - Skipping pad insertion on encrypted_port due to black_box_pad_pin attribute.
+WARNING <35001263> - Skipping pad insertion on encrypted_port due to black_box_pad_pin attribute.
+WARNING <35001263> - Skipping pad insertion on encrypted_port due to black_box_pad_pin attribute.
+WARNING <35001263> - Skipping pad insertion on encrypted_port due to black_box_pad_pin attribute.
+WARNING <35935040> - Register sub_7_sub_7_sub_7_sub_7_add_2_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register sub_8_add_2_add_12_add_12_add_12_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_284_add_12_add_12_add_12_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register sub_11_add_2_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/add_283_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register sub_5_sub_7_sub_7_sub_7_add_2_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i1 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i2 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i3 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i4 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i5 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i6 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i7 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i8 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i9 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i10 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i11 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i12 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i13 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i14 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/pre_trig_cap_reg_i15 clock is stuck at Zero. VDB-5040
+WARNING <35935040> - Register \PoFDualCAM_reveal_coretop_instance/pofdualcam_la0_inst_0/tm_u/rd_dout_tm_i0_i14 clock is stuck at Zero. VDB-5040
+GSR instance connected to net encrypted_port.
+Duplicate register/latch removal. encrypted_netlist is a one-to-one match with encrypted_netlist.
+Duplicate register/latch removal. encrypted_netlist is a one-to-one match with encrypted_netlist.
+Duplicate register/latch removal. encrypted_netlist is a one-to-one match with encrypted_netlist.
+Initializing timer
+Starting design annotation....
+Unknown pin TDI of comp jtaghub_inst
+Unknown pin TCK of comp jtaghub_inst
+Unknown pin TMS of comp jtaghub_inst
+Unknown pin TDO of comp jtaghub_inst
+Unknown pin JTCK of comp jtaghub_inst
+Unknown pin JTDI of comp jtaghub_inst
+Unknown pin JSHIFT of comp jtaghub_inst
+Unknown pin JUPDATE of comp jtaghub_inst
+Unknown pin JRSTN of comp jtaghub_inst
+Unknown pin JCE2 of comp jtaghub_inst
+Unknown pin IP_ENABLE[0] of comp jtaghub_inst
+Unknown pin ER2_TDO[18] of comp jtaghub_inst
+Unknown pin ER2_TDO[17] of comp jtaghub_inst
+Unknown pin ER2_TDO[16] of comp jtaghub_inst
+Unknown pin ER2_TDO[15] of comp jtaghub_inst
+Unknown pin ER2_TDO[14] of comp jtaghub_inst
+Unknown pin ER2_TDO[13] of comp jtaghub_inst
+Unknown pin ER2_TDO[12] of comp jtaghub_inst
+Unknown pin ER2_TDO[11] of comp jtaghub_inst
+Unknown pin ER2_TDO[10] of comp jtaghub_inst
+Unknown pin ER2_TDO[9] of comp jtaghub_inst
+Unknown pin ER2_TDO[8] of comp jtaghub_inst
+Unknown pin ER2_TDO[7] of comp jtaghub_inst
+Unknown pin ER2_TDO[6] of comp jtaghub_inst
+Unknown pin ER2_TDO[5] of comp jtaghub_inst
+Unknown pin ER2_TDO[4] of comp jtaghub_inst
+Unknown pin ER2_TDO[3] of comp jtaghub_inst
+Unknown pin ER2_TDO[2] of comp jtaghub_inst
+Unknown pin ER2_TDO[1] of comp jtaghub_inst
+Unknown pin ER2_TDO[0] of comp jtaghub_inst
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70001908> - set_false_path -to [get_clocks rvltck] is being ignored due to errors
+
+Starting full timing analysis...
+Worst slack in design -4392
+Initializing timer
+Starting design annotation....
+Unknown pin TDI of comp jtaghub_inst
+Unknown pin TCK of comp jtaghub_inst
+Unknown pin TMS of comp jtaghub_inst
+Unknown pin TDO of comp jtaghub_inst
+Unknown pin JTCK of comp jtaghub_inst
+Unknown pin JTDI of comp jtaghub_inst
+Unknown pin JSHIFT of comp jtaghub_inst
+Unknown pin JUPDATE of comp jtaghub_inst
+Unknown pin JRSTN of comp jtaghub_inst
+Unknown pin JCE2 of comp jtaghub_inst
+Unknown pin IP_ENABLE[0] of comp jtaghub_inst
+Unknown pin ER2_TDO[18] of comp jtaghub_inst
+Unknown pin ER2_TDO[17] of comp jtaghub_inst
+Unknown pin ER2_TDO[16] of comp jtaghub_inst
+Unknown pin ER2_TDO[15] of comp jtaghub_inst
+Unknown pin ER2_TDO[14] of comp jtaghub_inst
+Unknown pin ER2_TDO[13] of comp jtaghub_inst
+Unknown pin ER2_TDO[12] of comp jtaghub_inst
+Unknown pin ER2_TDO[11] of comp jtaghub_inst
+Unknown pin ER2_TDO[10] of comp jtaghub_inst
+Unknown pin ER2_TDO[9] of comp jtaghub_inst
+Unknown pin ER2_TDO[8] of comp jtaghub_inst
+Unknown pin ER2_TDO[7] of comp jtaghub_inst
+Unknown pin ER2_TDO[6] of comp jtaghub_inst
+Unknown pin ER2_TDO[5] of comp jtaghub_inst
+Unknown pin ER2_TDO[4] of comp jtaghub_inst
+Unknown pin ER2_TDO[3] of comp jtaghub_inst
+Unknown pin ER2_TDO[2] of comp jtaghub_inst
+Unknown pin ER2_TDO[1] of comp jtaghub_inst
+Unknown pin ER2_TDO[0] of comp jtaghub_inst
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+
+Starting full timing analysis...
+Worst slack in design -1645
+Initializing timer
+Starting design annotation....
+Unknown pin TDI of comp jtaghub_inst
+Unknown pin TCK of comp jtaghub_inst
+Unknown pin TMS of comp jtaghub_inst
+Unknown pin TDO of comp jtaghub_inst
+Unknown pin JTCK of comp jtaghub_inst
+Unknown pin JTDI of comp jtaghub_inst
+Unknown pin JSHIFT of comp jtaghub_inst
+Unknown pin JUPDATE of comp jtaghub_inst
+Unknown pin JRSTN of comp jtaghub_inst
+Unknown pin JCE2 of comp jtaghub_inst
+Unknown pin IP_ENABLE[0] of comp jtaghub_inst
+Unknown pin ER2_TDO[18] of comp jtaghub_inst
+Unknown pin ER2_TDO[17] of comp jtaghub_inst
+Unknown pin ER2_TDO[16] of comp jtaghub_inst
+Unknown pin ER2_TDO[15] of comp jtaghub_inst
+Unknown pin ER2_TDO[14] of comp jtaghub_inst
+Unknown pin ER2_TDO[13] of comp jtaghub_inst
+Unknown pin ER2_TDO[12] of comp jtaghub_inst
+Unknown pin ER2_TDO[11] of comp jtaghub_inst
+Unknown pin ER2_TDO[10] of comp jtaghub_inst
+Unknown pin ER2_TDO[9] of comp jtaghub_inst
+Unknown pin ER2_TDO[8] of comp jtaghub_inst
+Unknown pin ER2_TDO[7] of comp jtaghub_inst
+Unknown pin ER2_TDO[6] of comp jtaghub_inst
+Unknown pin ER2_TDO[5] of comp jtaghub_inst
+Unknown pin ER2_TDO[4] of comp jtaghub_inst
+Unknown pin ER2_TDO[3] of comp jtaghub_inst
+Unknown pin ER2_TDO[2] of comp jtaghub_inst
+Unknown pin ER2_TDO[1] of comp jtaghub_inst
+Unknown pin ER2_TDO[0] of comp jtaghub_inst
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+
+Starting full timing analysis...
+Worst slack in design -2422
+Initializing timer
+Starting design annotation....
+Unknown pin TDI of comp jtaghub_inst
+Unknown pin TCK of comp jtaghub_inst
+Unknown pin TMS of comp jtaghub_inst
+Unknown pin TDO of comp jtaghub_inst
+Unknown pin JTCK of comp jtaghub_inst
+Unknown pin JTDI of comp jtaghub_inst
+Unknown pin JSHIFT of comp jtaghub_inst
+Unknown pin JUPDATE of comp jtaghub_inst
+Unknown pin JRSTN of comp jtaghub_inst
+Unknown pin JCE2 of comp jtaghub_inst
+Unknown pin IP_ENABLE[0] of comp jtaghub_inst
+Unknown pin ER2_TDO[18] of comp jtaghub_inst
+Unknown pin ER2_TDO[17] of comp jtaghub_inst
+Unknown pin ER2_TDO[16] of comp jtaghub_inst
+Unknown pin ER2_TDO[15] of comp jtaghub_inst
+Unknown pin ER2_TDO[14] of comp jtaghub_inst
+Unknown pin ER2_TDO[13] of comp jtaghub_inst
+Unknown pin ER2_TDO[12] of comp jtaghub_inst
+Unknown pin ER2_TDO[11] of comp jtaghub_inst
+Unknown pin ER2_TDO[10] of comp jtaghub_inst
+Unknown pin ER2_TDO[9] of comp jtaghub_inst
+Unknown pin ER2_TDO[8] of comp jtaghub_inst
+Unknown pin ER2_TDO[7] of comp jtaghub_inst
+Unknown pin ER2_TDO[6] of comp jtaghub_inst
+Unknown pin ER2_TDO[5] of comp jtaghub_inst
+Unknown pin ER2_TDO[4] of comp jtaghub_inst
+Unknown pin ER2_TDO[3] of comp jtaghub_inst
+Unknown pin ER2_TDO[2] of comp jtaghub_inst
+Unknown pin ER2_TDO[1] of comp jtaghub_inst
+Unknown pin ER2_TDO[0] of comp jtaghub_inst
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+WARNING <70009502> - The preferred point for defining clocks is top level ports and driver pins. Pad delays will not be taken into consideration if clocks are defined on nets.
+
+Starting full timing analysis...
+Worst slack in design -2487
+WARNING <35935047> - Unused instance GSR_INST is removed. VDB-5047
+
+################### Begin Area Report (PoFDualCAM)######################
+Number of register bits => 328 of 32256 (1 % )
+CCU2 => 38
+FD1P3BX => 33
+FD1P3DX => 266
+FD1P3IX => 27
+FD1P3JX => 2
+GSR => 1
+IB => 2
+INV => 1
+JTAGH19SOFT => 1
+LUT4 => 425
+OB => 2
+PDP16K => 1
+WIDEFN9 => 27
+################### End Area Report ##################
+Number of odd-length carry chains : 1
+Number of even-length carry chains : 6
+
+################### Begin Clock Report ######################
+Clock Nets
+Number of Clocks: 3
+  Net : reveal_coretop_i7401/VCC_net, loads : 164
+  Net : trigger_en[0]_N, loads : 2
+  Net : jtck, loads : 0
+Clock Enable Nets
+Number of Clock Enables: 56
+Top 10 highest fanout Clock Enables:
+  Net : secured_path.secured_net, loads : 179
+  Net : secured_path.secured_net, loads : 67
+  Net : secured_path.secured_net, loads : 37
+  Net : secured_path.secured_net, loads : 28
+  Net : secured_path.secured_net, loads : 21
+  Net : secured_path.secured_net, loads : 20
+  Net : secured_path.secured_net, loads : 19
+  Net : secured_path.secured_net, loads : 17
+  Net : secured_path.secured_net, loads : 16
+  Net : secured_path.secured_net, loads : 16
+Highest fanout non-clock nets
+Top 10 highest fanout non-clock nets:
+  Net : secured_path.secured_net, loads : 179
+  Net : reveal_coretop_i7401/n37, loads : 166
+  Net : secured_path.secured_net, loads : 160
+  Net : secured_path.secured_net, loads : 67
+  Net : secured_path.secured_net, loads : 39
+  Net : secured_path.secured_net, loads : 37
+  Net : ip_enable0, loads : 35
+  Net : secured_path.secured_net, loads : 33
+  Net : secured_path.secured_net, loads : 32
+  Net : secured_path.secured_net, loads : 31
+################### End Clock Report ##################
+
+Peak Memory Usage: 274 MB
+
+--------------------------------------------------------------
+Total CPU Time: 5 secs 
+Total REAL Time: 6 secs 
+--------------------------------------------------------------
+
+
+postsyn -a LIFCL -p LIFCL-40 -t CABGA256 -sp 9_High-Performance_1.0V -oc Industrial -top -w -o PoFDualCAM_impl_1_syn.udb PoFDualCAM_impl_1.vm -ldc F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc
+POSTSYN: Post Synthesis Process Radiant Software (64-bit) 2023.1.1.200.1
+Command Line: postsyn -a LIFCL -p LIFCL-40 -t CABGA256 -sp 9_High-Performance_1.0V -oc Industrial -top -w -o PoFDualCAM_impl_1_syn.udb -ldc F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc -gui -msgset F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/promote.xml PoFDualCAM_impl_1.vm 
+   Architecture:     LIFCL
+   Device:           LIFCL-40
+   Package:          CABGA256
+   Performance:      9_High-Performance_1.0V
+Reading input file 'PoFDualCAM_impl_1.vm' ...
+CPU Time to convert: 0.703125
+REAL Time to convert: 1
+convert PEAK Memory Usage: 122 MB
+convert CURRENT Memory Usage: 118 MB
+Reading constraint file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc' ...
+WARNING <1026001> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc (4) : No pin matched &apos;osc1/hf_clk_out_o&apos;.
+WARNING <1026001> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc (5) : No pin matched &apos;osc1/lf_clk_out_o&apos;.
+WARNING <1027013> - No pin matched 'osc1/hf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/hf_clk_out_o ' in constraint 'create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }]'.
+WARNING <1027013> - No pin matched 'osc1/lf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/lf_clk_out_o ' in constraint 'create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }]'.
+WARNING <1011001> - Remove invalid constraint 'create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }]'.
+WARNING <1011001> - Remove invalid constraint 'create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }]'.
+Instance: jtaghub_rom has no port: rom_rd_addr[5] in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: rom_rd_addr[4] in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: rom_rd_addr[3] in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: rom_rd_addr[2] in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: rom_rd_addr[1] in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: rom_rd_addr[0] in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: o_0_1 in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: o_0_2 in Module: LUT6_1_layer0v2 when removing
+Instance: jtaghub_rom has no port: GND_net in Module: LUT6_1_layer0v2 when removing
+Instance: inst21 has no port: rom_rd_addr[5] in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: rom_rd_addr[4] in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: rom_rd_addr[3] in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: rom_rd_addr[2] in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: rom_rd_addr[1] in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: rom_rd_addr[0] in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: o_0_2_1z in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: o_0_1_1z in Module: lut_mux4_0v3 when removing
+Instance: inst21 has no port: GND_net in Module: lut_mux4_0v3 when removing
+Instance: jtagg_u has no port: instruction_RNI27TQ_0 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: instruction_0 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: instruction_2 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: instruction_5 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: instruction_6 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: er1_shift_reg_0 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: bit_count[4] in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: bit_count[3] in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: bit_count[2] in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: bit_count[1] in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: bit_count[0] in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: JUPDATE in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: JSHIFT in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: isptcy_ener2_0_a2_0_3 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: N_8_mux in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: shiftdr_ss in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: CN in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: JTCK in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: tms in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: tlreset_i in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: tlreset in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: jce1 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: isptcy_shcap_0_a4_0 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: er1_shift_reg8 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: jshift_d1 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: jce1_d1 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: JCE2 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: JTDI in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: tdi in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: tdo_oe_out_i in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: jtdo2_int_m17 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: jtdo2_int_m14 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: jtdo2_int_m14s4 in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: tdo_r in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: GND_net in Module: JTAG_SOFTv4 when removing
+Instance: jtagg_u has no port: VCC_net in Module: JTAG_SOFTv4 when removing
+Instance: jtag_cntl_inst has no port: bit_count[4] in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: bit_count[3] in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: bit_count[2] in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: bit_count[1] in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: bit_count[0] in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: er1_shift_reg_0 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: instruction_0 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: instruction_2 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: instruction_5 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: instruction_6 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: instruction_RNI27TQ_0 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: tdo_r in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: jtdo2_int_m14s4 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: jtdo2_int_m14 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: jtdo2_int_m17 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: tdo_oe_out_i in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: tdi in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: JTDI in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: JCE2 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: jce1_d1 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: jshift_d1 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: er1_shift_reg8 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: isptcy_shcap_0_a4_0 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: jce1 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: tlreset in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: tlreset_i in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: tms in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: JTCK in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: CN in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: shiftdr_ss in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: N_8_mux in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: isptcy_ener2_0_a2_0_3 in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: JSHIFT in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: JUPDATE in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: GND_net in Module: jtag_cntl_softv5 when removing
+Instance: jtag_cntl_inst has no port: VCC_net in Module: jtag_cntl_softv5 when removing
+Instance: j_tap has no port: instruction_fast[7] in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: instruction_fast[6] in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: instruction_0 in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: instruction_2 in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: instruction_RNI27TQ_0 in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: state[2] in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: state[1] in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: state[0] in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: JUPDATE in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: G_18_sx in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: JSHIFT in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: isptcy_ener2_0_a2_0_3 in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: N_8_mux in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: capdr_ss_i_i in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: ShiftDR_1z in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: shiftdr_ss in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: ShiftIR_1z in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: jtag_ir_access in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: CN in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: JTCK in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: tms in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: tlreset_i in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: tlreset_1z in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: GND_net in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_tap has no port: VCC_net in Module: jtag_tap_cntl_softv6 when removing
+Instance: j_logic has no port: instruction[7] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction[6] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction[5] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction[4] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction[3] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction[2] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction[1] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction[0] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: state[1] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: state[0] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: er1_shift_reg_0 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: bit_count[4] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: bit_count[3] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: bit_count[2] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction_fast[7] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: instruction_fast[6] in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: jce1 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: isptcy_shcap_0_a4_0 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: er1_shift_reg8_1z in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: jshift_d1 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: jce1_d1 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: isptcy_ener2_0_a2_0_3_1z in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: N_97 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: jtag_ir_access in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: N_72 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: JCE2 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: JCE2_1 in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: JTDI in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: capdr_ss_i_i in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: JTCK in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: tdi in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: GND_net in Module: jtag_logic_softv7 when removing
+Instance: j_logic has no port: VCC_net in Module: jtag_logic_softv7 when removing
+Instance: j_reg has no port: instruction_RNI27TQ_0 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: state[2] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: state[1] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: er1_shift_reg_0 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: bit_count[1] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: bit_count[0] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction_fast[7] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction_fast[6] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[7] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[6] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[5] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[4] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[3] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[2] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[1] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: instruction[0] in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: shiftdr_ss in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: isptcy_ener2_0_a2_0_3 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: G_18_sx in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: N_8_mux in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: tms in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: jtag_ir_access in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: tdo_oe_out_i_1z in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: ShiftDR in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: N_97 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: N_72 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: jtdo2_int_m17 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: jtdo2_int_m14 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: jtdo2_int_m14s4 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: JCE2_1 in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: tdo_r in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: tdi in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: JTCK in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: ShiftIR in Module: jtag_register_softv8 when removing
+Instance: j_reg has no port: GND_net in Module: jtag_register_softv8 when removing
+Instance: jtaghub_inst has no port: TDI in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: TCK in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: TMS in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: TDO in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: JTCK in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: JTDI in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: JSHIFT in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: JRSTN in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: JCE2 in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: IP_ENABLE[0] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[18] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[17] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[16] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[15] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[14] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[13] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[12] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[11] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[10] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[9] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[8] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[7] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[6] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[5] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[4] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[3] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[2] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[1] in Module: JTAGH19SOFTv1 when removing
+Instance: jtaghub_inst has no port: ER2_TDO[0] in Module: JTAGH19SOFTv1 when removing
+Removing unused logic ...
+INFO <35811146> - Signal GSR_INST.GSROUT undriven or does not drive anything - clipped
+INFO <35811145> - Instance jtaghub_inst/OBZ_inst.PIC_inst_in is optimized away.
+INFO <35811145> - Instance jtaghub_inst/OBZ_inst.PIC_inst_tristate is optimized away.
+INFO <35811145> - Instance jtaghub_inst/IP_ENABLE_reg[18].ff_inst is optimized away.
+INFO <35811145> - Instance jtaghub_inst/CDN_reg.ff_inst is optimized away.
+INFO <35811146> - Signal jtaghub_inst/IP_ENABLE[18] undriven or does not drive anything - clipped
+INFO <35811146> - Signal jtaghub_inst/CDN undriven or does not drive anything - clipped
+Starting design annotation....
+ 
+Constraint Summary:
+   Total number of constraints: 4
+   Total number of constraints dropped: 2
+ 
+Writing output file 'PoFDualCAM_impl_1_syn.udb'.
+POSTSYN finished successfully.
+Total CPU Time: 1 secs 
+Total REAL Time: 2 secs 
+Peak Memory Usage: 159 MB
+

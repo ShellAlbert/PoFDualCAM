@@ -1,0 +1,170 @@
+----------------------------------------------------------------------
+Report for cell PoFDualCAM.TECH
+Register bits:  328 of 32256 (1.017%)
+I/O cells:      4
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2        38          100.0
+                            FD1P3BX        33          100.0
+                            FD1P3DX       266          100.0
+                            FD1P3IX        27          100.0
+                            FD1P3JX         2          100.0
+                                GSR         1          100.0
+                                 IB         2          100.0
+                                INV         1          100.0
+                        JTAGH19SOFT         1          100.0
+                               LUT4       425          100.0
+                                 OB         2          100.0
+                             PDP16K         1          100.0
+                            WIDEFN9        27          100.0
+SUB MODULES
+                     pofdualcam_la0         1
+                  pofdualcam_la0_U0         1
+                pofdualcam_la0_trig         1
+                reveal_coretop_c266         1
+      rvl_decode(NUM_TU=1,NUM_TE=1)         1
+                     secured_module         1
+                              TOTAL       832
+----------------------------------------------------------------------
+Report for cell reveal_coretop_c266.v1
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2        38          100.0
+                            FD1P3BX        33          100.0
+                            FD1P3DX       266          100.0
+                            FD1P3IX        27          100.0
+                            FD1P3JX         2          100.0
+                                INV         1          100.0
+                               LUT4       424           99.8
+                             PDP16K         1          100.0
+                            WIDEFN9        27          100.0
+SUB MODULES
+                     pofdualcam_la0         1
+                pofdualcam_la0_trig         1
+      rvl_decode(NUM_TU=1,NUM_TE=1)         1
+                     secured_module         1
+                              TOTAL       823
+----------------------------------------------------------------------
+Report for cell pofdualcam_la0.v1
+Instance Path : PoFDualCAM_reveal_coretop_instance.pofdualcam_la0_inst_0
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2        38          100.0
+                            FD1P3BX        33          100.0
+                            FD1P3DX       266          100.0
+                            FD1P3IX        27          100.0
+                            FD1P3JX         2          100.0
+                               LUT4       411           96.7
+                             PDP16K         1          100.0
+                            WIDEFN9        22           81.5
+SUB MODULES
+                pofdualcam_la0_trig         1
+      rvl_decode(NUM_TU=1,NUM_TE=1)         1
+                     secured_module         1
+                              TOTAL       803
+----------------------------------------------------------------------
+Report for cell pofdualcam_la0_trig.v1
+Instance Path : PoFDualCAM_reveal_coretop_instance.pofdualcam_la0_inst_0.trig_u
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2         9           23.7
+                            FD1P3BX         1            3.0
+                            FD1P3DX        72           27.1
+                            FD1P3IX         6           22.2
+                            FD1P3JX         2          100.0
+                               LUT4        86           20.2
+                            WIDEFN9         4           14.8
+SUB MODULES
+      rvl_decode(NUM_TU=1,NUM_TE=1)         1
+                     secured_module         1
+                              TOTAL       182
+----------------------------------------------------------------------
+Report for cell secured_cell.secured_netlist
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                            FD1P3DX        12            4.5
+                               LUT4        11            2.6
+                            WIDEFN9         3           11.1
+                              TOTAL        26
+----------------------------------------------------------------------
+Report for cell secured_cell.secured_netlist
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2         9           23.7
+                            FD1P3DX        50           18.8
+                            FD1P3IX         5           18.5
+                            FD1P3JX         2          100.0
+                               LUT4        58           13.6
+                            WIDEFN9         1            3.7
+SUB MODULES
+                     secured_module         1
+                              TOTAL       126
+----------------------------------------------------------------------
+Report for cell secured_cell.secured_netlist
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                            FD1P3DX         6            2.3
+                               LUT4         2            0.5
+                              TOTAL         8
+----------------------------------------------------------------------
+Report for cell secured_cell.secured_netlist
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                            FD1P3BX         1            3.0
+                            FD1P3DX        10            3.8
+                            FD1P3IX         1            3.7
+                               LUT4        12            2.8
+                              TOTAL        24
+----------------------------------------------------------------------
+Report for cell rvl_decode(NUM_TU=1,NUM_TE=1).v1
+Instance Path : PoFDualCAM_reveal_coretop_instance.pofdualcam_la0_inst_0.trig_u.decode_u
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         4            0.9
+                              TOTAL         4
+----------------------------------------------------------------------
+Report for cell secured_cell.secured_netlist
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2        25           65.8
+                            FD1P3DX        98           36.8
+                            FD1P3IX        21           77.8
+                               LUT4       134           31.5
+                             PDP16K         1          100.0
+                            WIDEFN9         4           14.8
+SUB MODULES
+                     secured_module         1
+                              TOTAL       284
+----------------------------------------------------------------------
+Report for cell secured_cell.secured_netlist
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                            FD1P3DX         1            0.4
+                               LUT4        11            2.6
+                             PDP16K         1          100.0
+                              TOTAL        13
+----------------------------------------------------------------------
+Report for cell secured_cell.secured_netlist
+Instance Path : secured_path
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               CCU2         4           10.5
+                            FD1P3BX        32           97.0
+                            FD1P3DX        96           36.1
+                               LUT4       190           44.7
+                            WIDEFN9        14           51.9
+                              TOTAL       336
+----------------------------------------------------------------------
+Report for cell pofdualcam_la0_U0.v1
+Instance Path : PoFDualCAM_reveal_coretop_instance.pofdualcam_la0_inst_0
+                                  Cell usage:
+                               cell     count   Res Usage(%)
+                               LUT4         1            0.2
+                              TOTAL         1

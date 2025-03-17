@@ -40,82 +40,125 @@ if (a)
 <BODY>
 
 <DIV id="content" onclick="hideTocList()"><PRE>
-<A name="pn241111102002"></A><B><U><big>pn241111102002</big></U></B>
-#Start recording tcl command: 11/11/2024 08:49:31
-#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
-prj_create -name "PoFDualCAM" -impl "impl_1" -dev LIFCL-40-9MG121I -performance "9_High-Performance_1.0V" -synthesis "lse"
-prj_save 
-prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/MyADC.ipx"
-prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/mytest1.vm"
-prj_remove_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/mytest1.vm"
-prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/MyOSC.ipx"
-prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v"
+<A name="pn250115170059"></A><B><U><big>pn250115170059</big></U></B>
+#Start recording tcl command: 1/15/2025 13:17:36
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 1/15/2025 17:00:59
+
+
+
+<A name="pn250116165955"></A><B><U><big>pn250116165955</big></U></B>
+#Start recording tcl command: 1/16/2025 08:18:16
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 1/16/2025 16:59:55
+
+
+
+<A name="pn250117163147"></A><B><U><big>pn250117163147</big></U></B>
+#Start recording tcl command: 1/17/2025 08:03:18
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 1/17/2025 16:31:47
+
+
+
+<A name="pn250121163722"></A><B><U><big>pn250121163722</big></U></B>
+#Start recording tcl command: 1/21/2025 16:13:37
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 1/21/2025 16:37:22
+
+
+
+<A name="pn250122114947"></A><B><U><big>pn250122114947</big></U></B>
+#Start recording tcl command: 1/22/2025 11:08:50
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+pwc_set_processtype "Worst"
+pwc_set_processtype "Typical"
+pwc_calculate
+rvl_new_project
+rvl_add_core PoFDualCAM_LA0
+rvl_set_traceoptn SampleClk=clk_hf
+rvl_add_tu -radix Bin 
+rvl_set_tu -name TU1 -set_sig {adc0_ch_sel:2 adc0_ch_sel:3 adc0_ch_sel:1 adc0_ch_sel:0 }
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rvl
+rvl_close_project
+#Stop recording: 1/22/2025 11:49:47
+
+
+
+<A name="pn250122164257"></A><B><U><big>pn250122164257</big></U></B>
+#Start recording tcl command: 1/22/2025 11:50:09
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
 prj_run Synthesis -impl impl_1
+rvl_new_project
+rvl_add_core PoFDualCAM_LA0
+rvl_set_traceoptn SampleClk=clk2ram
+rvl_set_traceoptn SampleEnable=on
+rvl_set_traceoptn SampleEnable=off
+rvl_set_traceoptn Timestamp=on
+rvl_add_tu -radix Bin 
+rvl_set_tu -name TU1 -set_sig {{adc_c0[1:0]} }
+rvl_add_te
+rvl_set_te -expression TU1 TE1
+rvl_set_trigoptn EventCounter=on
+rvl_set_trigoptn EventCounter=off
+rvl_set_trigoptn EventCounter=on
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_set_traceoptn TriggerEnable=on
+rvl_set_traceoptn TriggerEnable=off
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
 prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/ZPIN_ASSIGNMENT.pdc"
-prj_enable_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/ZPIN_ASSIGNMENT.pdc"
-prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-#Stop recording: 11/11/2024 10:20:02
-
-
-
-<A name="pn241112170531"></A><B><U><big>pn241112170531</big></U></B>
-#Start recording tcl command: 11/11/2024 10:22:08
-#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
-prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
 prj_run PAR -impl impl_1
-prj_remove_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/MyADC.ipx"
-prj_add_source "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/MyADC.ipx"
+rvl_set_trigoptn TriggerOut=on
+rvl_set_trigoptn TriggerOut=off
+rvl_set_tu -name TU1 -val 10
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_add_trace  {{adc_c0[1:0]}}
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+prj_run Synthesis -impl impl_1
 prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-prj_run Map -impl impl_1
+rvl_add_core PoFDualCAM_LA1
+rvl_del_core PoFDualCAM_LA1
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
 prj_run PAR -impl impl_1
-prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-prj_run Map -impl impl_1
-prj_run PAR -impl impl_1
-prj_run Export -impl impl_1
-launch_programmer_prj "F:/MySoftware/Lattice/radiant"
-#Stop recording: 11/12/2024 17:05:31
-
-
-
-<A name="pn241114171631"></A><B><U><big>pn241114171631</big></U></B>
-#Start recording tcl command: 11/14/2024 14:02:27
-#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
-prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
-prj_run Map -impl impl_1
-prj_set_device -part LIFCL-40-9BG256I -performance "9_High-Performance_1.0V"
+rvl_close_project -force
+prj_add_source "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl"
+rvl_open_project F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_close_project -force
 prj_run Synthesis -impl impl_1
-#Stop recording: 11/14/2024 17:16:31
+rvl_open_project F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_close_project -force
+#Stop recording: 1/22/2025 16:42:57
 
 
 
-<A name="pn241115162202"></A><B><U><big>pn241115162202</big></U></B>
-#Start recording tcl command: 11/15/2024 15:18:23
-#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
-prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
-prj_run Synthesis -impl impl_1
-prj_run Synthesis -impl impl_1
-prj_run Synthesis -impl impl_1
-prj_run Synthesis -impl impl_1
-prj_run Synthesis -impl impl_1
-prj_run Synthesis -impl impl_1
-prj_run Synthesis -impl impl_1
-#Stop recording: 11/15/2024 16:22:02
+<A name="pn250212164134"></A><B><U><big>pn250212164134</big></U></B>
+#Start recording tcl command: 2/12/2025 10:51:07
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 2/12/2025 16:41:34
 
 
 
-<A name="pn241206163602"></A><B><U><big>pn241206163602</big></U></B>
-#Start recording tcl command: 12/6/2024 11:17:40
-#Project Location: F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
-prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
-#Stop recording: 12/6/2024 16:36:02
+<A name="pn250213162027"></A><B><U><big>pn250213162027</big></U></B>
+#Start recording tcl command: 2/13/2025 16:17:27
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 2/13/2025 16:20:27
+
+
+
+<A name="pn250227174736"></A><B><U><big>pn250227174736</big></U></B>
+#Start recording tcl command: 2/27/2025 09:02:40
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+#Stop recording: 2/27/2025 17:47:36
 
 
 
@@ -123,11 +166,15 @@ prj_open "F:/MyTemporary/Github/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
 
 <DIV id="toc" class="radiant"><span onmousemove="showTocList()">Contents</span>
 <UL id="toc_list">
-<LI><A href=#pn241111102002>pn241111102002</A></LI>
-<LI><A href=#pn241112170531>pn241112170531</A></LI>
-<LI><A href=#pn241114171631>pn241114171631</A></LI>
-<LI><A href=#pn241115162202>pn241115162202</A></LI>
-<LI><A href=#pn241206163602>pn241206163602</A></LI>
+<LI><A href=#pn250115170059>pn250115170059</A></LI>
+<LI><A href=#pn250116165955>pn250116165955</A></LI>
+<LI><A href=#pn250117163147>pn250117163147</A></LI>
+<LI><A href=#pn250121163722>pn250121163722</A></LI>
+<LI><A href=#pn250122114947>pn250122114947</A></LI>
+<LI><A href=#pn250122164257>pn250122164257</A></LI>
+<LI><A href=#pn250212164134>pn250212164134</A></LI>
+<LI><A href=#pn250213162027>pn250213162027</A></LI>
+<LI><A href=#pn250227174736>pn250227174736</A></LI>
 </UL>
 </DIV>
 

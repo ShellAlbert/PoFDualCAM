@@ -1,0 +1,37 @@
+#-- Lattice Semiconductor Corporation Ltd.
+#-- Bali Reveal project file
+
+#device options
+[Device]
+part = LIFCL-40-9BG256I
+family = LIFCL
+device = LIFCL-40
+speed = 9_High-Performance_1.0V
+package = CABGA256
+operation = Industrial
+
+#design options
+[Design]
+title = PoFDualCAM
+path = F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1
+core_generate = F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1
+search_path = F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM
+top = PoFDualCAM
+synthesis = lse
+
+#strategy options
+VHDL2008 = false
+
+#HDLs options
+[HDLs]
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v = Verilog
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v = Verilog
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyADC/rtl/MyADC.v = Verilog
+[HDL_Defines]
+SBP_SYNTHESIS=
+[HDL_Param]
+[Generated]
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_trig_gen.v=Verilog
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/pofdualcam_la0_gen.v=Verilog
+F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/reveal_workspace/tmpreveal/PoFDualCAM_rvl_top.v=Verilog,work
+F:/MySoftware/Lattice/radiant/data/reveal/src/ertl/reveal_constraint_JTAGH19SOFT.sdc=SDC

@@ -1,0 +1,277 @@
+Copyright (c) 2002-2022 Lattice Semiconductor Corporation,  All rights reserved.
+
+Wed Jan 22 11:57:48 2025
+
+Command Line: par -w -n 1 -t 1 -s 1 -cores 1 -exp parPathBased=OFF \
+	PoFDualCAM_impl_1_map.udb PoFDualCAM_impl_1.udb 
+
+
+Level/       Number       Worst        Timing       Worst        Timing       Run          Run
+Cost [udb]   Unrouted     Slack        Score        Slack(hold)  Score(hold)  Time         Status
+----------   --------     -----        ------       -----------  -----------  ----         ------
+5_1   *      0            -            -            -            -            05           Completed
+
+* : Design saved.
+
+Total (real) run time for 1-seed: 5 secs 
+
+par done!
+
+Lattice Place and Route Report for Design "PoFDualCAM_impl_1_map.udb"
+Wed Jan 22 11:57:48 2025
+
+PAR: Place And Route Radiant Software (64-bit) 2023.1.1.200.1.
+Command Line: par -w -t 1 -cores 1 -exp parPathBased=OFF \
+	PoFDualCAM_impl_1_map.udb PoFDualCAM_impl_1_par.dir/5_1.udb 
+
+Loading PoFDualCAM_impl_1_map.udb ...
+Loading device for application GENERIC from file 'je5d30.nph' in environment: F:/MySoftware/Lattice/radiant/ispfpga.
+Package Status:                     Final          Version 39.
+Performance Hardware Data Status:   Final          Version 117.1.
+
+
+
+Design:  PoFDualCAM
+Family:  LIFCL
+Device:  LIFCL-40
+Package: CABGA256
+Performance Grade:   9_High-Performance_1.0V
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c0[0]' in the constraint 'ldc_set_location -site {G11} [get_ports {adc_c0[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {G11} [get_ports {adc_c0[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c0[1]' in the constraint 'ldc_set_location -site {G10} [get_ports {adc_c0[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {G10} [get_ports {adc_c0[1]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c1[0]' in the constraint 'ldc_set_location -site {H11} [get_ports {adc_c1[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {H11} [get_ports {adc_c1[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c1[1]' in the constraint 'ldc_set_location -site {H10} [get_ports {adc_c1[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {H10} [get_ports {adc_c1[1]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c8[0]' in the constraint 'ldc_set_location -site {L11} [get_ports {adc_c8[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {L11} [get_ports {adc_c8[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c8[1]' in the constraint 'ldc_set_location -site {L10} [get_ports {adc_c8[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {L10} [get_ports {adc_c8[1]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c9[0]' in the constraint 'ldc_set_location -site {J11} [get_ports {adc_c9[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {J11} [get_ports {adc_c9[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c9[1]' in the constraint 'ldc_set_location -site {J10} [get_ports {adc_c9[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {J10} [get_ports {adc_c9[1]}]', the locate object is not specified
+
+WARNING <71003020> - par: Top module port 'adc_c0[1]' does not connect to anything.
+WARNING <71003020> - par: Top module port 'adc_c0[0]' does not connect to anything.
+WARNING <71003020> - par: Top module port 'adc_c1[1]' does not connect to anything.
+WARNING <71003020> - par: Top module port 'adc_c1[0]' does not connect to anything.
+WARNING <71003020> - par: Top module port 'adc_c8[1]' does not connect to anything.
+WARNING <71003020> - par: Top module port 'adc_c8[0]' does not connect to anything.
+WARNING <71003020> - par: Top module port 'adc_c9[1]' does not connect to anything.
+WARNING <71003020> - par: Top module port 'adc_c9[0]' does not connect to anything.
+
+Device SLICE utilization summary after final SLICE packing:
+   SLICE              0/16128         0% used
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c0[0]' in the constraint 'ldc_set_location -site {G11} [get_ports {adc_c0[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {G11} [get_ports {adc_c0[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c0[1]' in the constraint 'ldc_set_location -site {G10} [get_ports {adc_c0[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {G10} [get_ports {adc_c0[1]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c1[0]' in the constraint 'ldc_set_location -site {H11} [get_ports {adc_c1[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {H11} [get_ports {adc_c1[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c1[1]' in the constraint 'ldc_set_location -site {H10} [get_ports {adc_c1[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {H10} [get_ports {adc_c1[1]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c8[0]' in the constraint 'ldc_set_location -site {L11} [get_ports {adc_c8[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {L11} [get_ports {adc_c8[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c8[1]' in the constraint 'ldc_set_location -site {L10} [get_ports {adc_c8[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {L10} [get_ports {adc_c8[1]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c9[0]' in the constraint 'ldc_set_location -site {J11} [get_ports {adc_c9[0]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {J11} [get_ports {adc_c9[0]}]', the locate object is not specified
+
+WARNING <77001032> - par: Unable to find the instance/port 'adc_c9[1]' in the constraint 'ldc_set_location -site {J10} [get_ports {adc_c9[1]}]'
+
+WARNING <77001031> - par: In the constraint 'ldc_set_location -site {J10} [get_ports {adc_c9[1]}]', the locate object is not specified
+
+Number of Signals: 1
+Number of Connections: 2
+Device utilization summary:
+
+   VHI                   1/1           100% used
+   SEIO33                2/156           1% used
+                         2/82            2% bonded
+   SLICE                 0/0                    
+
+
+Pin Constraint Summary:
+   2 out of 2 pins locked (100% locked).
+Starting Placer Phase 0 (HIER). CPU time: 3 secs , REAL time: 3 secs 
+
+Finished Placer Phase 0 (HIER). CPU time: 3 secs , REAL time: 3 secs 
+
+Starting Placer Phase 1. CPU time: 3 secs , REAL time: 3 secs 
+
+Placer score = 0.
+Finished Placer Phase 1. CPU time: 3 secs , REAL time: 3 secs 
+
+Starting Placer Phase 2.
+.
+Placer score =  0
+Finished Placer Phase 2.  CPU time: 3 secs , REAL time: 3 secs 
+
+After final PLC packing legalization, all 0 SLICEs that were not satisfying 1 CLK/CE/LSR per HALF-PLC restriction are all placed into compatible PLCs.
+
+------------------ Clock Report ------------------
+
+Global Clock Resources:
+  CLK_PIN    : 0 out of 26 (0%)
+  PLL        : 0 out of 3 (0%)
+  DCS        : 0 out of 1 (0%)
+  DCC        : 0 out of 62 (0%)
+  ECLKDIV    : 0 out of 12 (0%)
+  PCLKDIV    : 0 out of 1 (0%)
+  OSC        : 0 out of 1 (0%)
+  DPHY       : 0 out of 2 (0%)
+  PCIE       : 0 out of 1 (0%)
+
+Global Clocks:
+
+  PRIMARY  : 0 out of 16 (0%)
+
+Edge Clocks:
+
+  No edge clock selected.
+
+
+--------------- End of Clock Report ---------------
+
+
+I/O Usage Summary (final):
+   2 out of 156 (1.3%) SEIO33 sites used.
+   2 out of 82 (2.4%) bonded SEIO33 sites used.
+   Number of SEIO33 components: 2; differential: 0
+   Number of Vref pins used: 0
+   0 out of 74 (0.0%) SEIO18 sites used.
+   0 out of 74 (0.0%) bonded SEIO18 sites used.
+   Number of SEIO18 components: 0; differential: 0
+   0 out of 37 (0.0%) DIFFIO18 sites used.
+   0 out of 37 (0.0%) bonded DIFFIO18 sites used.
+   Number of DIFFIO18 components: 0; differential: 0
+
+I/O Bank Usage Summary:
++----------+---------------+------------+------------+------------+
+| I/O Bank | Usage         | Bank Vccio | Bank Vref1 | Bank Vref2 |
++----------+---------------+------------+------------+------------+
+| 0        | 0 / 12 (  0%) | 1.8V       | -          | -          |
+| 1        | 0 / 20 (  0%) | 1.8V       | -          | -          |
+| 2        | 2 / 13 ( 15%) | 3.3V       | -          | -          |
+| 3        | 0 / 32 (  0%) | 1.8V       | -          | -          |
+| 4        | 0 / 32 (  0%) | 1.8V       | -          | -          |
+| 5        | 0 / 10 (  0%) | 1.8V       | -          | -          |
+| 6        | 0 / 26 (  0%) | -          | -          | -          |
+| 7        | 0 / 11 (  0%) | -          | -          | -          |
++----------+---------------+------------+------------+------------+
+
+Total Placer CPU time: 3 secs , REAL time: 3 secs 
+
+Writing design to file PoFDualCAM_impl_1_par.dir/5_1.udb ...
+
+
+-----------------------------------------------------------------
+INFO - par: ASE feature is off due to non timing-driven settings.  
+-----------------------------------------------------------------
+
+
+Start NBR router at 11:57:51 01/22/25
+
+*****************************************************************
+Info: NBR allows conflicts(one node used by more than one signal)
+      in the earlier iterations. In each iteration, it tries to  
+      solve the conflicts while keeping the critical connections 
+      routed as short as possible. The routing process is said to
+      be completed when no conflicts exist and all connections   
+      are routed.                                                
+Note: NBR uses a different method to calculate timing slacks. The
+      worst slack and total negative slack may not be the same as
+      that in timing report. You should always run the timing    
+      tool to verify your design.                                
+*****************************************************************
+
+Starting routing resource preassignment
+Preassignment Summary:
+--------------------------------------------------------------------------------
+2 connections routed (of 2 total) (100.00%)
+--------------------------------------------------------------------------------
+Completed routing resource preassignment
+
+Start NBR section for initial routing at 11:57:53 01/22/25
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 2 secs 
+
+Info: Initial congestion level at 75.00% usage is 0
+Info: Initial congestion area  at 75.00% usage is 0 (0.00%)
+
+Start NBR section for normal routing at 11:57:53 01/22/25
+0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; real time: 2 secs 
+
+Start NBR section for post-routing at 11:57:53 01/22/25
+
+End NBR router with 0 unrouted connection
+
+NBR Summary
+-----------
+  Number of unrouted connections : 0 (0.00%)
+-----------
+
+
+Total CPU time 1 secs 
+Total REAL time: 2 secs 
+Completely routed.
+End of route.  2 routed (100.00%); 0 unrouted.
+
+Writing design to file PoFDualCAM_impl_1_par.dir/5_1.udb ...
+
+
+All signals are completely routed.
+
+
+PAR_SUMMARY::Run status = Completed
+PAR_SUMMARY::Number of unrouted conns = 0
+PAR_SUMMARY::Worst  slack<setup/<ns>> = <n/a>
+PAR_SUMMARY::Timing score<setup/<ns>> = <n/a>
+PAR_SUMMARY::Worst  slack<hold /<ns>> = <n/a>
+PAR_SUMMARY::Timing score<hold /<ns>> = <n/a>
+PAR_SUMMARY::Number of errors = 0
+
+Total CPU  Time: 5 secs 
+Total REAL Time: 5 secs 
+Peak Memory Usage: 375.97 MB
+
+
+par done!
+
+Note: user must run 'timing' for timing closure signoff.
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2023 Lattice Semiconductor Corporation,  All rights reserved.

@@ -1,0 +1,44 @@
+#Start recording tcl command: 1/22/2025 11:50:09
+#Project Location: F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM; Project name: PoFDualCAM
+prj_open "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rdf"
+prj_run Synthesis -impl impl_1
+rvl_new_project
+rvl_add_core PoFDualCAM_LA0
+rvl_set_traceoptn SampleClk=clk2ram
+rvl_set_traceoptn SampleEnable=on
+rvl_set_traceoptn SampleEnable=off
+rvl_set_traceoptn Timestamp=on
+rvl_add_tu -radix Bin 
+rvl_set_tu -name TU1 -set_sig {{adc_c0[1:0]} }
+rvl_add_te
+rvl_set_te -expression TU1 TE1
+rvl_set_trigoptn EventCounter=on
+rvl_set_trigoptn EventCounter=off
+rvl_set_trigoptn EventCounter=on
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_set_traceoptn TriggerEnable=on
+rvl_set_traceoptn TriggerEnable=off
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+prj_run Map -impl impl_1
+prj_run PAR -impl impl_1
+rvl_set_trigoptn TriggerOut=on
+rvl_set_trigoptn TriggerOut=off
+rvl_set_tu -name TU1 -val 10
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_add_trace  {{adc_c0[1:0]}}
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+prj_run Synthesis -impl impl_1
+prj_run Map -impl impl_1
+rvl_add_core PoFDualCAM_LA1
+rvl_del_core PoFDualCAM_LA1
+rvl_save_project -overwrite F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+prj_run PAR -impl impl_1
+rvl_close_project -force
+prj_add_source "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl"
+rvl_open_project F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_close_project -force
+prj_run Synthesis -impl impl_1
+rvl_open_project F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM_1.rvl
+rvl_close_project -force
+#Stop recording: 1/22/2025 16:42:57

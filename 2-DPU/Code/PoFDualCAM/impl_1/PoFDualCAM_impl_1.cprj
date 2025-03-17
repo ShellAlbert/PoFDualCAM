@@ -1,0 +1,7 @@
+-ver "F:/MySoftware/Lattice/radiant/ip/pmi/pmi_lifcl.v"
+-lib pmi -vhd "F:/MySoftware/Lattice/radiant/ip/pmi/pmi_lifcl.vhd"
+-ver "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/source/impl_1/PoFDualCAM_Top.v"
+-path "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM"
+-top PoFDualCAM
+-isTop
+-a "LIFCL"

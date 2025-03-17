@@ -1,0 +1,7 @@
+-ver "F:/MySoftware/Lattice/radiant/ip/pmi/pmi_lifcl.v"
+-lib pmi -vhd "F:/MySoftware/Lattice/radiant/ip/pmi/pmi_lifcl.vhd"
+-ver "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/rtl/MyOSC.v"
+-sdc "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC/constraints/MyOSC.ldc"
+-path "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/IPCores/MyOSC" "F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM"
+-top MyOSC
+-a "LIFCL"

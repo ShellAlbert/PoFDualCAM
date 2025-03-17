@@ -1,0 +1,35 @@
+POSTSYN: Post Synthesis Process Radiant Software (64-bit) 2023.1.1.200.1
+Command Line: postsyn -a LIFCL -p LIFCL-40 -t CABGA256 -sp 9_High-Performance_1.0V -oc Industrial -top -w -o PoFDualCAM_impl_1_syn.udb -ldc F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc -gui -msgset F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/promote.xml PoFDualCAM_impl_1.vm 
+   Architecture:     LIFCL
+   Device:           LIFCL-40
+   Package:          CABGA256
+   Performance:      9_High-Performance_1.0V
+Reading input file 'PoFDualCAM_impl_1.vm' ...
+Reading constraint file 'F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc' ...
+WARNING <1026001> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc (4) : No pin matched 'osc1/hf_clk_out_o'.
+WARNING <1026001> - F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/impl_1/PoFDualCAM_impl_1.ldc (5) : No pin matched 'osc1/lf_clk_out_o'.
+WARNING <1027013> - No pin matched 'osc1/hf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/hf_clk_out_o ' in constraint 'create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }]'.
+WARNING <1027013> - No pin matched 'osc1/lf_clk_out_o'.
+WARNING <1014301> - Can't resolve object 'osc1/lf_clk_out_o ' in constraint 'create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }]'.
+WARNING <1011001> - Remove invalid constraint 'create_clock -name {osc1_hf_clk_out_o} -period 4.444 [get_pins {osc1/hf_clk_out_o }]'.
+WARNING <1011001> - Remove invalid constraint 'create_clock -name {osc1_lf_clk_out_o} -period 31250 [get_pins {osc1/lf_clk_out_o }]'.
+Removing unused logic ...
+INFO <35811146> - Signal GSR_INST.GSROUT undriven or does not drive anything - clipped
+INFO <35811145> - Instance jtaghub_inst/OBZ_inst.PIC_inst_in is optimized away.
+INFO <35811145> - Instance jtaghub_inst/OBZ_inst.PIC_inst_tristate is optimized away.
+INFO <35811145> - Instance jtaghub_inst/IP_ENABLE_reg[18].ff_inst is optimized away.
+INFO <35811145> - Instance jtaghub_inst/CDN_reg.ff_inst is optimized away.
+INFO <35811146> - Signal jtaghub_inst/IP_ENABLE[18] undriven or does not drive anything - clipped
+INFO <35811146> - Signal jtaghub_inst/CDN undriven or does not drive anything - clipped
+Starting design annotation....
+ 
+Constraint Summary:
+   Total number of constraints: 4
+   Total number of constraints dropped: 2
+ 
+Writing output file 'PoFDualCAM_impl_1_syn.udb'.
+POSTSYN finished successfully.
+Total CPU Time: 1 secs 
+Total REAL Time: 2 secs 
+Peak Memory Usage: 159 MB

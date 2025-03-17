@@ -1,0 +1,14 @@
+<Project Date="2025-01-22" ModBy="Inserter" Name="F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/Code/PoFDualCAM/PoFDualCAM.rvl">
+    <Core Name="PoFDualCAM_LA0">
+        <Setting>
+            <Capture NumTrigsCap="" SamplesPerTrig="1"/>
+            <Event CntEnableRun="" EventCnt=""/>
+            <TrigSetting PostTrgSamples="" AND_ALL="" TURadix="0" PreTrgSamples=""/>
+        </Setting>
+        <Dataset Name="Base">
+            <Trigger>
+                <TU Value="0000" Index="1" Operator="0" ID="1" Radix="0" Name="TU1"/>
+            </Trigger>
+        </Dataset>
+    </Core>
+</Project>
