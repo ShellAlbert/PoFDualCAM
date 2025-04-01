@@ -200,22 +200,18 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources"
-         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\psu.dsn")
-      (Path "Design Resources"
-         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\psu.dsn" "SCHEMATIC1")
+      (Path "Design Resources" ".\psu.dsn")
+      (Path "Design Resources" ".\psu.dsn" "SCHEMATIC1")
       (Path "Design Resources" "Library")
-      (Path "Design Resources" "Library"
-         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\library1.olb")
+      (Path "Design Resources" "Library" ".\library1.olb")
       (Path "Outputs")
       (Path "Logs")
-      (Select "Design Resources"
-         "f:\3-mylaptopdir\pofdualcam\1-psu\schematic\psu.dsn"))
+      (Select "Design Resources" ".\psu.dsn" "SCHEMATIC1" "PSU"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 463"))
+        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 570"))
       (Tab 0)))
   (MPSSessionName "SNIPER")
   (LastUsedLibraryBrowseDirectory "C:\Cadence\SPB_22.1\tools\capture\library")
