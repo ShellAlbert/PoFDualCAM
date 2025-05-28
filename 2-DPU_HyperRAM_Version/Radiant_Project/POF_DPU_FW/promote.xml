@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userSetting name="F:/3-MyLaptopDIR/PoFDualCAM/2-DPU/HyperRAM_Version/Code/POF_DPU_FW/promote.xml" version="Diamond (64-bit) 2024.2.0.3.0" date="Tue May 27 15:36:58 2025" vendor="Lattice Semiconductor Corporation" >
+  <msg mid="2043138" type="Error" internal="true" />
+  <msg mid="35901328" type="Info" internal="true" />
+  <msg mid="2043063" type="Warning" internal="true" />
+  <msg mid="35901137" type="Warning" internal="true" />
+  <msg mid="35901209" type="Warning" internal="true" />
+  <msg mid="35921504" type="Info" internal="true" />
+  <msg mid="35931002" type="Warning" internal="true" />
+  <msg mid="35901158" type="Warning" internal="true" />
+  <msg mid="2043281" type="Error" internal="true" />
+  <msg mid="2043128" type="Error" internal="true" />
+  <msg mid="2043158" type="Warning" internal="true" />
+  <msg mid="2043137" type="Error" internal="true" />
+  <msg mid="2044285" type="Error" internal="true" />
+  <msg mid="2044344" type="Error" internal="true" />
+  <msg mid="2043020" type="Error" internal="true" />
+  <msg mid="2043072" type="Error" internal="true" />
+  <msg mid="2043328" type="Info" internal="true" />
+  <msg mid="2044320" type="Info" internal="true" />
+  <msg mid="2043018" type="Info" internal="true" />
+  <msg mid="2043195" type="Error" internal="true" />
+  <msg mid="2044241" type="Error" internal="true" />
+  <msg mid="2043743" type="Warning" internal="true" />
+  <msg mid="35901281" type="Warning" internal="true" />
+  <msg mid="2043988" type="Warning" internal="true" />
+  <msg mid="35901172" type="Warning" internal="true" />
+  <msg mid="2043100" type="Error" internal="true" />
+</userSetting>

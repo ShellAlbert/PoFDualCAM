@@ -1,0 +1,242 @@
+(ExpressProject "DPU"
+  (ProjectVersion "19981106")
+  (SoftwareVersion "22.1 P001 (4063652)  [10/6/2022]-[05/28/25]")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File ".\latticeplds.olb"
+        (Type "Schematic Library"))
+      (File ".\library1.olb"
+        (Type "Schematic Library")))
+    ("Allegro Netlist Directory"
+       "F:\3-MyLaptopDIR\PoFDualCAM\2-DPU\HyperRAM_Version\Schematic\Netlist")
+    (DOCKED "TRUE")
+    (DOCKING_POSITION "59420")
+    (NoModify)
+    (File ".\dpu.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (BOM_Scope "0")
+    (BOM_Mode "0")
+    (BOM_Report_File
+       "F:\3-MyLaptopDIR\PoFDualCAM\2-DPU\HyperRAM_Version\Schematic\dpu.bom")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0
+       "{Item}\t{Quantity}\t{Reference}\t{Value}\t{PCB Footprint}")
+    (BOM_Header "Item\tQuantity\tReference\tPart\tPCBFootprint")
+    (BOM_Include_File
+       "F:\MYTEMPORARY\GITHUB\POFDUALCAM\2-DPU\SCHEMATIC\DPU.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "TRUE")
+    (BOM_View_Output "FALSE")
+    (Netlist_TAB "0")
+    ("Create Allegro Netlist" "TRUE")
+    ("View Allegro Netlist Files" "FALSE")
+    ("Allegro Netlist Create DCF File" "FALSE")
+    ("Update Allegro Board" "FALSE")
+    ("Allegro Netlist Output Board File" ".\allegro\dpu.brd")
+    ("Allegro Netlist Remove Etch" "FALSE")
+    ("Allegro Netlist Place Changed Component" "ALWAYS_REPLACE")
+    ("Allegro Netlist Open Board in Allegro" "ALLEGRO")
+    ("Allegro Setup Backup Versions" "3")
+    ("Allegro Setup Ignore Constraints" "FALSE")
+    ("Allegro Setup Part Type Length" "255")
+    ("Allegro Netlist Combine Property String" "PCB Footprint")
+    ("Allegro Netlist Ignore Fixed Property" "FALSE")
+    ("Allegro Netlist User Defined Property" "FALSE")
+    (Display_Online_DRC_Results "FALSE")
+    ("Allegro Backannotation Run Genfeed" "TRUE")
+    ("Allegro Backannotation Board File"
+       "F:\3-MyLaptopDIR\PoFDualCAM\2-DPU\HyperRAM_Version\PCB\DPU-D14.brd")
+    ("Allegro Backannotation Netlist Directory"
+       "F:\3-MyLaptopDIR\PoFDualCAM\2-DPU\Schematic\Netlist")
+    ("Allegro Backannotation Output File" "allegro\DPU.swp")
+    ("Allegro Backannotation Update Schematic" "TRUE")
+    ("Allegro Backannotation View Output" "FALSE")
+    ("Allegro Setup Output Warnings" "FALSE")
+    (Backannotation_TAB "0")
+    (Board_sim_option "VHDL_flow"))
+  (Folder "Layout")
+  (Folder "Outputs"
+    (File ".\dpu.bom"
+      (Type "Report"))
+    (File ".\netlist\pstxnet.dat"
+      (Type "Report")
+      (DisplayName "pstxnet.dat"))
+    (File ".\netlist\pstxprt.dat"
+      (Type "Report")
+      (DisplayName "pstxprt.dat"))
+    (File ".\netlist\pstchip.dat"
+      (Type "Report")
+      (DisplayName "pstchip.dat"))
+    (File ".\netlist\pinview.dat"
+      (Type "Report")
+      (DisplayName "pinView.dat"))
+    (File ".\netlist\netview.dat"
+      (Type "Report")
+      (DisplayName "netView.dat"))
+    (File ".\netlist\funcview.dat"
+      (Type "Report")
+      (DisplayName "funcView.dat"))
+    (File ".\netlist\compview.dat"
+      (Type "Report")
+      (DisplayName "compView.dat"))
+    (File ".\allegro\dpu.swp"
+      (Type "Report")
+      (DisplayName "DPU.swp"))
+    (File "c:\users\sniper\desktop\a3\smt\dpu_a3_bom.bom"
+      (Type "Report"))
+    (File "f:\3-mylaptopdir\pofdualcam\2-dpu\schematic\netlist\pinview.dat"
+      (Type "Report")
+      (DisplayName "pinView.dat"))
+    (File "f:\3-mylaptopdir\pofdualcam\2-dpu\schematic\netlist\netview.dat"
+      (Type "Report")
+      (DisplayName "netView.dat"))
+    (File "f:\3-mylaptopdir\pofdualcam\2-dpu\schematic\netlist\funcview.dat"
+      (Type "Report")
+      (DisplayName "funcView.dat"))
+    (File "f:\3-mylaptopdir\pofdualcam\2-dpu\schematic\netlist\compview.dat"
+      (Type "Report")
+      (DisplayName "compView.dat"))
+    (File "f:\3-mylaptopdir\pofdualcam\2-dpu\schematic\netlist\pstxnet.dat"
+      (Type "Report")
+      (DisplayName "pstxnet.dat"))
+    (File "f:\3-mylaptopdir\pofdualcam\2-dpu\schematic\netlist\pstxprt.dat"
+      (Type "Report")
+      (DisplayName "pstxprt.dat"))
+    (File "f:\3-mylaptopdir\pofdualcam\2-dpu\schematic\netlist\pstchip.dat"
+      (Type "Report")
+      (DisplayName "pstchip.dat")))
+  (Folder "Referenced Projects")
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles")
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (Folder "Logs"
+    (File ".\netlist\swp.log"
+      (Type "Log File")
+      (LogFile "F:\3-MyLaptopDIR\PoFDualCAM\2-DPU\Schematic\Netlist\swp.log")))
+  (PartMRUSelector
+    (GND
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (OFFPAGELEFT-L
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (W958D6NBKX4I
+      (FullPartName "W958D6NBKX4I.Normal")
+      (LibraryName
+         "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\HYPERRAM_VERSION\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (TXB0102DCU
+      (FullPartName "TXB0102DCU.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\B\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    ("T POINT F"
+      (FullPartName "T POINT F.Normal")
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    ("T POINT R"
+      (FullPartName "T POINT R.Normal")
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (DIODE
+      (FullPartName "DIODE.Normal")
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (TXB0104PWR
+      (FullPartName "TXB0104PWR.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (IS43LD16640C-25BLI
+      (FullPartName "IS43LD16640C-25BLI.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (VCC_BAR
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (ADA4945-1
+      (FullPartName "ADA4945-1.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (AD8421
+      (FullPartName "AD8421.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (SN74HC4066
+      (FullPartName "SN74HC4066.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (ADA4899-1
+      (FullPartName "ADA4899-1.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (AD8338
+      (FullPartName "AD8338.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (AD8422
+      (FullPartName "AD8422.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (ADA4807-1
+      (FullPartName "ADA4807-1.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (REF191ESZ-REEL
+      (FullPartName "REF191ESZ-REEL.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (AD8014ARTZ-REEL7
+      (FullPartName "AD8014ARTZ-REEL7.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (AD7985BCPZ
+      (FullPartName "AD7985BCPZ.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    (SMA
+      (FullPartName "SMA.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0"))
+    ("RESISTOR VAR"
+      (FullPartName "RESISTOR VAR.Normal")
+      (LibraryName "C:\CADENCE\SPB_22.1\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    ("CAP NP"
+      (FullPartName "CAP NP.Normal")
+      (LibraryName
+         "C:\CADENCE\CADENCE_SPB_17.4-2019\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName "F:\MYSOFTWARE\CADENCE\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (OPA320AIDBVR
+      (FullPartName "OPA320AIDBVR.Normal")
+      (LibraryName "F:\3-MYLAPTOPDIR\POFDUALCAM\2-DPU\SCHEMATIC\LIBRARY1.OLB")
+      (DeviceIndex "0")))
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" ".\dpu.dsn")
+      (Path "Design Resources" ".\dpu.dsn" "SCHEMATIC1")
+      (Path "Design Resources" "Library")
+      (Path "Design Resources" "Library" ".\library1.olb")
+      (Path "Outputs")
+      (Path "Logs")
+      (Select "Design Resources" ".\dpu.dsn" "SCHEMATIC1" "SCHEMATIC"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 496"))
+      (Tab 0)))
+  (MPSSessionName "SNIPER")
+  (ISPCBBASICLICENSE "false"))

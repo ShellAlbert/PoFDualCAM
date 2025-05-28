@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RadiantProject version="4.2" radiant="2024.2.0.3.0" title="POF_DPU_FW" device="LIFCL-40-7BG256I" performance_grade="7_High-Performance_1.0V" family_int="je5d00" device_int="je5d30" package_int="CABGA256" operation_int="IND" speed_int="10" default_implementation="impl_1">
+    <Options/>
+    <Implementation title="impl_1" dir="impl_1" description="impl_1" synthesis="lse" default_strategy="Strategy1">
+        <Options def_top="POF_DPU_TOP" top="POF_DPU_TOP"/>
+        <Source name="source/impl_1/POF_DPU_TOP.v" type="Verilog" type_short="Verilog">
+            <Options top_module="POF_DPU_TOP"/>
+        </Source>
+        <Source name="source/impl_1/ZPortableDefine.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1/IPCore/ZPLL/ZPLL.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1/ZCDS3_Capture.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1/ZUV_Capture.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1/ZOV5640_Capture.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="source/impl_1/ZPhysicalPins.pdc" type="Physical Constraints File" type_short="PDC">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="POF_DPU_FW1.sty"/>
+</RadiantProject>
