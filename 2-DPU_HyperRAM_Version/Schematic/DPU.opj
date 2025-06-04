@@ -1,6 +1,6 @@
 (ExpressProject "DPU"
   (ProjectVersion "19981106")
-  (SoftwareVersion "22.1 P001 (4063652)  [10/6/2022]-[05/28/25]")
+  (SoftwareVersion "22.1 P001 (4063652)  [10/6/2022]-[05/29/25]")
   (ProjectType "PCB")
   (Folder "Design Resources"
     (Folder "Library"
@@ -236,7 +236,7 @@
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
-        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 496"))
+        (Placement "44 0 1 -1 -1 -1 -1 0 200 0 605"))
       (Tab 0)))
   (MPSSessionName "SNIPER")
   (ISPCBBASICLICENSE "false"))
