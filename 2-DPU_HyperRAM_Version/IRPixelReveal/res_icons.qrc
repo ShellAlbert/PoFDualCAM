@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/change_dir.png</file>
+        <file>icons/export.png</file>
+        <file>icons/open_port.png</file>
+        <file>icons/palette.png</file>
+        <file>icons/save_as.png</file>
+        <file>icons/camera.png</file>
+        <file>icons/checked.png</file>
+        <file>icons/unchecked.png</file>
+        <file>icons/halt.png</file>
+        <file>icons/listen.png</file>
+        <file>icons/hex.png</file>
+    </qresource>
+</RCC>
