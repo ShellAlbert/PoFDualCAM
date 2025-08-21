@@ -14,8 +14,10 @@
 #include <QMenu>
 #include <QAction>
 #include "zimagecanvas.h"
-#include "zuartrecv.h"
+#include "ZUARTThread/zuartrecv.h"
+#include "ZJpegWidget/zjpegwidget.h"
 #include <QProgressBar>
+#include <QTabWidget>
 class ZMainWidget : public QWidget
 {
   Q_OBJECT
@@ -45,6 +47,7 @@ signals:
   void ZSignalLog(const QString &log);
 protected:
   bool eventFilter(QObject *watched, QEvent *event);
+    QSize sizeHint() const;
 private:
   //Left Layout.
   QToolButton *m_btnCfgDev;
@@ -59,9 +62,15 @@ private:
   QVBoxLayout *m_vLayout;
   QWidget *m_widgetLeft;
 
-
   ZImageCanvas *m_imgCanvas;
   QTableWidget *m_tableWidget;
+  QSplitter *m_hSpliterIR;
+  QWidget *m_widgetIR;
+  QHBoxLayout *m_hLayoutIR;
+
+  ZJpegWidget *m_jpegWidget;
+  QTabWidget *m_tabWidget;
+
   QSplitter *m_hSpliter;
 
   QTextEdit *m_textEdit;

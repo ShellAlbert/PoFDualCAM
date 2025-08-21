@@ -5,6 +5,8 @@ ZDialogTempChart::ZDialogTempChart()
     this->m_chartView=nullptr;
     this->m_scatter=nullptr;
     this->m_vLayout=nullptr;
+    this->m_max=0;
+    this->m_min=100.0;
 }
 ZDialogTempChart::~ZDialogTempChart()
 {
@@ -20,9 +22,10 @@ bool ZDialogTempChart::ZDoInit()
         return false;
     }
     this->m_chartView->setRenderHint(QPainter::Antialiasing);
+    this->m_chartView->chart()->setFont(QFont("SimHei",16));
     this->m_chartView->chart()->setTitle("Infrared Temperature Chart");
     this->m_chartView->chart()->legend()->setMarkerShape(QLegend::MarkerShapeCircle);
-    this->m_chartView->chart()->setTheme(QChart::ChartThemeLight);
+    this->m_chartView->chart()->setTheme(QChart::ChartThemeDark);
 
     this->m_scatter=new QScatterSeries;
     if(nullptr==this->m_scatter)
@@ -31,7 +34,7 @@ bool ZDialogTempChart::ZDoInit()
     }
     this->m_scatter->setName("Temperature");
     this->m_scatter->setMarkerShape(QScatterSeries::MarkerShapeCircle);
-    this->m_scatter->setMarkerSize(10);
+    this->m_scatter->setMarkerSize(5);
 
     this->m_vLayout=new QVBoxLayout;
     if(nullptr==this->m_vLayout)
@@ -45,6 +48,8 @@ bool ZDialogTempChart::ZDoInit()
 void ZDialogTempChart::ZAppendValue(qreal x, qreal y)
 {
     this->m_scatter->append(x,y);
+    this->m_max=(y>this->m_max)?(y):(this->m_max);
+    this->m_min=(y<this->m_min)?(y):(this->m_min);
 }
 QSize ZDialogTempChart::sizeHint() const
 {
@@ -52,6 +57,8 @@ QSize ZDialogTempChart::sizeHint() const
 }
 void ZDialogTempChart::ZAutojustAxes()
 {
+    QString name=QString::asprintf("Max:%.2f Min:%.2f Diff:%.2f",this->m_max,this->m_min,this->m_max-this->m_min);
+    this->m_scatter->setName(name);
     this->m_chartView->chart()->addSeries(this->m_scatter);
     this->m_chartView->chart()->createDefaultAxes();
 }

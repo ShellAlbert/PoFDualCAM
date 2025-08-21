@@ -26,12 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     ZDialogHexCheck/zdialoghexcheck.cpp \
     ZDialogTempChart/zdialogtempchart.cpp \
+    ZJpegWidget/zjpegwidget.cpp \
         main.cpp \
         zmainwidget.cpp \
     zrgb.cpp \
     zycbcr.cpp \
     zimagecanvas.cpp \
-    zuartrecv.cpp \
+    ZUARTThread/zuartrecv.cpp \
     zdialogpalette.cpp \
     zglobal.cpp \
     ZDialogConfigDev/zdialogconfigdev.cpp
@@ -39,11 +40,12 @@ SOURCES += \
 HEADERS += \
     ZDialogHexCheck/zdialoghexcheck.h \
     ZDialogTempChart/zdialogtempchart.h \
+    ZJpegWidget/zjpegwidget.h \
         zmainwidget.h \
     zrgb.h \
     zycbcr.h \
     zimagecanvas.h \
-    zuartrecv.h \
+    ZUARTThread/zuartrecv.h \
     zdialogpalette.h \
     zglobal.h \
     ZDialogConfigDev/zdialogconfigdev.h

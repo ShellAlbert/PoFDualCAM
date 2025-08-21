@@ -13,30 +13,35 @@
 ZMainWidget::ZMainWidget(QWidget *parent)
     : QWidget(parent)
 {
-    this->m_btnCfgDev=NULL;
-    this->m_btnOpenDir=NULL;
-    this->m_btnOpenUART=NULL;
-    this->m_btnSaveAs=NULL;
-    this->m_btnExport=NULL;
-    this->m_btnPalette=NULL;
-    this->m_btnHexDisplay=NULL;
-    this->m_cbTraceCursor=NULL;
-    this->m_listWidget=NULL;
-    this->m_vLayout=NULL;
-    this->m_widgetLeft=NULL;
+    this->m_btnCfgDev=nullptr;
+    this->m_btnOpenDir=nullptr;
+    this->m_btnOpenUART=nullptr;
+    this->m_btnSaveAs=nullptr;
+    this->m_btnExport=nullptr;
+    this->m_btnPalette=nullptr;
+    this->m_btnHexDisplay=nullptr;
+    this->m_cbTraceCursor=nullptr;
+    this->m_listWidget=nullptr;
+    this->m_vLayout=nullptr;
+    this->m_widgetLeft=nullptr;
     ///////////////////////////////////
-    this->m_imgCanvas=NULL;
-    this->m_tableWidget=NULL;
-    this->m_hSpliter=NULL;
+    this->m_imgCanvas=nullptr;
+    this->m_tableWidget=nullptr;
+    this->m_hSpliterIR=nullptr;
+    this->m_hLayoutIR=nullptr;
+    this->m_widgetIR=nullptr;
+    this->m_jpegWidget=nullptr;
+    this->m_tabWidget=nullptr;
+    this->m_hSpliter=nullptr;
     /////////////////////////////////////
-    this->m_textEdit=NULL;
-    this->m_vSpliter=NULL;
-    this->m_llRxBytes=NULL;
-    this->m_llRxFrames=NULL;
-    this->m_llMaxMinDiffTemp=NULL;
-    this->m_hLayoutBottom=NULL;
+    this->m_textEdit=nullptr;
+    this->m_vSpliter=nullptr;
+    this->m_llRxBytes=nullptr;
+    this->m_llRxFrames=nullptr;
+    this->m_llMaxMinDiffTemp=nullptr;
+    this->m_hLayoutBottom=nullptr;
     //////////////////////////////////////////////
-    this->m_mainVLayout=NULL;
+    this->m_mainVLayout=nullptr;
     //////////////////////////////////////////////
     this->m_actRefresh=nullptr;
     this->m_actChgDir=nullptr;
@@ -44,7 +49,7 @@ ZMainWidget::ZMainWidget(QWidget *parent)
 
     this->setWindowTitle("Infrared Pixel Reveal - V0.0.1");
     this->setWindowIcon(QIcon(":/icons/camera.png"));
-    this->m_uartRecv=NULL;
+    this->m_uartRecv=nullptr;
 }
 
 ZMainWidget::~ZMainWidget()
@@ -63,6 +68,11 @@ ZMainWidget::~ZMainWidget()
     ///////////////////////////////////
     delete this->m_imgCanvas;
     delete this->m_tableWidget;
+    delete this->m_hSpliterIR;
+    delete this->m_hLayoutIR;
+    delete this->m_widgetIR;
+    delete this->m_jpegWidget;
+    delete this->m_tabWidget;
     delete this->m_hSpliter;
     /////////////////////////////////////
     delete this->m_textEdit;
@@ -184,17 +194,29 @@ bool ZMainWidget::ZDoInit()
     //  horHeader.append(("OFFSET"));
     //  horHeader.append(("HEX"));
     //  this->m_tableWidget->setHorizontalHeaderLabels(horHeader);
+    this->m_hSpliterIR=new QSplitter(Qt::Horizontal);
+    this->m_hSpliterIR->addWidget(this->m_imgCanvas);
+    this->m_hSpliterIR->addWidget(this->m_tableWidget);
+    this->m_hSpliterIR->setStretchFactor(0,9);
+    this->m_hSpliterIR->setStretchFactor(1,1);
+
+    this->m_widgetIR=new QWidget;
+    this->m_hLayoutIR=new QHBoxLayout;
+    this->m_hLayoutIR->addWidget(this->m_hSpliterIR);
+    this->m_widgetIR->setLayout(this->m_hLayoutIR);
+    this->m_jpegWidget=new ZJpegWidget;
+    this->m_tabWidget=new QTabWidget;
+    this->m_tabWidget->addTab(this->m_widgetIR,tr("Infrared Image"));
+    this->m_tabWidget->addTab(this->m_jpegWidget,tr("Visible-Light Image"));
     ///////////////////////////////////////////////////////////////////////////////////////////////
     this->m_hSpliter=new QSplitter(Qt::Horizontal);
     this->m_hSpliter->addWidget(this->m_widgetLeft);
-    this->m_hSpliter->addWidget(this->m_imgCanvas);
-    this->m_hSpliter->addWidget(this->m_tableWidget);
+    this->m_hSpliter->addWidget(this->m_tabWidget);
     this->m_hSpliter->setStretchFactor(0,1);
-    this->m_hSpliter->setStretchFactor(1,6);
-    this->m_hSpliter->setStretchFactor(2,3);
+    this->m_hSpliter->setStretchFactor(1,9);
 
-    QObject::connect(this->m_imgCanvas,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
-    QObject::connect(this->m_imgCanvas,SIGNAL(ZSignalHexData(QString)),this,SLOT(ZSlotNewHexData(QString)));
+    connect(this->m_imgCanvas,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
+    connect(this->m_imgCanvas,SIGNAL(ZSignalHexData(QString)),this,SLOT(ZSlotNewHexData(QString)));
     ///////////////////////////////////////////////////////////////
     this->m_textEdit=new QTextEdit;
     this->m_textEdit->setReadOnly(true);
@@ -341,30 +363,40 @@ void ZMainWidget::ZSlotNewHexData(const QString &hexData)
 }
 void ZMainWidget::ZSlotOpenUART()
 {
-    if(this->m_uartRecv==NULL)
+    if(nullptr==this->m_uartRecv)
     {
         this->m_uartRecv=new ZUARTRecv;
-        QObject::connect(this->m_uartRecv,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
-        QObject::connect(this->m_uartRecv,SIGNAL(ZSignalHexData(QString)),this,SLOT(ZSlotNewHexData(QString)));
-        QObject::connect(this->m_uartRecv,SIGNAL(ZSignalNewImage(QImage,QImage)),this->m_imgCanvas,SLOT(ZSlotUpdateImg(QImage,QImage)));
-        QObject::connect(this->m_uartRecv,SIGNAL(ZSignalRxBytes(qint32)),this,SLOT(ZSlotUpdateRxBytes(qint32)));
-        QObject::connect(this->m_uartRecv,SIGNAL(ZSignalRxFrames(qint32)),this,SLOT(ZSlotUpdateRxFrames(qint32)));
-        QObject::connect(this->m_uartRecv,SIGNAL(ZSignalMaxMinDiffTempChanged(qint32,qint32,qint32)),this,SLOT(ZSlotUpdateMaxMinDiffTemp(qint32,qint32,qint32)));
-        QObject::connect(this->m_uartRecv,SIGNAL(ZSignalRenderProgress(qint32)),this,SLOT(ZSlotUpdateProgressBar(qint32)));
-        QObject::connect(this->m_imgCanvas,SIGNAL(ZSignalInfraredImagePositionChanged(qint32,qint32)),this->m_uartRecv,SLOT(ZSlotFetchIRImageData(qint32,qint32)));
-        QObject::connect(this->m_imgCanvas,SIGNAL(ZSignalTemperatureImagePositionChanged(qint32,qint32)),this->m_uartRecv,SLOT(ZSlotFetchTempImageData(qint32,qint32)));
-    }
-    if(this->m_btnOpenUART->text()=="Open Port")
-    {
-        if(this->m_uartRecv->ZOpenUART("COM23"))
+        if(nullptr==this->m_uartRecv)
         {
-            this->m_btnOpenUART->setText("Close Port");
+            QMessageBox::critical(this,tr("Error Message"),tr("Create thread for UART failed."));
+            return;
+        }
+        if(!this->m_uartRecv->ZDoInit())
+        {
+            QMessageBox::critical(this,tr("Error Message"),tr("Initialize UART failed."));
+            return;
+        }
+        connect(this->m_uartRecv,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalHexData(QString)),this,SLOT(ZSlotNewHexData(QString)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalNewImage(QImage,QImage)),this->m_imgCanvas,SLOT(ZSlotUpdateImg(QImage,QImage)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalRxBytes(qint32)),this,SLOT(ZSlotUpdateRxBytes(qint32)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalRxFrames(qint32)),this,SLOT(ZSlotUpdateRxFrames(qint32)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalMaxMinDiffTempChanged(qint32,qint32,qint32)),this,SLOT(ZSlotUpdateMaxMinDiffTemp(qint32,qint32,qint32)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalRenderProgress(qint32)),this,SLOT(ZSlotUpdateProgressBar(qint32)));
+        connect(this->m_imgCanvas,SIGNAL(ZSignalInfraredImagePositionChanged(qint32,qint32)),this->m_uartRecv,SLOT(ZSlotFetchIRImageData(qint32,qint32)));
+        connect(this->m_imgCanvas,SIGNAL(ZSignalTemperatureImagePositionChanged(qint32,qint32)),this->m_uartRecv,SLOT(ZSlotFetchTempImageData(qint32,qint32)));
+    }
+    if(!this->m_uartRecv->ZIsOpened())
+    {
+        if(this->m_uartRecv->ZOpenUART("/dev/ttyUSB1"))
+        {
+            this->m_btnOpenUART->setText("Pause Now");
             this->m_btnOpenUART->setIcon(QIcon(":/icons/halt.png"));
             emit this->ZSignalLog("Infrared Image Sensor needs 7 seconds to start up, please be patient...");
         }
-    }else if(this->m_btnOpenUART->text()=="Close Port"){
+    }else {
         this->m_uartRecv->ZCloseUART();
-        this->m_btnOpenUART->setText("Open Port");
+        this->m_btnOpenUART->setText("Listen Now");
         this->m_btnOpenUART->setIcon(QIcon(":/icons/listen.png"));
     }
 }
@@ -408,6 +440,10 @@ bool ZMainWidget::eventFilter(QObject *watched, QEvent *event)
         }
     }
     return QObject::eventFilter(watched,event);
+}
+QSize ZMainWidget::sizeHint() const
+{
+    return QSize(1024,768);
 }
 void ZMainWidget::ZSlotRefreshFileList()
 {

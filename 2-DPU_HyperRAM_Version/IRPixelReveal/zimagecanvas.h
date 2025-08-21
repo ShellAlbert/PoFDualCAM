@@ -34,6 +34,7 @@ protected:
     void paintEvent(QPaintEvent *e);
     void mouseMoveEvent(QMouseEvent *event);
     bool eventFilter(QObject *watched, QEvent *event);
+    QSize sizeHint() const;
 private:
     QColor ZMapTemperature2Color(float tTemp);
 private:

@@ -21,6 +21,9 @@ private:
     QChartView *m_chartView;
     QScatterSeries *m_scatter;
     QVBoxLayout *m_vLayout;
+
+    qreal m_max;
+    qreal m_min;
 };
 
 #endif // ZDIALOGTEMPCHART_H

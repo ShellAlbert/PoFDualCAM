@@ -2,10 +2,15 @@
 #include <QApplication>
 #include <QLoggingCategory>
 
+// warning: Environment variable QT_LOGGING_TO_CONSOLE is deprecated, use
+// QT_ASSUME_STDERR_HAS_CONSOLE and/or QT_FORCE_STDERR_LOGGING instead.
+// # QT_ASSUME_STDERR_HAS_CONSOLE=1 qtcreator
 int main(int argc, char *argv[])
 {
     QLoggingCategory::defaultCategory()->setEnabled(QtDebugMsg,true);
     QApplication app(argc, argv);
+    QString appPath=app.applicationDirPath();
+    app.addLibraryPath(appPath);
     QString qss("QWidget{background:#222222; color:#FFFFFF;}"
                 "QToolButton{border:1px solid #CCCCCC; font-size:18px; min-width:120px; min-height:30px;}"
                 "QListWidget{border: 1px solid #FFFFFF; margin:0px; min-width:160px;}"

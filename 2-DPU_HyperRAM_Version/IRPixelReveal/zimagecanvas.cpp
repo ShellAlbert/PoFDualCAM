@@ -220,6 +220,10 @@ void ZImageCanvas::mouseMoveEvent(QMouseEvent *event)
     }
     this->update();
 }
+QSize ZImageCanvas::sizeHint() const
+{
+    return QSize(600,400);
+}
 bool ZImageCanvas::eventFilter(QObject *watched, QEvent *event)
 {
     if(event->type()==QEvent::ContextMenu)
