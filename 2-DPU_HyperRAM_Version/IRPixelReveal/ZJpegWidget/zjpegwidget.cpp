@@ -12,6 +12,11 @@ void ZJpegWidget::ZUpdatePixmap(const QPixmap &pixmap)
     this->m_pixmap=pixmap;
     this->update();
 }
+void ZJpegWidget::ZSlotNewImage(const QImage &image)
+{
+    this->m_pixmap=QPixmap::fromImage(image);
+    this->update();
+}
 void ZJpegWidget::paintEvent(QPaintEvent *event)
 {
     (void)event;

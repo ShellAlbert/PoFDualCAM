@@ -4,13 +4,24 @@
 ZUARTRecv::ZUARTRecv(QObject *parent) : QObject(parent)
 {
     this->m_uart=nullptr;
+    this->m_rxBuffer=nullptr;
 }
 ZUARTRecv::~ZUARTRecv()
 {
     delete this->m_uart;
+    delete [] this->m_rxBuffer;
 }
 bool ZUARTRecv::ZDoInit()
 {
+    //buffer to hold received data, Visible Light JPEG image or Infrared Image.
+    //buffer size: 5MBytes.
+    this->m_rxBuffer=new quint8[RX_BUFFER_SIZE];
+    if(nullptr==this->m_rxBuffer)
+    {
+        emit this->ZSignalLog(tr("Failed to allocate 5MBytes memory!"));
+        return false;
+    }
+    //////////////////////////////////////////////////////////////////////////////////
     this->m_uart=new QSerialPort;
     if(nullptr==this->m_uart)
     {
@@ -50,21 +61,15 @@ bool ZUARTRecv::ZOpenUART(QString uartName)
         emit this->ZSignalLog(this->m_uart->errorString());
         return false;
     }
-    emit this->ZSignalLog(this->m_uart->portName()+",4Mbps/8N1");
-
-    //buffer to hold received data, Visible Light JPEG image or Infrared Image.
-    //buffer size: 5MBytes.
-
-    //Infrared Image Resolution: 256*192
-    //One single line: 16 bytes sync header+256*2B(Pixel)+256*2B(Temperature)=1040Bytes.
-    //One Complete Frame: 1040Bytes*192Lines=199680.
-    //Extend to 200K to hold some random data to make it more flexibility.
-    this->m_baBuffer.resize(5*1024*1024); //5MBytes.
-    this->m_bufferLen=0;
+    emit this->ZSignalLog(uartName+",4Mbps/8N1");
 
     //reset counters.
+    this->m_rxBufLen=0;
+    this->m_rxBufLenReplicated=0;
     this->m_iRxBytes=0;
-    this->m_iRxFrames=0;
+    this->m_iRxIRFrames=0;
+    this->m_iRxVLFrames=0;
+    this->m_iRxErrFrames=0;
     return true;
 }
 void ZUARTRecv::ZCloseUART()
@@ -74,30 +79,34 @@ void ZUARTRecv::ZCloseUART()
         return;
     }
     this->m_uart->close();
-    this->m_baBuffer.resize(0);
-    this->m_bufferLen=0;
-    this->m_iRxFrames=0;
+    this->m_rxBufLen=0;
+    this->m_rxBufLenReplicated=0;
+    this->m_iRxIRFrames=0;
+    this->m_iRxVLFrames=0;
+    this->m_iRxErrFrames=0;
     this->m_iRxBytes=0;
 }
 void ZUARTRecv::ZSlotDataReady()
 {
     //check if we have adequate space to hold all available bytes.
-    qint32 iSpaceRemaing=this->m_baBuffer.size()-this->m_bufferLen;
+    qint32 iSpaceRemaing=RX_BUFFER_SIZE-this->m_rxBufLen;
     qint32 iRdMax=this->m_uart->bytesAvailable();
+    qDebug()<<"Remain:"<<iSpaceRemaing<<", byteAvailable:"<<iRdMax<<",BufferLen:"<<this->m_rxBufLen;
     if(iSpaceRemaing>=iRdMax)
     {
-        qint32 iRdBytes=this->m_uart->read(this->m_baBuffer.data()+this->m_bufferLen,iRdMax);
+        qint32 iRdBytes=this->m_uart->read((char*)(this->m_rxBuffer+this->m_rxBufLen),iRdMax);
         if(iRdBytes<0)
         {
             emit this->ZSignalLog(this->m_uart->errorString());
         }else{
-            this->m_bufferLen+=iRdBytes;
-            emit this->ZSignalRxBytes(this->m_bufferLen);
+            this->m_rxBufLen+=iRdBytes;
+            emit this->ZSignalRxBytes(this->m_rxBufLen);
+            this->m_rxBufLenReplicated=this->m_rxBufLen;
         }
     }else{
         emit this->ZSignalLog("Rx Buffer overflow, reset.");
-        this->m_bufferLen=0;
-        emit this->ZSignalRxBytes(this->m_bufferLen);
+        this->m_rxBufLen=0;
+        emit this->ZSignalRxBytes(this->m_rxBufLen);
         return;
     }
 
@@ -106,68 +115,89 @@ void ZUARTRecv::ZSlotDataReady()
     //For Infrared Image Sensor, resolution is 256*192.
     //One Single Line is 16 sync header bytes+256*2Bytes(Pixel)+256*2Bytes(Temperature)=1040Bytes
     //Total bytes is 192Lines*1040=199680
-    if(this->m_bufferLen<199680)
+    if(this->m_rxBufLen<199680)
     {
         return; //no adequate data, needs more data, maybe process next time.
     }
 
     //The first 20-bytes are sync frame header bytes.
     //searching Sync Header.
-    qint32 iFrameStartOffset=0;
+    this->m_frameOffset=0;
     char iFrameType=0x0; //0x0:Invaild Frame, 0x1:OV5640 Visible Light Image, 0x2:Infrared Image, 0x3: Ultraviolet Image.
-    while(iFrameStartOffset<(this->m_bufferLen-20))
+    while(m_frameOffset<(this->m_rxBufLen-20))
     {
-        char *p=this->m_baBuffer.data()+iFrameStartOffset;
-        if(p[4]==0x01 && p[5]==0x47 && p[6]==0x33 && p[7]==0x83 && p[8]==0x15 && p[9]==0x0e && p[10]==0x76)
+        uchar *p=(uchar*)(this->m_rxBuffer+m_frameOffset);
+        if(p[4]==0x01 && p[5]==0x48 && p[6]==0x90 && p[7]==0x82 && p[8]==0x03 && p[9]==0x0e && p[10]==0x76)
         {
-            iFrameType=0x1; //0x1:OV5640 Visible Light Image.
+            iFrameType=0x1; //0x1:Infrared Image.
             break;
         }else if(p[4]==0x56 && p[5]==0x40 && p[9]==0x0e && p[10]==0x76)
         {
-            iFrameType=0x2; //0x2:Infrared Image.
+            iFrameType=0x2; //0x2:OV5640 Visible Light Image.
             break;
         }else{
-            iFrameStartOffset++;
+            this->m_frameOffset++;
         }
     }
+    qDebug()<<"FrameStartOffset="<<this->m_frameOffset;
     //check searching result.
-    char *pHead=this->m_baBuffer.data()+iFrameStartOffset;
-    char *pData=this->m_baBuffer.data()+iFrameStartOffset+20;
-    quint32 frameLength=pHead[0]<<24|pHead[1]<<16|pHead[2]<<8|pHead[3]<<0;
-    QByteArray baSensorID(pHead+4,5);
-    QByteArray baHyperRAMID(pHead+9,2);
-    QByteArray baReserved(pHead+11,9);
-    emit this->ZSignalLog(tr("Image Sensor ID: ")+QString::asprintf("%02X %02X %02X %02X %02X",///<
-                                                                      baSensorID.at(0),baSensorID[1],baSensorID[2],baSensorID[3],baSensorID[4]));
-    emit this->ZSignalLog(tr("Hyper RAM ID: ")+QString::asprintf("%02X %02X",baHyperRAMID[0],baHyperRAMID[1]));
+    quint8 *pHead=(quint8*)(this->m_rxBuffer+this->m_frameOffset);
+    quint8 *pData=(quint8*)(this->m_rxBuffer+this->m_frameOffset+20);
+    this->m_frameLength=pHead[0]<<24|pHead[1]<<16|pHead[2]<<8|pHead[3]<<0;
+    QByteArray baSensorID((const char*)(pHead+4),5);
+    QByteArray baHyperRAMID((const char*)(pHead+9),2);
+    QByteArray baReserved((const char*)(pHead+11),9);
+    emit this->ZSignalLog(QString::asprintf("Frame Length: %02X%02x%02x%02X(%d), ",pHead[0],pHead[1],pHead[2],pHead[3],this->m_frameLength) + ///<
+                          QString::asprintf("Image Sensor ID: %02X%02X%02X%02X%02X, ",///<
+                                            (quint8)baSensorID[0],(quint8)baSensorID[1],///<
+                                            (quint8)baSensorID[2],(quint8)baSensorID[3],///<
+                                            (quint8)baSensorID[4]) + ///<
+                          QString::asprintf("HyperRAM ID: %02X%02X.",(quint8)baHyperRAMID[0],(quint8)baHyperRAMID[1]));
     switch(iFrameType)
     {
     case 0x0: //0x0:Invaild Frame.
         emit this->ZSignalLog("No frame head bytes found, reset.");
         break;
-    case 0x1: //0x1:OV5640 Visible Light Image.
-        if((this->m_bufferLen-iFrameStartOffset)<frameLength)
-        {
-            emit this->ZSignalLog("OV5640 Frame Found, but more data needed.");
-            return;
-        }
-        //Sync Head Bytes is 20 bytes. CRC32 is 4 bytes.
-        this->ZParseSingleFrame_OV5640(pData,this->m_bufferLen-iFrameStartOffset-20-4);
-    case 0x2: //0x2:Infrared Image.
-        if((this->m_bufferLen-iFrameStartOffset)<frameLength)
+    case 0x1: //0x1:Infrared Image.
+        if((this->m_rxBufLen-this->m_frameOffset)<this->m_frameLength)
         {
             emit this->ZSignalLog("Infrared Frame Found, but more data needed.");
             return;
         }
         //Sync Head Bytes is 20 bytes. CRC32 is 4 bytes.
-        this->ZParseSingleFrame_IR(pData,this->m_bufferLen-iFrameStartOffset-20-4);
+        if(this->ZParseSingleFrame_IR(pData,this->m_rxBufLen-this->m_frameOffset-20-4))
+        {
+            //render successfully.
+            emit this->ZSignalRxNewFrames(1+this->m_iRxIRFrames++,this->m_iRxVLFrames,this->m_iRxErrFrames);
+        }else{
+            //render failed.
+            emit this->ZSignalRxNewFrames(this->m_iRxIRFrames,this->m_iRxVLFrames,1+this->m_iRxErrFrames++);
+        }
+        break;
+    case 0x2: //0x2:OV5640 Visible Light Image.
+        if((this->m_rxBufLen-this->m_frameOffset)<this->m_frameLength)
+        {
+            emit this->ZSignalLog("OV5640 Frame Found, but more data needed.");
+            return;
+        }
+        //Sync Head Bytes is 20 bytes. CRC32 is 4 bytes.
+        if(this->ZParseSingleFrame_OV5640(pData,this->m_rxBufLen-this->m_frameOffset-20-4))
+        {
+            //render successfully.
+            emit this->ZSignalRxNewFrames(this->m_iRxIRFrames,1+this->m_iRxVLFrames++,this->m_iRxErrFrames);
+        }else{
+            //render failed.
+            emit this->ZSignalRxNewFrames(this->m_iRxIRFrames,this->m_iRxVLFrames,1+this->m_iRxErrFrames++);
+        }
+        break;
     default:
         emit this->ZSignalLog("No frame head bytes found, reset.");
         break;
     }
 
     //after processing, reset Rx Buffer.
-    this->m_bufferLen=0;
+    this->m_rxBufLenReplicated=this->m_rxBufLen;
+    this->m_rxBufLen=0;
     return;
 }
 QColor ZUARTRecv::ZMapTemperature2Color(quint16 tTemp)
@@ -232,14 +262,14 @@ void ZUARTRecv::ZSlotFetchTempImageData(qint32 iRow, qint32 iCol)
         emit this->ZSignalLog(QString("Temperature[%1,%2]=%3.").arg(iRow).arg(iCol).arg(tTemp));
     }
 }
-void ZUARTRecv::ZParseSingleFrame_IR(char *data, int length)
+bool ZUARTRecv::ZParseSingleFrame_IR(quint8 *data, quint32 length)
 {
     //check length.
     //1040-Bytes*192-Lines.
     if(length!=(1040*192))
     {
         emit this->ZSignalLog(tr("Error, Render Infrared Image, but data length does not match!"));
-        return;
+        return false;
     }
     /////////////////////////////////////////////////////////////////////////////////////////
     //1st 16 bytes are FF0000B6, FF0000AB, FF00009D, FF000080.
@@ -254,8 +284,14 @@ void ZUARTRecv::ZParseSingleFrame_IR(char *data, int length)
     }
     if(!bLineHead)
     {
-        emit this->ZSignalLog(tr("Error, Frame Head Does Not Match!"));
-        return;
+        emit this->ZSignalLog(QString::asprintf("Error, Infrared Frame Head Does Not Match," ///<
+                                 "Expected:FF0000B6-FF0000AB-FF00009D-FF000080,"///<
+                                "Actually:%02X%02X%02X%02X-%02X%02X%02X%02X-%02X%02X%02X%02X-%02X%02X%02X%02X",///<
+                                                (quint32)data[0],(quint32)data[1],(quint32)data[2],(quint32)data[3], ///<
+                                                (quint32)data[4],(quint32)data[5],(quint32)data[6],(quint32)data[7], ///<
+                                                (quint32)data[8],(quint32)data[9],(quint32)data[10],(quint32)data[11], ///<
+                                                (quint32)data[12],(quint32)data[13],(quint32)data[14],(quint32)data[15]));
+        return false;
     }
     /////////////////////////////////////////////////////////////////////////////////////////
     this->m_maxTemp=0; this->m_minTemp=0xFFFF;
@@ -364,24 +400,46 @@ void ZUARTRecv::ZParseSingleFrame_IR(char *data, int length)
     //process one frame completely, reset.
     emit this->ZSignalNewImage(this->m_imgIR, this->m_imgTemperature);
     /////////////////////////////////////////////////////////////////////////////////////////////////
-    this->m_iRxFrames++;
-    emit this->ZSignalLog(QString("Received one frame done:%1, MaxTemp=%2, MinTemp=%3, Diff=%4.") ///<
-                              .arg(this->m_iRxFrames).arg(this->m_maxTemp).arg(this->m_minTemp).arg(this->m_maxTemp-this->m_minTemp));
-    emit this->ZSignalRxFrames(this->m_iRxFrames);
-    emit this->ZSignalLog("Reset Buffer.");
+    emit this->ZSignalLog(QString("Received IR Frame: MaxTemp=%1, MinTemp=%2, Diff=%3.") ///<
+                              .arg(this->m_maxTemp).arg(this->m_minTemp).arg(this->m_maxTemp-this->m_minTemp));
+    return true;
 }
-void ZUARTRecv::ZParseSingleFrame_OV5640(char *data, int length)
+bool ZUARTRecv::ZParseSingleFrame_OV5640(quint8 *data, quint32 length)
 {
-    //check JPEG head & tail fixed bytes.
-    if(data[0]!=0xFF || data[1]!=0xD8 || data[length-2]!=0xFF || data[length-1]!=0xD9)
+    //check JPEG head fixed bytes.
+    if(data[0]!=0xFF || data[1]!=0xD8)
     {
-        emit this->ZSignalLog(tr("Invalid JPEG Head/Tail, Expected:FF D8 FF D9, Actually:")+QString::asprintf("%02X %02X %02X %02X",data[0],data[1],data[length-2],data[length-1]));
-        return;
+        emit this->ZSignalLog(tr("Invalid JPEG Head, Expected:FF D8, Actually:")+QString::asprintf("%02X %02X",data[0],data[1]));
+        return false;
     }
-    if(this->m_imgOV5640.loadFromData((const uchar*)data,length,"JPG"))
+    //locate JPEG tail fixed bytes.
+    quint32 iTailOffset=0;
+    for(quint32 i=length;i>=2;i--)
     {
-        emit this->ZSignalNewJPEG(this->m_imgOV5640);
-    }else{
+        if(0xFF==data[i-2] && 0xD9==data[i-1])
+        {
+            iTailOffset=i;
+            break;
+        }
+    }
+    if(0==iTailOffset)
+    {
+        emit this->ZSignalLog(tr("Failed to locate JPEG Tail FF D9."));
+        return false;
+    }
+    if(!this->m_imgOV5640.loadFromData((const uchar*)data,length-(length-iTailOffset),"JPG"))
+    {
         emit this->ZSignalLog(tr("Failed to load jpeg from data."));
+        return false;
     }
+    emit this->ZSignalNewJPEG(this->m_imgOV5640);
+    return true;
+}
+quint8* ZUARTRecv::ZGetBufferAddress()
+{
+    return this->m_rxBuffer;
+}
+quint32 ZUARTRecv::ZGetBufferLen()
+{
+    return this->m_rxBufLenReplicated;
 }

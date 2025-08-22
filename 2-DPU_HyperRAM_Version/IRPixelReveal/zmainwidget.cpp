@@ -20,6 +20,7 @@ ZMainWidget::ZMainWidget(QWidget *parent)
     this->m_btnExport=nullptr;
     this->m_btnPalette=nullptr;
     this->m_btnHexDisplay=nullptr;
+    this->m_btnBufferHex=nullptr;
     this->m_cbTraceCursor=nullptr;
     this->m_listWidget=nullptr;
     this->m_vLayout=nullptr;
@@ -34,7 +35,7 @@ ZMainWidget::ZMainWidget(QWidget *parent)
     this->m_tabWidget=nullptr;
     this->m_hSpliter=nullptr;
     /////////////////////////////////////
-    this->m_textEdit=nullptr;
+    this->m_teLog=nullptr;
     this->m_vSpliter=nullptr;
     this->m_llRxBytes=nullptr;
     this->m_llRxFrames=nullptr;
@@ -47,9 +48,11 @@ ZMainWidget::ZMainWidget(QWidget *parent)
     this->m_actChgDir=nullptr;
     this->m_menuFileList=nullptr;
 
-    this->setWindowTitle("Infrared Pixel Reveal - V0.0.1");
+    this->setWindowTitle(tr("Infrared Pixel Reveal - ")+VERSION_NO);
     this->setWindowIcon(QIcon(":/icons/camera.png"));
     this->m_uartRecv=nullptr;
+    ////////////////////////////////////////////////////
+    this->m_timer=nullptr;
 }
 
 ZMainWidget::~ZMainWidget()
@@ -61,6 +64,7 @@ ZMainWidget::~ZMainWidget()
     delete this->m_btnExport;
     delete this->m_btnPalette;
     delete this->m_btnHexDisplay;
+    delete this->m_btnBufferHex;
     delete this->m_cbTraceCursor;
     delete this->m_listWidget;
     delete this->m_vLayout;
@@ -75,7 +79,7 @@ ZMainWidget::~ZMainWidget()
     delete this->m_tabWidget;
     delete this->m_hSpliter;
     /////////////////////////////////////
-    delete this->m_textEdit;
+    delete this->m_teLog;
     delete this->m_vSpliter;
     delete this->m_llRxBytes;
     delete this->m_llRxFrames;
@@ -87,6 +91,8 @@ ZMainWidget::~ZMainWidget()
     delete this->m_actChgDir;
     delete this->m_actRefresh;
     delete this->m_menuFileList;
+    ////////////////////////////////
+    delete this->m_timer;
 }
 bool ZMainWidget::ZDoInit()
 {
@@ -147,6 +153,14 @@ bool ZMainWidget::ZDoInit()
     this->m_btnHexDisplay->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     this->m_btnHexDisplay->setToolTip(tr("Hex Check\nDisplay file data in hex format."));
 
+    this->m_btnBufferHex=new QToolButton;
+    this->m_btnBufferHex->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
+    this->m_btnBufferHex->setText("Buffer Hex");
+    this->m_btnBufferHex->setIcon(QIcon(":/icons/hex.png"));
+    this->m_btnBufferHex->setIconSize(QSize(24,24));
+    this->m_btnBufferHex->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    this->m_btnBufferHex->setToolTip(tr("Buffer Hex\nDisplay Rx Buffer in hex format."));
+
     this->m_cbTraceCursor=new QCheckBox("Trace Cursor");
     this->m_cbTraceCursor->setIconSize(QSize(24,24));
     this->m_cbTraceCursor->setCheckable(true);
@@ -171,20 +185,22 @@ bool ZMainWidget::ZDoInit()
     this->m_vLayout->addWidget(this->m_btnExport);
     this->m_vLayout->addWidget(this->m_btnPalette);
     this->m_vLayout->addWidget(this->m_btnHexDisplay);
+    this->m_vLayout->addWidget(this->m_btnBufferHex);
     this->m_vLayout->addWidget(this->m_cbTraceCursor);
     this->m_vLayout->addWidget(this->m_listWidget);
     this->m_vLayout->setMargin(1);
     this->m_widgetLeft=new QWidget;
     this->m_widgetLeft->setLayout(this->m_vLayout);
     ////////////////////////////////////////////////////////
-    QObject::connect(this->m_btnCfgDev,SIGNAL(clicked(bool)),this,SLOT(ZSlotCfgDev()));
-    QObject::connect(this->m_btnOpenUART,SIGNAL(clicked(bool)),this,SLOT(ZSlotOpenUART()));
-    QObject::connect(this->m_btnOpenDir,SIGNAL(clicked(bool)),this,SLOT(ZSlotChangeDir()));
-    QObject::connect(this->m_btnSaveAs,SIGNAL(clicked(bool)),this,SLOT(ZSlotSaveAs()));
-    QObject::connect(this->m_btnPalette,SIGNAL(clicked(bool)),this,SLOT(ZSlotShowPalette()));
-    QObject::connect(this->m_btnHexDisplay,SIGNAL(clicked(bool)),this,SLOT(ZSlotHexCheck()));
-    QObject::connect(this->m_listWidget,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(ZSlotListWidgetItemDoubleClicked(QListWidgetItem*)));
-    QObject::connect(this->m_cbTraceCursor,SIGNAL(toggled(bool)),this,SLOT(ZSlotTrackCursorToggled(bool)));
+    connect(this->m_btnCfgDev,SIGNAL(clicked(bool)),this,SLOT(ZSlotCfgDev()));
+    connect(this->m_btnOpenUART,SIGNAL(clicked(bool)),this,SLOT(ZSlotOpenUART()));
+    connect(this->m_btnOpenDir,SIGNAL(clicked(bool)),this,SLOT(ZSlotChangeDir()));
+    connect(this->m_btnSaveAs,SIGNAL(clicked(bool)),this,SLOT(ZSlotSaveAs()));
+    connect(this->m_btnPalette,SIGNAL(clicked(bool)),this,SLOT(ZSlotShowPalette()));
+    connect(this->m_btnHexDisplay,SIGNAL(clicked(bool)),this,SLOT(ZSlotHexCheck()));
+    connect(this->m_btnBufferHex,SIGNAL(clicked(bool)),this,SLOT(ZSlotBufferHex()));
+    connect(this->m_listWidget,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(ZSlotListWidgetItemDoubleClicked(QListWidgetItem*)));
+    connect(this->m_cbTraceCursor,SIGNAL(toggled(bool)),this,SLOT(ZSlotTrackCursorToggled(bool)));
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     this->m_imgCanvas=new ZImageCanvas;
     this->m_tableWidget=new QTableWidget(0,2); //1 row, 2 columns.
@@ -218,15 +234,16 @@ bool ZMainWidget::ZDoInit()
     connect(this->m_imgCanvas,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
     connect(this->m_imgCanvas,SIGNAL(ZSignalHexData(QString)),this,SLOT(ZSlotNewHexData(QString)));
     ///////////////////////////////////////////////////////////////
-    this->m_textEdit=new QTextEdit;
-    this->m_textEdit->setReadOnly(true);
+    this->m_teLog=new QTextEdit;
+    this->m_teLog->setReadOnly(true);
+    connect(this->m_teLog,SIGNAL(textChanged()),this,SLOT(ZSlotTextEditorChanged()));
     this->m_vSpliter=new QSplitter(Qt::Vertical);
     this->m_vSpliter->addWidget(this->m_hSpliter);
-    this->m_vSpliter->addWidget(this->m_textEdit);
+    this->m_vSpliter->addWidget(this->m_teLog);
     ////////////////////////////////////////////////////////////////////
     //bottom layout.
     this->m_llRxBytes=new QLabel("Rx Buffer:0");
-    this->m_llRxFrames=new QLabel("Rx Frames:0");
+    this->m_llRxFrames=new QLabel("RxFrames: IR(0) VL(0) ERR(0)");
     this->m_llMaxMinDiffTemp=new QLabel("Max:0 Min:0 Diff:0");
     this->m_progressBar=new QProgressBar;
     this->m_progressBar->setRange(0,192-1);
@@ -244,10 +261,14 @@ bool ZMainWidget::ZDoInit()
     this->m_mainVLayout->addWidget(this->m_vSpliter);
     this->m_mainVLayout->addLayout(this->m_hLayoutBottom);
     this->m_mainVLayout->setStretchFactor(this->m_vSpliter,10);
-    this->m_mainVLayout->setStretchFactor(this->m_textEdit,2);
+    this->m_mainVLayout->setStretchFactor(this->m_teLog,2);
     this->setLayout(this->m_mainVLayout);
 
-    QObject::connect(this,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
+    ///////////////////////////////////////////////////////
+    this->m_timer=new QTimer(this);
+    connect(this->m_timer,SIGNAL(timeout()),this,SLOT(ZSlotTimeout()));
+    //////////////////////////////////////////////////////////////////////////
+    connect(this,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
     emit this->ZSignalLog("Welcome to use IRPixelReveal!\n"
                           "This APP helps to render pixel and temperature array data from Infrared Image Sensor!\n"
                           "Resolution: 256*192  Temperature: 16-bits\n"
@@ -325,6 +346,36 @@ void ZMainWidget::ZSlotHexCheck()
     }
     file.close();
 }
+void ZMainWidget::ZSlotBufferHex()
+{
+    if(nullptr==this->m_uartRecv)
+    {
+        QMessageBox::critical(this,tr("Error Message"),tr("RxBuffer is empty!"));
+        return;
+    }
+    quint8 *pRxBuffer=this->m_uartRecv->ZGetBufferAddress();
+    quint32 RxBufferLen=this->m_uartRecv->ZGetBufferLen();
+    if(!RxBufferLen)
+    {
+        emit this->ZSignalLog(tr("Rx Buffer is empty!"));
+        return;
+    }
+    ZDialogHexCheck diaHex;
+    if(diaHex.ZDoInit())
+    {
+        for(quint32 i=0;i<RxBufferLen;i+=16)
+        {
+            QString hexFmt;
+            for(qint32 j=0;j<16;j++)
+            {
+                hexFmt+=QString::asprintf("%02X  ", pRxBuffer[i+j]);
+            }
+            diaHex.ZAppendText(hexFmt);
+            hexFmt.clear();
+        }
+        diaHex.exec();
+    }
+}
 void ZMainWidget::ZSlotListWidgetItemDoubleClicked(QListWidgetItem *item)
 {
     bool bOkay;
@@ -343,7 +394,7 @@ void ZMainWidget::ZSlotListWidgetItemDoubleClicked(QListWidgetItem *item)
 
 void ZMainWidget::ZSlotAppendLog(const QString &log)
 {
-    this->m_textEdit->append(log);
+    this->m_teLog->append(log);
 }
 void ZMainWidget::ZSlotNewHexData(const QString &hexData)
 {
@@ -379,8 +430,9 @@ void ZMainWidget::ZSlotOpenUART()
         connect(this->m_uartRecv,SIGNAL(ZSignalLog(QString)),this,SLOT(ZSlotAppendLog(QString)));
         connect(this->m_uartRecv,SIGNAL(ZSignalHexData(QString)),this,SLOT(ZSlotNewHexData(QString)));
         connect(this->m_uartRecv,SIGNAL(ZSignalNewImage(QImage,QImage)),this->m_imgCanvas,SLOT(ZSlotUpdateImg(QImage,QImage)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalNewJPEG(QImage)),this->m_jpegWidget,SLOT(ZSlotNewImage(QImage)));
         connect(this->m_uartRecv,SIGNAL(ZSignalRxBytes(qint32)),this,SLOT(ZSlotUpdateRxBytes(qint32)));
-        connect(this->m_uartRecv,SIGNAL(ZSignalRxFrames(qint32)),this,SLOT(ZSlotUpdateRxFrames(qint32)));
+        connect(this->m_uartRecv,SIGNAL(ZSignalRxNewFrames(quint32,quint32,quint32)),this,SLOT(ZSlotUpdateRxFramesCnt(quint32,quint32,quint32)));
         connect(this->m_uartRecv,SIGNAL(ZSignalMaxMinDiffTempChanged(qint32,qint32,qint32)),this,SLOT(ZSlotUpdateMaxMinDiffTemp(qint32,qint32,qint32)));
         connect(this->m_uartRecv,SIGNAL(ZSignalRenderProgress(qint32)),this,SLOT(ZSlotUpdateProgressBar(qint32)));
         connect(this->m_imgCanvas,SIGNAL(ZSignalInfraredImagePositionChanged(qint32,qint32)),this->m_uartRecv,SLOT(ZSlotFetchIRImageData(qint32,qint32)));
@@ -393,20 +445,24 @@ void ZMainWidget::ZSlotOpenUART()
             this->m_btnOpenUART->setText("Pause Now");
             this->m_btnOpenUART->setIcon(QIcon(":/icons/halt.png"));
             emit this->ZSignalLog("Infrared Image Sensor needs 7 seconds to start up, please be patient...");
+            this->m_timer->start(500);
         }
     }else {
         this->m_uartRecv->ZCloseUART();
         this->m_btnOpenUART->setText("Listen Now");
         this->m_btnOpenUART->setIcon(QIcon(":/icons/listen.png"));
+        //stop Timer and restore UI.
+        this->m_timer->stop();
+        this->m_btnOpenUART->setStyleSheet("QToolButton{background:#222222;}");
     }
 }
 void ZMainWidget::ZSlotUpdateRxBytes(qint32 rxBytes)
 {
     this->m_llRxBytes->setText(QString("Rx Buffer:%1").arg(rxBytes));
 }
-void ZMainWidget::ZSlotUpdateRxFrames(qint32 rxFrames)
+void ZMainWidget::ZSlotUpdateRxFramesCnt(quint32 rxIRFramesCnt, quint32 rxVLFramesCnt,quint32 iErrFramesCnt)
 {
-    this->m_llRxFrames->setText(QString("Rx Frames:%1").arg(rxFrames));
+    this->m_llRxFrames->setText(QString("RxFrames: IR(%1) VL(%2) ERR(%3)").arg(rxIRFramesCnt).arg(rxVLFramesCnt).arg(iErrFramesCnt));
 }
 void ZMainWidget::ZSlotUpdateMaxMinDiffTemp(qint32 iMax, qint32 iMin, qint32 iDiff)
 {
@@ -464,4 +520,18 @@ void ZMainWidget::ZSlotRefreshFileList()
         this->m_listWidget->addItem(item);
     }
     emit this->ZSignalLog("Refresh directory "+this->m_currentDirName+" done.");
+}
+void ZMainWidget::ZSlotTimeout()
+{
+    m_timerFlag=!m_timerFlag;
+    if(m_timerFlag)
+    {
+        this->m_btnOpenUART->setStyleSheet("QToolButton{background:#FFD230; color:#0C0A09;}");
+    }else{
+        this->m_btnOpenUART->setStyleSheet("QToolButton{background:#222222;}");
+    }
+}
+void ZMainWidget::ZSlotTextEditorChanged()
+{
+    this->m_teLog->moveCursor(QTextCursor::End);
 }

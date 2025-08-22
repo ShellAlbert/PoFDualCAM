@@ -11,7 +11,8 @@ public:
     explicit ZJpegWidget(QWidget *parent = nullptr);
     ~ZJpegWidget();
     void ZUpdatePixmap(const QPixmap &pixmap);
-
+public slots:
+    void ZSlotNewImage(const QImage &image);
 signals:
 
 protected:
