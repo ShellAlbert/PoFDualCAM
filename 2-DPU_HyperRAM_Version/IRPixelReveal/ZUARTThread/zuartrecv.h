@@ -24,6 +24,7 @@ public:
 
     bool ZOpenUART(QString uartName);
     void ZCloseUART();
+    quint32 ZTxData(const quint8 *cmd, quint32 length);
     QColor ZMapTemperature2Color(quint16 tTemp);
     ///////////////////////////////////////////////
     quint8* ZGetBufferAddress();

@@ -443,3 +443,7 @@ quint32 ZUARTRecv::ZGetBufferLen()
 {
     return this->m_rxBufLenReplicated;
 }
+quint32 ZUARTRecv::ZTxData(const quint8 *cmd, quint32 length)
+{
+    return this->m_uart->write((const char*)cmd,length);
+}

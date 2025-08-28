@@ -17,7 +17,7 @@ public:
 
     void ZRedrwFile(const QString &fileName, int nBypassBytes);
     bool ZSaveFile(const QString &fileName);
-
+    void ZRedrwFile640x512(const QString &fileName, int nBypassBytes);
 signals:
     void ZSignalLog(const QString &log);
     void ZSignalHexData(const QString &HexData);
@@ -34,7 +34,6 @@ protected:
     void paintEvent(QPaintEvent *e);
     void mouseMoveEvent(QMouseEvent *event);
     bool eventFilter(QObject *watched, QEvent *event);
-    QSize sizeHint() const;
 private:
     QColor ZMapTemperature2Color(float tTemp);
 private:
@@ -43,9 +42,10 @@ private:
 
     QPoint m_PosIR;
     QPoint m_PosTemp;
-    //each line is 256*2 bytes.
-    //192 lines in total.
-    float m_ArrayTemp[192][256];
+    //for C256*192 module of temperature data, each line is 256*2 bytes, 192 lines in total.
+    //for Lite640*512 module of temperature data, each line is 640*2 bytes, 512 lines in total.
+    //temperature is 16-bits, it takes up 2 bytes!!!!
+    float m_ArrayTemp[512][640];
 
     //Context Menu.
     QMenu *m_menuGray;

@@ -16,6 +16,7 @@
 #include "zimagecanvas.h"
 #include "ZUARTThread/zuartrecv.h"
 #include "ZJpegWidget/zjpegwidget.h"
+#include "ZLaserWidget/zlaserwidget.h"
 #include <QProgressBar>
 #include <QTabWidget>
 #include <QTimer>
@@ -31,6 +32,7 @@ private slots:
     void ZSlotCfgDev();
     void ZSlotChangeDir();
     void ZSlotSaveAs();
+    void ZSlotExport();
     void ZSlotShowPalette();
     void ZSlotHexCheck();
     void ZSlotBufferHex();
@@ -74,6 +76,7 @@ private:
     QHBoxLayout *m_hLayoutIR;
 
     ZJpegWidget *m_jpegWidget;
+    ZLaserWidget *m_laserWidget;
     QTabWidget *m_tabWidget;
 
     QSplitter *m_hSpliter;

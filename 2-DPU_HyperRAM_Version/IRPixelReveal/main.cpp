@@ -12,13 +12,19 @@ int main(int argc, char *argv[])
     QString appPath=app.applicationDirPath();
     app.addLibraryPath(appPath);
     QString qss("QWidget{background:#222222; color:#FFFFFF;}"
+                "QDialog{background-color:#222222; color:#FFFFFF;}"
                 "QToolButton{border:1px solid #CCCCCC; font-size:18px; min-width:120px; min-height:30px;}"
+                "QToolButton:hover{background: #0000CD}"
+                "QToolButton:pressed{background: #3CB371}"
                 "QListWidget{border: 1px solid #FFFFFF; margin:0px; min-width:160px;}"
                 "QLabel{border:none; padding:0; background:none; font-size:20px;}"
                 "QTextEdit{font-size: 18px;}"
                 "QCheckBox{font-size: 18px;}"
                 "QCheckBox::indicator:checked {image: url(:/icons/checked.png);}"
                 "QCheckBox::indicator:unchecked {image: url(:/icons/unchecked.png);}"
+                "QRadioButton{font-size: 18px; spacing: 2px;}"
+                "QRadioButton::indicator:checked {image: url(:/icons/checked.png);}"
+                "QRadioButton::indicator:unchecked {image: url(:/icons/unchecked.png);}"
                 "QDialog{font-size:36px;}"
                 "QSpinBox{font-size:36px;}"
                 "QToolTip{font-size:24px;}");

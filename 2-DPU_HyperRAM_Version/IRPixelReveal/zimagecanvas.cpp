@@ -11,8 +11,13 @@
 ZImageCanvas::ZImageCanvas(QWidget *parent) : QWidget(parent)
 {
     this->setMouseTracking(true);
-    this->m_img=QImage(256,192,QImage::Format_RGB888);
-    this->m_imgTemp=QImage(256,192,QImage::Format_RGB16);
+    // this->m_img=QImage(256,192,QImage::Format_RGB888);
+    // this->m_imgTemp=QImage(256,192,QImage::Format_RGB16);
+
+    //width=640(columns),height=512(rows).
+    this->m_img=QImage(640,512,QImage::Format_RGB888);
+    this->m_imgTemp=QImage(640,512,QImage::Format_RGB16);
+
 
     //Context Menu.
     this->installEventFilter(this);
@@ -54,6 +59,8 @@ bool ZImageCanvas::ZSaveFile(const QString &fileName)
 }
 void ZImageCanvas::ZRedrwFile(const QString &fileName,int nBypassBytes)
 {
+    this->m_img=QImage(256,192,QImage::Format_RGB888);
+    this->m_imgTemp=QImage(256,192,QImage::Format_RGB16);
     emit this->ZSignalLog("Loading file: "+fileName);
     QFile datFile(fileName);
     if(!datFile.open(QIODevice::ReadOnly))
@@ -158,6 +165,107 @@ void ZImageCanvas::ZRedrwFile(const QString &fileName,int nBypassBytes)
     //call paintEvent();
     this->update();
 }
+void ZImageCanvas::ZRedrwFile640x512(const QString &fileName, int nBypassBytes)
+{
+    //width=640(columns),height=512(rows).
+    this->m_img=QImage(640,512,QImage::Format_RGB888);
+    this->m_imgTemp=QImage(640,512,QImage::Format_RGB16);
+
+    emit this->ZSignalLog("Loading 640x512 file: "+fileName);
+    QFile datFile(fileName);
+    if(!datFile.open(QIODevice::ReadOnly))
+    {
+        emit this->ZSignalLog(datFile.errorString());
+        return;
+    }
+    //bypass 20 frame head bytes.
+    datFile.seek(nBypassBytes);
+
+    //width=640(columns),height=512(rows).
+    // this->m_img=QImage(640,512,QImage::Format_RGB888);
+    // this->m_imgTemp=QImage(640,512,QImage::Format_RGB16);
+
+    //quint8 rowNo=0, colNo=0; //overflow here!!!!!
+    quint32 rowNo=0, colNo=0;
+    while(!datFile.atEnd())
+    {
+        //for C256, total bytes of each line is 16+256*2+256*2=1040.
+        //for Lite640, total bytes of each line is 16+640*2+640*2=2576.
+        QByteArray baLine=datFile.read(2576);
+        if(baLine.size()!=2576)
+        {
+            qDebug()<<"baLine is not 2576!";
+            break;
+        }
+        //show leading bytes of each lines in right table widget.
+        QString syncHeader;
+        syncHeader=QString::asprintf("%02x %02x %02x %02x",(quint8)baLine.at(0),(quint8)baLine.at(1),(quint8)baLine.at(2),(quint8)baLine.at(3));
+        emit this->ZSignalHexData(syncHeader);
+        syncHeader=QString::asprintf("%02x %02x %02x %02x",(quint8)baLine.at(4),(quint8)baLine.at(5),(quint8)baLine.at(6),(quint8)baLine.at(7));
+        emit this->ZSignalHexData(syncHeader);
+        syncHeader=QString::asprintf("%02x %02x %02x %02x",(quint8)baLine.at(8),(quint8)baLine.at(9),(quint8)baLine.at(10),(quint8)baLine.at(11));
+        emit this->ZSignalHexData(syncHeader);
+        syncHeader=QString::asprintf("%02x %02x %02x %02x",(quint8)baLine.at(12),(quint8)baLine.at(13),(quint8)baLine.at(14),(quint8)baLine.at(15));
+        emit this->ZSignalHexData(syncHeader);
+        //bypass 16 bytes.
+        qint32 uPixelOffset=16; //1st 16 bytes are FFFFFFFF,00000001,FF00009D,FF000080.
+        colNo=0;
+        //640*2Bytes=1280 are pixel data, each unit is CbYCrY(4 bytes),1280bytes/4=320.
+        for(qint32 i=0; i<=320-1; i++)
+        {
+            quint8 uCb=baLine.at(uPixelOffset+0);
+            quint8 uY1=baLine.at(uPixelOffset+1);
+            quint8 uCr=baLine.at(uPixelOffset+2);
+            quint8 uY2=baLine.at(uPixelOffset+3);
+            uPixelOffset+=4;
+
+            //qDebug("line:%d,row:%d, CbYCrY: %02x %02x %02x %02x\n", rowNo,colNo,uCb,uY1,uCr,uY2);
+
+            uint8_t R1=uY1+1.371*(uCr-128);
+            uint8_t G1=uY1-0.698*(uCr-128)-0.336*(uCb-128);
+            uint8_t B1=uY1+1.732*(uCb-128);
+
+            uint8_t R2=uY2+1.371*(uCr-128);
+            uint8_t G2=uY2-0.698*(uCr-128)-0.336*(uCb-128);
+            uint8_t B2=uY2+1.732*(uCb-128);
+
+            //x is equivalent to width/column.
+            //y is equivalent to height/rows.
+            this->m_img.setPixelColor(colNo,rowNo,QColor(R1,G1,B1));
+            this->m_img.setPixelColor(colNo+1,rowNo,QColor(R2,G2,B2));
+            colNo+=2; //next point.
+        }
+        //640*2Bytes=1280 are temperature data, each unit is Temp[7:0],Temp[15:8],Temp[7:0],Temp[15:8],1280Bytes/4=320.
+        colNo=0;
+        for(qint32 j=0;j<=320-1; j++)
+        {
+            quint8 uCb=baLine.at(uPixelOffset+0);
+            quint8 uY1=baLine.at(uPixelOffset+1);
+            quint8 uCr=baLine.at(uPixelOffset+2);
+            quint8 uY2=baLine.at(uPixelOffset+3);
+            uPixelOffset+=4;
+
+            quint16 tTemp1=(quint16)uY1<<8|uCb;
+            quint16 tTemp2=(quint16)uY2<<8|uCr;
+            float floatTemp1=tTemp1/10.0-273.2;
+            float floatTemp2=tTemp2/10.0-273.2;
+            //qDebug("Temperature: %02x %02x %02x %02x, %04x/%04x, %.2f, %.2f\n", uCb,uY1,uCr,uY2,tTemp1,tTemp2,floatTemp1,floatTemp2);
+            QColor color1=this->ZMapTemperature2Color(floatTemp1);
+            QColor color2=this->ZMapTemperature2Color(floatTemp2);
+            this->m_imgTemp.setPixelColor(colNo,rowNo,color1);
+            this->m_imgTemp.setPixelColor(colNo+1,rowNo,color2);
+            //save temperature in 2-dimension array.
+            this->m_ArrayTemp[rowNo][colNo]=floatTemp1; //Real Temperature = 16bit/10.0-273.2
+            this->m_ArrayTemp[rowNo][colNo+1]=floatTemp2; //Real Temperature = 16bit/10.0-273.2
+            colNo+=2; //next point.
+        }
+        //next row. next 2576 bytes.
+        rowNo++;
+    } //while(!datFile.atEnd()).
+
+    //call paintEvent();
+    this->update();
+}
 void ZImageCanvas::ZSlotUpdateImg(const QImage &img_Pixel, const QImage &img_Temperature)
 {
     this->m_img=img_Pixel;
@@ -171,7 +279,10 @@ void ZImageCanvas::paintEvent(QPaintEvent *e)
     if(pixmap1.convertFromImage(this->m_img))
     {
         QPainter painter(this);
+        //painter.fillRect(0,0,this->width()/2,this->height(),Qt::red);
         painter.drawPixmap(0,0,this->width()/2,this->height(),pixmap1);
+        qDebug()<<"width:"<<this->width()/2<<",height:"<<this->height();
+        qDebug()<<pixmap1.width()<<","<<pixmap1.height();
         painter.setPen(QPen(Qt::red,5));
         painter.setFont(QFont("Times", 20, QFont::Bold));
         painter.drawText(10,30,QString("Gray-Level (%1,%2)").arg(this->m_PosIR.x()).arg(this->m_PosIR.y()));
@@ -219,10 +330,6 @@ void ZImageCanvas::mouseMoveEvent(QMouseEvent *event)
         }
     }
     this->update();
-}
-QSize ZImageCanvas::sizeHint() const
-{
-    return QSize(600,400);
 }
 bool ZImageCanvas::eventFilter(QObject *watched, QEvent *event)
 {

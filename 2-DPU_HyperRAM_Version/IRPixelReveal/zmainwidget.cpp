@@ -10,6 +10,8 @@
 #include "zglobal.h"
 #include "ZDialogConfigDev/zdialogconfigdev.h"
 #include "ZDialogHexCheck/zdialoghexcheck.h"
+#include "ZDialogInputFileParameter/zdialoginputfileparameter.h"
+#include <QtEndian>
 ZMainWidget::ZMainWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -32,6 +34,7 @@ ZMainWidget::ZMainWidget(QWidget *parent)
     this->m_hLayoutIR=nullptr;
     this->m_widgetIR=nullptr;
     this->m_jpegWidget=nullptr;
+    this->m_laserWidget=nullptr;
     this->m_tabWidget=nullptr;
     this->m_hSpliter=nullptr;
     /////////////////////////////////////
@@ -76,6 +79,7 @@ ZMainWidget::~ZMainWidget()
     delete this->m_hLayoutIR;
     delete this->m_widgetIR;
     delete this->m_jpegWidget;
+    delete this->m_laserWidget;
     delete this->m_tabWidget;
     delete this->m_hSpliter;
     /////////////////////////////////////
@@ -196,6 +200,7 @@ bool ZMainWidget::ZDoInit()
     connect(this->m_btnOpenUART,SIGNAL(clicked(bool)),this,SLOT(ZSlotOpenUART()));
     connect(this->m_btnOpenDir,SIGNAL(clicked(bool)),this,SLOT(ZSlotChangeDir()));
     connect(this->m_btnSaveAs,SIGNAL(clicked(bool)),this,SLOT(ZSlotSaveAs()));
+    connect(this->m_btnExport,SIGNAL(clicked(bool)),this,SLOT(ZSlotExport()));
     connect(this->m_btnPalette,SIGNAL(clicked(bool)),this,SLOT(ZSlotShowPalette()));
     connect(this->m_btnHexDisplay,SIGNAL(clicked(bool)),this,SLOT(ZSlotHexCheck()));
     connect(this->m_btnBufferHex,SIGNAL(clicked(bool)),this,SLOT(ZSlotBufferHex()));
@@ -221,11 +226,29 @@ bool ZMainWidget::ZDoInit()
     this->m_hLayoutIR->addWidget(this->m_hSpliterIR);
     this->m_widgetIR->setLayout(this->m_hLayoutIR);
     this->m_jpegWidget=new ZJpegWidget;
+    this->m_laserWidget=new ZLaserWidget;
+    if(nullptr==this->m_laserWidget)
+    {
+        return false;
+    }
+    if(!this->m_laserWidget->ZDoInit())
+    {
+        return false;
+    }
     this->m_tabWidget=new QTabWidget;
+    if(nullptr==this->m_tabWidget)
+    {
+        return false;
+    }
     this->m_tabWidget->addTab(this->m_widgetIR,tr("Infrared Image"));
     this->m_tabWidget->addTab(this->m_jpegWidget,tr("Visible-Light Image"));
+    this->m_tabWidget->addTab(this->m_laserWidget,tr("Laser Module Controller"));
     ///////////////////////////////////////////////////////////////////////////////////////////////
     this->m_hSpliter=new QSplitter(Qt::Horizontal);
+    if(nullptr==this->m_hSpliter)
+    {
+        return false;
+    }
     this->m_hSpliter->addWidget(this->m_widgetLeft);
     this->m_hSpliter->addWidget(this->m_tabWidget);
     this->m_hSpliter->setStretchFactor(0,1);
@@ -235,9 +258,17 @@ bool ZMainWidget::ZDoInit()
     connect(this->m_imgCanvas,SIGNAL(ZSignalHexData(QString)),this,SLOT(ZSlotNewHexData(QString)));
     ///////////////////////////////////////////////////////////////
     this->m_teLog=new QTextEdit;
+    if(nullptr==this->m_teLog)
+    {
+        return false;
+    }
     this->m_teLog->setReadOnly(true);
     connect(this->m_teLog,SIGNAL(textChanged()),this,SLOT(ZSlotTextEditorChanged()));
     this->m_vSpliter=new QSplitter(Qt::Vertical);
+    if(nullptr==this->m_vSpliter)
+    {
+        return false;
+    }
     this->m_vSpliter->addWidget(this->m_hSpliter);
     this->m_vSpliter->addWidget(this->m_teLog);
     ////////////////////////////////////////////////////////////////////
@@ -296,6 +327,53 @@ void ZMainWidget::ZSlotCfgDev()
     {
         diaCfgDev.exec();
     }
+}
+void ZMainWidget::ZSlotExport()
+{
+    //generate test pattern .DAT file.
+    QFile file("test_pattern_640x512.DAT");
+    if(!file.open(QIODevice::WriteOnly))
+    {
+        QMessageBox::critical(this,tr("Error"),file.errorString());
+        return;
+    }
+    //512 lines, each line has 640 pixels.
+    for(qint32 i=0;i<512;i++)
+    {
+        quint32 lineHead[4];
+        switch(i)
+        {
+        case 0:
+            lineHead[0]=qToBigEndian(0xFF0000B6);
+            lineHead[1]=qToBigEndian(0xFF0000AB);
+            lineHead[2]=qToBigEndian(0xFF00009D);
+            lineHead[3]=qToBigEndian(0xFF000080);
+            break;
+        default:
+            lineHead[0]=qToBigEndian(0xFFFFFFFF);
+            lineHead[1]=qToBigEndian(i);
+            lineHead[2]=qToBigEndian(0xFF00009D);
+            lineHead[3]=qToBigEndian(0xFF000080);
+            break;
+        }
+        file.write((const char*)lineHead,sizeof(lineHead)/sizeof(lineHead[0])*sizeof(quint32));
+        //pixel area. 640*2 Bytes.
+        for(qint32 j=0;j<640;j++)
+        {
+            //y:210.055,u:16.055000000000007,v:146.10500000000002
+            quint8 CbYCrY[4]={0x88,0x0E,0x84,0x66};
+            file.write((const char*)CbYCrY,sizeof(CbYCrY)/sizeof(CbYCrY[0])*sizeof(quint8));
+        }
+        //temperature area. 640*2 Bytes.
+        for(qint32 k=0;k<640;k++)
+        {
+            quint8 CbYCrY[4]={0x0E,0x88,0x66,0x88};
+            file.write((const char*)CbYCrY,sizeof(CbYCrY)/sizeof(CbYCrY[0])*sizeof(quint8));
+        }
+    }
+    file.close();
+    QMessageBox::information(this,tr("Done"),tr("test_pattern_640x512.DAT generated one"));
+    return;
 }
 void ZMainWidget::ZSlotSaveAs()
 {
@@ -378,17 +456,29 @@ void ZMainWidget::ZSlotBufferHex()
 }
 void ZMainWidget::ZSlotListWidgetItemDoubleClicked(QListWidgetItem *item)
 {
-    bool bOkay;
-    int nByassBytes=QInputDialog::getInt(this,tr("IRPixelReveal - User Input"), ///<
-                                           tr("How many head bytes to bypass?\n\nSpecific bytes from head will be eliminated before rendering.\n\nDefault is 20."),///<
-                                           20,0,100,1,&bOkay);
-    if(bOkay)
+    ZDialogInputFileParameter diaIFP;
+    if(diaIFP.ZDoInit())
     {
-        emit this->ZSignalLog(QString("Head bytes %1 will be passed.").arg(nByassBytes));
-        this->m_tableWidget->clearContents();
-        this->m_tableWidget->setRowCount(0);
-        this->m_imgCanvas->ZRedrwFile(this->m_currentDirName+"/"+item->text(),nByassBytes);
-        this->m_currentFileName=this->m_currentDirName+"/"+item->text();
+        if(diaIFP.exec())
+        {
+            emit this->ZSignalLog(QString("Head bytes %1 will be bypassed.").arg(diaIFP.ZGetBypassHeadBytes()));
+            this->m_tableWidget->clearContents();
+            this->m_tableWidget->setRowCount(0);
+            if(QString("256x192")==diaIFP.ZGetResolution())
+            {
+                //for Yantai InfiRay C256*192 module.
+                this->m_imgCanvas->ZRedrwFile(this->m_currentDirName+"/"+item->text(),diaIFP.ZGetBypassHeadBytes());
+            }else if(QString("640x512")==diaIFP.ZGetResolution())
+            {
+                //for Yantai InfiRay Lite640*512 module.
+                this->m_imgCanvas->ZRedrwFile640x512(this->m_currentDirName+"/"+item->text(),diaIFP.ZGetBypassHeadBytes());
+            }else if(QString("AutoDetect")==diaIFP.ZGetResolution())
+            {
+                emit this->ZSignalLog(tr("AutoDetect will coming soon."));
+            }
+            //update current file name for HexCheck.
+            this->m_currentFileName=this->m_currentDirName+"/"+item->text();
+        }
     }
 }
 

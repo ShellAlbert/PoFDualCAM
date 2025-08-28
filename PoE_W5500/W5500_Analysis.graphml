@@ -1,0 +1,3874 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.24-->
+  <key attr.name="Description" attr.type="string" for="graph" id="d0"/>
+  <key for="port" id="d1" yfiles.type="portgraphics"/>
+  <key for="port" id="d2" yfiles.type="portgeometry"/>
+  <key for="port" id="d3" yfiles.type="portuserdata"/>
+  <key attr.name="url" attr.type="string" for="node" id="d4"/>
+  <key attr.name="description" attr.type="string" for="node" id="d5"/>
+  <key for="node" id="d6" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d7" yfiles.type="resources"/>
+  <key attr.name="url" attr.type="string" for="edge" id="d8"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d9"/>
+  <key for="edge" id="d10" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <data key="d0" xml:space="preserve"/>
+    <node id="n0">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="1069.4180000000001" width="801.408" x="421.99999999999994" y="219.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="984.646858215332" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="652.8806762695312" x="74.26366186523438" xml:space="preserve" y="42.385570892334044">#include "stm32f10x.h"
+#include &lt;stdio.h&gt;
+#include "wiz_platform.h"
+#include "wizchip_conf.h"
+#include "wiz_interface.h"
+#include "loopback.h"
+
+/*wizchip-&gt;STM32 Hardware Pin define*/
+//	wizchip_SCS    ---&gt;     STM32_GPIOD7
+//	wizchip_SCLK	 ---&gt;     STM32_GPIOB13
+//  wizchip_MISO	 ---&gt;     STM32_GPIOB14
+//	wizchip_MOSI	 ---&gt;     STM32_GPIOB15
+//	wizchip_RESET	 ---&gt;     STM32_GPIOD8
+//	wizchip_INT    ---&gt;     STM32_GPIOD9
+
+/* The current routine uses a 12Mhz external crystal. If you use other crystals, you need to modify the system clock.
+******************************************************************************
+* stm32f10x.h			Modify 118 lines of external crystal frequency
+* system_stm32f10x.c	Modify 1055 lines of frequency doubling factor
+#endif
+******************************************************************************
+*/
+
+#define SOCKET_ID 0
+#define ETHERNET_BUF_MAX_SIZE (1024 * 2)
+
+/* network information */
+wiz_NetInfo default_net_info = {
+    .mac = {0x00, 0x08, 0xdc, 0x12, 0x22, 0x12},
+    .ip = {192, 168, 1, 30},
+    .gw = {192, 168, 1, 1},
+    .sn = {255, 255, 255, 0},
+    .dns = {8, 8, 8, 8},
+    .dhcp = NETINFO_DHCP}; 
+uint8_t ethernet_buf[ETHERNET_BUF_MAX_SIZE] = {0};
+uint8_t dest_ip[4] = {192, 168, 1, 20};
+uint16_t dest_port = 8080;
+
+int main(void)
+{
+	delay_init();
+    debug_usart_init();
+    wiz_timer_init();
+    wiz_spi_init();
+    wiz_rst_int_init();
+    printf("%s TCP Client example\r\n",_WIZCHIP_ID_);
+
+	/* wizchip init */
+	wizchip_initialize();
+
+	network_init(ethernet_buf, &amp;default_net_info);
+
+    /* Enable keepalive,Parameter 2 is the keep alive time, with a unit of 5 seconds */
+    setSn_KPALVTR(SOCKET_ID, 6); // 30s keepalive
+	
+	while (1)
+	{
+        loopback_tcpc(SOCKET_ID, ethernet_buf, dest_ip, dest_port);
+	}
+}
+<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="179.09440000000006" x="421.99999999999994" y="189.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="115.80477905273438" x="31.644810473632845" xml:space="preserve" y="4.827942848205566">3.tcp-client    main.c<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="3340.941437499999" width="1090.861125" x="1469.303125" y="219.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="3256.4787464141846" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="916.053955078125" x="87.40358496093745" xml:space="preserve" y="42.23134554290755">#include "wiz_interface.h"
+#include "wiz_platform.h"
+#include "wizchip_conf.h"
+#include "dhcp.h"
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define W5100S_VERSION 0x51
+
+/**
+ * @brief Check the WIZCHIP version
+ */
+void wizchip_version_check(void)
+{
+    uint8_t error_count = 0;
+    while (1)
+    {
+        delay_ms(1000);
+        if (getVER() != W5100S_VERSION)
+        {
+            error_count++;
+            if (error_count &gt; 5)
+            {
+                printf("error, %s version is 0x%02x, but read %s version value = 0x%02x\r\n",_WIZCHIP_ID_, W5100S_VERSION,_WIZCHIP_ID_, getVER());
+                while (1)
+                    ;
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+
+/**
+ * @brief Print PHY information
+ */
+void wiz_print_phy_info(void)
+{
+    uint8_t get_phy_conf;
+    get_phy_conf = getPHYSR();
+    printf("The current Mbtis speed : %dMbps\r\n", get_phy_conf &amp; 0x02 ? 10 : 100);
+    printf("The current Duplex Mode : %s\r\n", get_phy_conf &amp; 0x04 ? "Half-Duplex" : "Full-Duplex");
+}
+
+/**
+ * @brief Ethernet Link Detection
+ */
+void wiz_phy_link_check(void)
+{
+    uint8_t phy_link_status;
+    do
+    {
+        delay_ms(1000);
+        ctlwizchip(CW_GET_PHYLINK, (void *)&amp;phy_link_status);
+        if (phy_link_status == PHY_LINK_ON)
+        {
+            printf("PHY link\r\n");
+            wiz_print_phy_info();
+        }
+        else
+        {
+            printf("PHY no link\r\n");
+        }
+    } while (phy_link_status == PHY_LINK_OFF);
+}
+
+/**
+ * @brief   wizchip init function
+ * @param   none
+ * @return  none
+ */
+void wizchip_initialize(void)
+{
+    /* reg wizchip spi */
+    wizchip_spi_cb_reg();
+
+    /* Reset the wizchip */
+    wizchip_reset();
+
+    /* Read version register */
+    wizchip_version_check();
+
+    /* Check PHY link status, causes PHY to start normally */
+    wiz_phy_link_check();
+}
+
+/**
+ * @brief   print network information
+ * @param   none
+ * @return  none
+ */
+void print_network_information(void)
+{
+    wiz_NetInfo net_info;
+    wizchip_getnetinfo(&amp;net_info); // Get chip configuration information
+
+    if (net_info.dhcp == NETINFO_DHCP)
+    {
+        printf("====================================================================================================\r\n");
+        printf(" %s network configuration : DHCP\r\n\r\n", _WIZCHIP_ID_);
+    }
+    else
+    {
+        printf("====================================================================================================\r\n");
+        printf(" %s network configuration : static\r\n\r\n", _WIZCHIP_ID_);
+    }
+
+    printf(" MAC         : %02X:%02X:%02X:%02X:%02X:%02X\r\n", net_info.mac[0], net_info.mac[1], net_info.mac[2], net_info.mac[3], net_info.mac[4], net_info.mac[5]);
+    printf(" IP          : %d.%d.%d.%d\r\n", net_info.ip[0], net_info.ip[1], net_info.ip[2], net_info.ip[3]);
+    printf(" Subnet Mask : %d.%d.%d.%d\r\n", net_info.sn[0], net_info.sn[1], net_info.sn[2], net_info.sn[3]);
+    printf(" Gateway     : %d.%d.%d.%d\r\n", net_info.gw[0], net_info.gw[1], net_info.gw[2], net_info.gw[3]);
+    printf(" DNS         : %d.%d.%d.%d\r\n", net_info.dns[0], net_info.dns[1], net_info.dns[2], net_info.dns[3]);
+    printf("====================================================================================================\r\n\r\n");
+}
+
+/**
+ * @brief DHCP process
+ * @param sn :socket number
+ * @param buffer :socket buffer
+ */
+static uint8_t wiz_dhcp_process(uint8_t sn, uint8_t *buffer)
+{
+    wiz_NetInfo conf_info;
+    uint8_t dhcp_run_flag = 1;
+    uint8_t dhcp_ok_flag = 0;
+    /* Registration DHCP_time_handler to 1 second timer */
+    DHCP_init(sn, buffer);
+    printf("DHCP running\r\n");
+    while (1)
+    {
+        switch (DHCP_run()) // Do the DHCP client
+        {
+        case DHCP_IP_LEASED: // DHCP Acquiring network information successfully
+        {
+            if (dhcp_ok_flag == 0)
+            {
+                dhcp_ok_flag = 1;
+                dhcp_run_flag = 0;
+            }
+            break;
+        }
+        case DHCP_FAILED:
+        {
+            dhcp_run_flag = 0;
+            break;
+        }
+        }
+        if (dhcp_run_flag == 0)
+        {
+            printf("DHCP %s!\r\n", dhcp_ok_flag ? "success" : "fail");
+            DHCP_stop();
+
+            /*DHCP obtained successfully, cancel the registration DHCP_time_handler*/
+
+            if (dhcp_ok_flag)
+            {
+                getIPfromDHCP(conf_info.ip);
+                getGWfromDHCP(conf_info.gw);
+                getSNfromDHCP(conf_info.sn);
+                getDNSfromDHCP(conf_info.dns);
+                conf_info.dhcp = NETINFO_DHCP;
+                getSHAR(conf_info.mac);
+                wizchip_setnetinfo(&amp;conf_info); // Update network information to network information obtained by DHCP
+                return 1;
+            }
+            return 0;
+        }
+    }
+}
+
+/**
+ * @brief   set network information
+ *
+ * First determine whether to use DHCP. If DHCP is used, first obtain the Internet Protocol Address through DHCP.
+ * When DHCP fails, use static IP to configure network information. If static IP is used, configure network information directly
+ *
+ * @param   sn: socketid
+ * @param   ethernet_buff:
+ * @param   net_info: network information struct
+ * @return  none
+ */
+void network_init(uint8_t *ethernet_buff, wiz_NetInfo *conf_info)
+{
+    int ret;
+    wizchip_setnetinfo(conf_info); // Configuring Network Information
+    if (conf_info-&gt;dhcp == NETINFO_DHCP)
+    {
+        ret = wiz_dhcp_process(0, ethernet_buff);
+        if (ret == 0)
+        {
+            conf_info-&gt;dhcp = NETINFO_STATIC;
+            wizchip_setnetinfo(conf_info);
+        }
+    }
+    print_network_information();
+}
+<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="179.09440000000006" x="1469.088506227502" y="189.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="86.4285888671875" x="46.332905566406225" xml:space="preserve" y="4.827942848205566">wiz_interface.c<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="41.0100480000001" width="148.75123199999996" x="480.9458118275016" y="1029.2373715932008"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="72.37561599999998" y="18.50502400000005">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="239.41004799999996" width="353.7432319999999" x="1544.1125664831275" y="1471.1711440926529"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="174.8716159999999" y="117.70502399999987">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="5635.042999999999" width="824.06425" x="2754.032470703124" y="219.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="5479.2782917022705" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="536.2638549804688" x="143.9001975097658" xml:space="preserve" y="77.88235414886367">#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+#include "wiz_platform.h"
+#include "wizchip_conf.h"
+#include "wiz_interface.h"
+#include "stm32f10x.h"
+#include "dhcp.h"
+
+static uint8_t UsNumber = 0;
+static uint16_t MsNumber = 0;
+
+void debug_usart_init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+    USART_InitTypeDef USART_InitStructure;
+    /* config USART1 clock */
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1 | RCC_APB2Periph_GPIOA, ENABLE);
+
+    /* USART1 GPIO config */
+    /* Configure USART1 Tx (PA.09) as alternate function push-pull */
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+    /* Configure USART1 Rx (PA.10) as input floating */
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+	
+    /* USART1 mode config */
+    USART_InitStructure.USART_BaudRate = 115200;
+    USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+    USART_InitStructure.USART_StopBits = USART_StopBits_1;
+    USART_InitStructure.USART_Parity = USART_Parity_No;
+    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+    USART_Init(USART1, &amp;USART_InitStructure);
+		
+    USART_Cmd(USART1, ENABLE);
+}
+
+
+int fputc(int ch, FILE *f)
+{
+    /* Redirect c library function printf to USART1 */
+    USART1-&gt;SR;
+    USART_SendData(USART1, (uint8_t) ch);
+
+    /* Wait for delivery to complete */
+    while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET);
+
+    return (ch);
+}
+
+
+/* Redirecting the C library function scanf to USART1 */
+int fgetc(FILE *f)
+{
+    /* Waiting for USART1 to enter data */
+    while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
+
+    return (int)USART_ReceiveData(USART1);
+}
+
+/*
+ * TIM_Period / Auto Reload Register(ARR) = 1000   TIM_Prescaler--71 
+ * interrupt period = 1/(72MHZ /72) * 1000 = 1ms
+ *
+ * TIMxCLK/CK_PSC --&gt; TIMxCNT --&gt; TIM_Period(ARR) --&gt; TIMxCNT reset to 0 to restart counting
+ */
+void wiz_timer_init(void)
+{
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+    TIM_TimeBaseStructure.TIM_Period = 1000 - 1;
+    TIM_TimeBaseStructure.TIM_Prescaler = 72 - 1;
+    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+    TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+
+    TIM_TimeBaseInit(TIM2, &amp;TIM_TimeBaseStructure);
+    TIM_ClearFlag(TIM2, TIM_FLAG_Update);
+    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
+    NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&amp;NVIC_InitStructure);
+    TIM_Cmd(TIM2, ENABLE);
+}
+
+
+
+void wiz_spi_init(void)
+{
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOD, ENABLE);
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOB, &amp;GPIO_InitStructure);
+	
+    SPI_InitTypeDef SPI_InitStructure;
+    SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
+    SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
+    SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
+    SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
+    SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
+    SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
+    SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+    SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
+    SPI_Init(SPI2, &amp;SPI_InitStructure);
+    SPI_Cmd(SPI2, ENABLE);
+	
+    /* PD_7 -&gt; CS */
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Pin = WIZ_SCS_PIN;
+    GPIO_Init(WIZ_SCS_PORT, &amp;GPIO_InitStructure);
+    GPIO_SetBits(WIZ_SCS_PORT, WIZ_SCS_PIN);
+}
+
+void wiz_rst_int_init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE);
+    /* PD_08 -&gt; RST */
+    GPIO_InitStructure.GPIO_Pin = WIZ_RST_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(WIZ_RST_PORT, &amp;GPIO_InitStructure);
+    GPIO_SetBits(WIZ_RST_PORT, WIZ_RST_PIN);
+
+    /* PD_09 -&gt; INT */
+    GPIO_InitStructure.GPIO_Pin = WIZ_INT_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_Init(WIZ_INT_PORT, &amp;GPIO_InitStructure);
+}
+
+/**
+ * @brief   delay init
+ * @param   none
+ * @return  none
+ */
+void delay_init(void)
+{
+
+	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);
+	UsNumber = SystemCoreClock / 8000000;
+	MsNumber = (u16)UsNumber * 1000;
+}
+
+/**
+ * @brief   delay us
+ * @param   none
+ * @return  none
+ */
+void delay_us(uint32_t nus)
+{
+	uint32_t temp;
+	SysTick-&gt;LOAD = nus * UsNumber;
+	SysTick-&gt;VAL = 0x00;
+	SysTick-&gt;CTRL |= SysTick_CTRL_ENABLE_Msk;
+	do
+	{
+		temp = SysTick-&gt;CTRL;
+	} while ((temp &amp; 0x01) &amp;&amp; !(temp &amp; (1 &lt;&lt; 16)));
+	SysTick-&gt;CTRL &amp;= ~SysTick_CTRL_ENABLE_Msk;
+	SysTick-&gt;VAL = 0X00;
+}
+
+/**
+ * @brief   delay ms
+ * @param   none
+ * @return  none
+ */
+void delay_ms(uint32_t nms)
+{
+	uint32_t temp;
+	SysTick-&gt;LOAD = (uint32_t)nms * MsNumber;
+	SysTick-&gt;VAL = 0x00;
+	SysTick-&gt;CTRL |= SysTick_CTRL_ENABLE_Msk;
+	do
+	{
+		temp = SysTick-&gt;CTRL;
+	} while ((temp &amp; 0x01) &amp;&amp; !(temp &amp; (1 &lt;&lt; 16)));
+	SysTick-&gt;CTRL &amp;= ~SysTick_CTRL_ENABLE_Msk;
+	SysTick-&gt;VAL = 0X00;
+}
+
+/**
+ * @brief   delay s
+ * @param   none
+ * @return  none
+ */
+void delay_s(uint32_t ns)
+{
+		while(ns--)
+		{
+				delay_ms(1000);
+		}
+}
+
+/**
+ * @brief   SPI select wizchip
+ * @param   none
+ * @return  none
+ */
+void wizchip_select(void)
+{
+    GPIO_ResetBits(WIZ_SCS_PORT, WIZ_SCS_PIN);
+}
+
+/**
+ * @brief   SPI deselect wizchip
+ * @param   none
+ * @return  none
+ */
+void wizchip_deselect(void)
+{
+    GPIO_SetBits(WIZ_SCS_PORT, WIZ_SCS_PIN);
+}
+
+/**
+ * @brief   SPI write 1 byte to wizchip
+ * @param   dat:1 byte data
+ * @return  none
+ */
+void wizchip_write_byte(uint8_t dat)
+{
+    while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) == RESET)
+    {
+    }
+    SPI_I2S_SendData(SPI2, dat);
+    while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_RXNE) == RESET)
+    {
+    }
+    SPI_I2S_ReceiveData(SPI2);
+}
+
+/**
+ * @brief   SPI read 1 byte from wizchip
+ * @param   none
+ * @return  1 byte data
+ */
+uint8_t wizchip_read_byte(void)
+{
+    while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) == RESET)
+    {
+    }
+    SPI_I2S_SendData(SPI2, 0xffff);
+    while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_RXNE) == RESET)
+    {
+    }
+    return SPI_I2S_ReceiveData(SPI2);
+}
+
+/**
+ * @brief   SPI write buff from wizchip
+ * @param   buff:write buff
+ * @param   len:write len
+ * @return  none
+ */
+void wizchip_write_buff(uint8_t *buf, uint16_t len)
+{
+    uint16_t idx = 0;
+    for (idx = 0; idx &lt; len; idx++)
+    {
+        wizchip_write_byte(buf[idx]);
+    }
+}
+
+/**
+ * @brief   SPI read buff from wizchip
+ * @param   buff:read buff
+ * @param   len:read len
+ * @return  none
+ */
+void wizchip_read_buff(uint8_t *buf, uint16_t len)
+{
+    uint16_t idx = 0;
+    for (idx = 0; idx &lt; len; idx++)
+    {
+        buf[idx] = wizchip_read_byte();
+    }
+}
+
+/**
+ * @brief   hardware reset wizchip
+ * @param   none
+ * @return  none
+ */
+void wizchip_reset(void)
+{
+    GPIO_SetBits(WIZ_RST_PORT,WIZ_RST_PIN);
+    delay_ms(10);
+    GPIO_ResetBits(WIZ_RST_PORT,WIZ_RST_PIN);
+    delay_ms(10);
+    GPIO_SetBits(WIZ_RST_PORT,WIZ_RST_PIN);
+    delay_ms(10);
+}
+
+/**
+ * @brief   wizchip spi callback register
+ * @param   none
+ * @return  none
+ */
+void wizchip_spi_cb_reg(void)
+{
+    reg_wizchip_cs_cbfunc(wizchip_select, wizchip_deselect);
+    reg_wizchip_spi_cbfunc(wizchip_read_byte, wizchip_write_byte);
+    reg_wizchip_spiburst_cbfunc(wizchip_read_buff, wizchip_write_buff);
+}
+
+/**
+ * @brief   Hardware Platform Timer Interrupt Callback Function
+ */
+void TIM2_IRQHandler(void)
+{
+	static uint32_t wiz_timer_1ms_count = 0;
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
+	{
+    wiz_timer_1ms_count++;
+    if (wiz_timer_1ms_count &gt;= 1000)
+    {
+        DHCP_time_handler();
+		wiz_timer_1ms_count = 0;
+    }
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+	}
+}
+<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n7">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="179.09440000000006" x="2754.032470703124" y="188.99999999999955"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="85.57658386230469" x="46.75890806884763" xml:space="preserve" y="4.827942848205566">wiz_platform.c<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n8">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="42.14668800000004" width="128.62707200000034" x="1565.2929729662549" y="1504.8619681853056"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="62.31353600000011" y="19.073343999999906">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n9">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="109.97644799999966" width="433.0417920000001" x="2876.484024353074" y="5379.350497671694"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="214.520896" y="52.98822399999972">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n10">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="14861.456224999994" width="824.06425" x="3797.8149414062477" y="219.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="14811.767559051514" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="668.7929077148438" x="77.6356711425783" xml:space="preserve" y="24.844332974240388">//****************************************************************************/ 
+//!
+//! \file wizchip_conf.c
+//! \brief WIZCHIP Config Header File.
+//! \version 1.0.1
+//! \date 2013/10/21
+//! \par  Revision history
+//!       &lt;2015/02/05&gt; Notice
+//!        The version history is not updated after this point.
+//!        Download the latest version directly from GitHub. Please visit the our GitHub repository for ioLibrary.
+//!        &gt;&gt; https://github.com/Wiznet/ioLibrary_Driver
+//!       &lt;2014/05/01&gt; V1.0.1  Refer to M20140501
+//!        1. Explicit type casting in wizchip_bus_readdata() &amp; wizchip_bus_writedata()
+//            Issued by Mathias ClauBen.
+//!           uint32_t type converts into ptrdiff_t first. And then recoverting it into uint8_t*
+//!           For remove the warning when pointer type size is not 32bit.
+//!           If ptrdiff_t doesn't support in your complier, You should must replace ptrdiff_t into your suitable pointer type.
+//!       &lt;2013/10/21&gt; 1st Release
+//! \author MidnightCow
+//! \copyright
+//!
+//! Copyright (c)  2013, WIZnet Co., LTD.
+//! All rights reserved.
+//! 
+//! Redistribution and use in source and binary forms, with or without 
+//! modification, are permitted provided that the following conditions 
+//! are met: 
+//! 
+//!     * Redistributions of source code must retain the above copyright 
+//! notice, this list of conditions and the following disclaimer. 
+//!     * Redistributions in binary form must reproduce the above copyright
+//! notice, this list of conditions and the following disclaimer in the
+//! documentation and/or other materials provided with the distribution. 
+//!     * Neither the name of the &lt;ORGANIZATION&gt; nor the names of its 
+//! contributors may be used to endorse or promote products derived 
+//! from this software without specific prior written permission. 
+//! 
+//! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+//! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+//! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+//! ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
+//! LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+//! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+//! SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+//! INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+//! CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+//! ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
+//! THE POSSIBILITY OF SUCH DAMAGE.
+//
+//*****************************************************************************/
+//A20140501 : for use the type - ptrdiff_t
+#include &lt;stddef.h&gt;
+//
+#include "wizchip_conf.h"
+
+/////////////
+//M20150401 : Remove ; in the default callback function such as wizchip_cris_enter(), wizchip_cs_select() and etc.
+/////////////
+
+/**
+ * @brief Default function to enable interrupt.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	  wizchip_cris_enter(void)           {};
+void 	  wizchip_cris_enter(void)           {}
+
+/**
+ * @brief Default function to disable interrupt.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	  wizchip_cris_exit(void)          {};
+void 	  wizchip_cris_exit(void)          {}
+
+/**
+ * @brief Default function to select chip.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	wizchip_cs_select(void)            {};
+void 	wizchip_cs_select(void)            {}
+
+/**
+ * @brief Default function to deselect chip.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	wizchip_cs_deselect(void)          {};
+void 	wizchip_cs_deselect(void)          {}
+
+/**
+ * @brief Default function to read in direct or indirect interface.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+ //M20150601 : Rename the function for integrating with W5300
+//uint8_t wizchip_bus_readbyte(uint32_t AddrSel) { return * ((volatile uint8_t *)((ptrdiff_t) AddrSel)); }
+iodata_t wizchip_bus_readdata(uint32_t AddrSel) { return * ((volatile iodata_t *)((ptrdiff_t) AddrSel)); }
+
+/**
+ * @brief Default function to write in direct or indirect interface.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//M20150601 : Rename the function for integrating with W5300
+//void 	wizchip_bus_writebyte(uint32_t AddrSel, uint8_t wb)  { *((volatile uint8_t*)((ptrdiff_t)AddrSel)) = wb; }
+void 	wizchip_bus_writedata(uint32_t AddrSel, iodata_t wb)  { *((volatile iodata_t*)((ptrdiff_t)AddrSel)) = wb; }
+
+/**
+ * @brief Default function to read in SPI interface.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//uint8_t wizchip_spi_readbyte(void)        {return 0;};
+uint8_t wizchip_spi_readbyte(void)        {return 0;}
+
+/**
+ * @brief Default function to write in SPI interface.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	wizchip_spi_writebyte(uint8_t wb) {};
+void 	wizchip_spi_writebyte(uint8_t wb) {}
+
+/**
+ * @brief Default function to burst read in SPI interface.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	wizchip_spi_readburst(uint8_t* pBuf, uint16_t len) 	{}; 
+void 	wizchip_spi_readburst(uint8_t* pBuf, uint16_t len) 	{}
+
+/**
+ * @brief Default function to burst write in SPI interface.
+ * @note This function help not to access wrong address. If you do not describe this function or register any functions,
+ * null function is called.
+ */
+//void 	wizchip_spi_writeburst(uint8_t* pBuf, uint16_t len) {};
+void 	wizchip_spi_writeburst(uint8_t* pBuf, uint16_t len) {}
+
+/**
+ * @\ref _WIZCHIP instance
+ */
+//
+//M20150401 : For a compiler didnot support a member of structure
+//            Replace the assignment of struct members with the assingment of array
+//
+/*
+_WIZCHIP  WIZCHIP =
+      {
+      .id                  = _WIZCHIP_ID_,
+      .if_mode             = _WIZCHIP_IO_MODE_,
+      .CRIS._enter         = wizchip_cris_enter,
+      .CRIS._exit          = wizchip_cris_exit,
+      .CS._select          = wizchip_cs_select,
+      .CS._deselect        = wizchip_cs_deselect,
+      .IF.BUS._read_byte   = wizchip_bus_readbyte,
+      .IF.BUS._write_byte  = wizchip_bus_writebyte
+//    .IF.SPI._read_byte   = wizchip_spi_readbyte,
+//    .IF.SPI._write_byte  = wizchip_spi_writebyte
+      };
+*/      
+_WIZCHIP  WIZCHIP =
+{
+    _WIZCHIP_IO_MODE_,
+    _WIZCHIP_ID_ ,
+    {
+        wizchip_cris_enter,
+        wizchip_cris_exit
+    },
+    {
+        wizchip_cs_select,
+        wizchip_cs_deselect
+    },
+    {
+        {
+            //M20150601 : Rename the function 
+            //wizchip_bus_readbyte,
+            //wizchip_bus_writebyte
+            wizchip_bus_readdata,
+            wizchip_bus_writedata
+        },
+
+    }
+};
+
+
+static uint8_t    _DNS_[4];      // DNS server ip address
+static dhcp_mode  _DHCP_;        // DHCP mode
+
+void reg_wizchip_cris_cbfunc(void(*cris_en)(void), void(*cris_ex)(void))
+{
+   if(!cris_en || !cris_ex)
+   {
+      WIZCHIP.CRIS._enter = wizchip_cris_enter;
+      WIZCHIP.CRIS._exit  = wizchip_cris_exit;
+   }
+   else
+   {
+      WIZCHIP.CRIS._enter = cris_en;
+      WIZCHIP.CRIS._exit  = cris_ex;
+   }
+}
+
+void reg_wizchip_cs_cbfunc(void(*cs_sel)(void), void(*cs_desel)(void))
+{
+   if(!cs_sel || !cs_desel)
+   {
+      WIZCHIP.CS._select   = wizchip_cs_select;
+      WIZCHIP.CS._deselect = wizchip_cs_deselect;
+   }
+   else
+   {
+      WIZCHIP.CS._select   = cs_sel;
+      WIZCHIP.CS._deselect = cs_desel;
+   }
+}
+
+//M20150515 : For integrating with W5300
+//void reg_wizchip_bus_cbfunc(uint8_t(*bus_rb)(uint32_t addr), void (*bus_wb)(uint32_t addr, uint8_t wb))
+void reg_wizchip_bus_cbfunc(iodata_t(*bus_rb)(uint32_t addr), void (*bus_wb)(uint32_t addr, iodata_t wb))
+{
+   while(!(WIZCHIP.if_mode &amp; _WIZCHIP_IO_MODE_BUS_));
+   //M20150601 : Rename call back function for integrating with W5300
+   /*
+   if(!bus_rb || !bus_wb)
+   {
+      WIZCHIP.IF.BUS._read_byte   = wizchip_bus_readbyte;
+      WIZCHIP.IF.BUS._write_byte  = wizchip_bus_writebyte;
+   }
+   else
+   {
+      WIZCHIP.IF.BUS._read_byte   = bus_rb;
+      WIZCHIP.IF.BUS._write_byte  = bus_wb;
+   }
+   */
+   if(!bus_rb || !bus_wb)
+   {
+      WIZCHIP.IF.BUS._read_data   = wizchip_bus_readdata;
+      WIZCHIP.IF.BUS._write_data  = wizchip_bus_writedata;
+   }
+   else
+   {
+      WIZCHIP.IF.BUS._read_data   = bus_rb;
+      WIZCHIP.IF.BUS._write_data  = bus_wb;
+   }
+}
+
+void reg_wizchip_spi_cbfunc(uint8_t (*spi_rb)(void), void (*spi_wb)(uint8_t wb))
+{
+   while(!(WIZCHIP.if_mode &amp; _WIZCHIP_IO_MODE_SPI_));
+   
+   if(!spi_rb || !spi_wb)
+   {
+      WIZCHIP.IF.SPI._read_byte   = wizchip_spi_readbyte;
+      WIZCHIP.IF.SPI._write_byte  = wizchip_spi_writebyte;
+   }
+   else
+   {
+      WIZCHIP.IF.SPI._read_byte   = spi_rb;
+      WIZCHIP.IF.SPI._write_byte  = spi_wb;
+   }
+}
+
+// 20140626 Eric Added for SPI burst operations
+void reg_wizchip_spiburst_cbfunc(void (*spi_rb)(uint8_t* pBuf, uint16_t len), void (*spi_wb)(uint8_t* pBuf, uint16_t len))
+{
+   while(!(WIZCHIP.if_mode &amp; _WIZCHIP_IO_MODE_SPI_));
+
+   if(!spi_rb || !spi_wb)
+   {
+      WIZCHIP.IF.SPI._read_burst   = wizchip_spi_readburst;
+      WIZCHIP.IF.SPI._write_burst  = wizchip_spi_writeburst;
+   }
+   else
+   {
+      WIZCHIP.IF.SPI._read_burst   = spi_rb;
+      WIZCHIP.IF.SPI._write_burst  = spi_wb;
+   }
+}
+
+int8_t ctlwizchip(ctlwizchip_type cwtype, void* arg)
+{
+#if	_WIZCHIP_ == W5100S || _WIZCHIP_ == W5200 || _WIZCHIP_ == W5500
+   uint8_t tmp = 0;
+#endif
+   uint8_t* ptmp[2] = {0,0};
+   switch(cwtype)
+   {
+      case CW_RESET_WIZCHIP:
+         wizchip_sw_reset();
+         break;
+      case CW_INIT_WIZCHIP:
+         if(arg != 0) 
+         {
+            ptmp[0] = (uint8_t*)arg;
+            ptmp[1] = ptmp[0] + _WIZCHIP_SOCK_NUM_;
+         }
+         return wizchip_init(ptmp[0], ptmp[1]);
+      case CW_CLR_INTERRUPT:
+         wizchip_clrinterrupt(*((intr_kind*)arg));
+         break;
+      case CW_GET_INTERRUPT:
+        *((intr_kind*)arg) = wizchip_getinterrupt();
+         break;
+      case CW_SET_INTRMASK:
+         wizchip_setinterruptmask(*((intr_kind*)arg));
+         break;         
+      case CW_GET_INTRMASK:
+         *((intr_kind*)arg) = wizchip_getinterruptmask();
+         break;
+   //M20150601 : This can be supported by W5200, W5500
+   //#if _WIZCHIP_ &gt; W5100
+   #if (_WIZCHIP_ == W5200 || _WIZCHIP_ == W5500)
+      case CW_SET_INTRTIME:
+         setINTLEVEL(*(uint16_t*)arg);
+         break;
+      case CW_GET_INTRTIME:
+         *(uint16_t*)arg = getINTLEVEL();
+         break;
+   #endif
+      case CW_GET_ID:
+         ((uint8_t*)arg)[0] = WIZCHIP.id[0];
+         ((uint8_t*)arg)[1] = WIZCHIP.id[1];
+         ((uint8_t*)arg)[2] = WIZCHIP.id[2];
+         ((uint8_t*)arg)[3] = WIZCHIP.id[3];
+         ((uint8_t*)arg)[4] = WIZCHIP.id[4];
+         ((uint8_t*)arg)[5] = WIZCHIP.id[5];
+         ((uint8_t*)arg)[6] = 0;
+         break;
+   #if _WIZCHIP_ == W5100S || _WIZCHIP_ == W5500
+      case CW_RESET_PHY:
+         wizphy_reset();
+         break;
+      case CW_SET_PHYCONF:
+         wizphy_setphyconf((wiz_PhyConf*)arg);
+         break;
+      case CW_GET_PHYCONF:
+         wizphy_getphyconf((wiz_PhyConf*)arg);
+         break;
+      case CW_GET_PHYSTATUS:
+         break;
+      case CW_SET_PHYPOWMODE:
+         return wizphy_setphypmode(*(uint8_t*)arg);
+   #endif
+   #if _WIZCHIP_ == W5100S || _WIZCHIP_ == W5200 || _WIZCHIP_ == W5500
+      case CW_GET_PHYPOWMODE:
+         tmp = wizphy_getphypmode();
+         if((int8_t)tmp == -1) return -1;
+         *(uint8_t*)arg = tmp;
+         break;
+      case CW_GET_PHYLINK:
+         tmp = wizphy_getphylink();
+         if((int8_t)tmp == -1) return -1;
+         *(uint8_t*)arg = tmp;
+         break;
+   #endif      
+      default:
+         return -1;
+   }
+   return 0;
+}
+
+
+int8_t ctlnetwork(ctlnetwork_type cntype, void* arg)
+{
+   
+   switch(cntype)
+   {
+      case CN_SET_NETINFO:
+         wizchip_setnetinfo((wiz_NetInfo*)arg);
+         break;
+      case CN_GET_NETINFO:
+         wizchip_getnetinfo((wiz_NetInfo*)arg);
+         break;
+      case CN_SET_NETMODE:
+         return wizchip_setnetmode(*(netmode_type*)arg);
+      case CN_GET_NETMODE:
+         *(netmode_type*)arg = wizchip_getnetmode();
+         break;
+      case CN_SET_TIMEOUT:
+         wizchip_settimeout((wiz_NetTimeout*)arg);
+         break;
+      case CN_GET_TIMEOUT:
+         wizchip_gettimeout((wiz_NetTimeout*)arg);
+         break;
+      default:
+         return -1;
+   }
+   return 0;
+}
+
+void wizchip_sw_reset(void)
+{
+   uint8_t gw[4], sn[4], sip[4];
+   uint8_t mac[6];
+//A20150601
+#if _WIZCHIP_IO_MODE_  == _WIZCHIP_IO_MODE_BUS_INDIR_
+   uint16_t mr = (uint16_t)getMR();
+   setMR(mr | MR_IND);
+#endif
+//
+   getSHAR(mac);
+   getGAR(gw);  getSUBR(sn);  getSIPR(sip);
+   setMR(MR_RST);
+   getMR(); // for delay
+//A2015051 : For indirect bus mode 
+#if _WIZCHIP_IO_MODE_  == _WIZCHIP_IO_MODE_BUS_INDIR_
+   setMR(mr | MR_IND);
+#endif
+//
+   setSHAR(mac);
+   setGAR(gw);
+   setSUBR(sn);
+   setSIPR(sip);
+}
+
+int8_t wizchip_init(uint8_t* txsize, uint8_t* rxsize)
+{
+   int8_t i;
+#if _WIZCHIP_ &lt; W5200
+   int8_t j;
+#endif
+   int8_t tmp = 0;
+   wizchip_sw_reset();
+   if(txsize)
+   {
+      tmp = 0;
+//M20150601 : For integrating with W5300
+#if _WIZCHIP_ == W5300
+		for(i = 0 ; i &lt; _WIZCHIP_SOCK_NUM_; i++)
+		{
+			if(txsize[i] &gt; 64) return -1;   //No use 64KB even if W5300 support max 64KB memory allocation
+			tmp += txsize[i];
+			if(tmp &gt; 128) return -1;
+		}
+		if(tmp % 8) return -1;
+#else
+		for(i = 0 ; i &lt; _WIZCHIP_SOCK_NUM_; i++)
+		{
+			tmp += txsize[i];
+
+#if _WIZCHIP_ &lt; W5200	//2016.10.28 peter add condition for w5100 and w5100s
+			if(tmp &gt; 8) return -1;
+#else
+			if(tmp &gt; 16) return -1;
+#endif
+		}
+#endif
+		for(i = 0 ; i &lt; _WIZCHIP_SOCK_NUM_; i++)
+		{
+#if _WIZCHIP_ &lt; W5200	//2016.10.28 peter add condition for w5100
+			j = 0;
+			while((txsize[i] &gt;&gt; j != 1)&amp;&amp;(txsize[i] !=0)){j++;}
+			setSn_TXBUF_SIZE(i, j);
+#else
+			setSn_TXBUF_SIZE(i, txsize[i]);
+#endif
+		}	
+   }
+
+   if(rxsize)
+   {
+      tmp = 0;
+#if _WIZCHIP_ == W5300
+      for(i = 0 ; i &lt; _WIZCHIP_SOCK_NUM_; i++)
+		{
+			if(rxsize[i] &gt; 64) return -1;   //No use 64KB even if W5300 support max 64KB memory allocation
+			tmp += rxsize[i];
+			if(tmp &gt; 128) return -1;
+		}
+		if(tmp % 8) return -1;
+#else
+		for(i = 0 ; i &lt; _WIZCHIP_SOCK_NUM_; i++)
+		{
+			tmp += rxsize[i];
+#if _WIZCHIP_ &lt; W5200	//2016.10.28 peter add condition for w5100 and w5100s
+			if(tmp &gt; 8) return -1;
+#else
+			if(tmp &gt; 16) return -1;
+#endif
+		}
+#endif
+		for(i = 0 ; i &lt; _WIZCHIP_SOCK_NUM_; i++)
+		{
+#if _WIZCHIP_ &lt; W5200	// add condition for w5100
+			j = 0;
+			while((rxsize[i] &gt;&gt; j != 1)&amp;&amp;(txsize[i] !=0)){j++;}
+			setSn_RXBUF_SIZE(i, j);
+#else
+			setSn_RXBUF_SIZE(i, rxsize[i]);
+#endif
+		}
+   }
+   return 0;
+}
+
+void wizchip_clrinterrupt(intr_kind intr)
+{
+   uint8_t ir  = (uint8_t)intr;
+   uint8_t sir = (uint8_t)((uint16_t)intr &gt;&gt; 8);
+#if _WIZCHIP_ &lt; W5500
+   ir |= (1&lt;&lt;4); // IK_WOL
+#endif
+#if _WIZCHIP_ == W5200
+   ir |= (1 &lt;&lt; 6);
+#endif
+   
+#if _WIZCHIP_ &lt; W5200
+   sir &amp;= 0x0F;
+#endif
+
+#if _WIZCHIP_ &lt;= W5100S
+   ir |= sir;
+   setIR(ir);
+//A20150601 : For integrating with W5300
+#elif _WIZCHIP_ == W5300
+   setIR( ((((uint16_t)ir) &lt;&lt; 8) | (((uint16_t)sir) &amp; 0x00FF)) );
+#else
+   setIR(ir);
+//M20200227 : For clear
+   //setSIR(sir);
+   for(ir=0; ir&lt;8; ir++){
+       if(sir &amp; (0x01 &lt;&lt;ir) ) setSn_IR(ir, 0xff);
+   }
+
+#endif   
+}
+
+intr_kind wizchip_getinterrupt(void)
+{
+   uint8_t ir  = 0;
+   uint8_t sir = 0;
+   uint16_t ret = 0;
+#if _WIZCHIP_ &lt;= W5100S
+   ir = getIR();
+   sir = ir &amp; 0x0F;
+//A20150601 : For integrating with W5300
+#elif _WIZCHIP_  == W5300
+   ret = getIR();
+   ir = (uint8_t)(ret &gt;&gt; 8);
+   sir = (uint8_t)ret;
+#else
+   ir  = getIR();
+   sir = getSIR();
+#endif         
+
+//M20150601 : For Integrating with W5300
+//#if _WIZCHIP_ &lt; W5500
+#if _WIZCHIP_ &lt; W5200
+   ir &amp;= ~(1&lt;&lt;4); // IK_WOL
+#endif
+#if _WIZCHIP_ == W5200
+   ir &amp;= ~(1 &lt;&lt; 6);
+#endif
+  ret = sir;
+  ret = (ret &lt;&lt; 8) + ir;
+  return (intr_kind)ret;
+}
+
+void wizchip_setinterruptmask(intr_kind intr)
+{
+   uint8_t imr  = (uint8_t)intr;
+   uint8_t simr = (uint8_t)((uint16_t)intr &gt;&gt; 8);
+#if _WIZCHIP_ &lt; W5500
+   imr &amp;= ~(1&lt;&lt;4); // IK_WOL
+#endif
+#if _WIZCHIP_ == W5200
+   imr &amp;= ~(1 &lt;&lt; 6);
+#endif
+   
+#if _WIZCHIP_ &lt; W5200
+   simr &amp;= 0x0F;
+   imr |= simr;
+   setIMR(imr);
+//A20150601 : For integrating with W5300
+#elif _WIZCHIP_ == W5300
+   setIMR( ((((uint16_t)imr) &lt;&lt; 8) | (((uint16_t)simr) &amp; 0x00FF)) );
+#else
+   setIMR(imr);
+   setSIMR(simr);
+#endif   
+}
+
+intr_kind wizchip_getinterruptmask(void)
+{
+   uint8_t imr  = 0;
+   uint8_t simr = 0;
+   uint16_t ret = 0;
+#if _WIZCHIP_ &lt; W5200
+   imr  = getIMR();
+   simr = imr &amp; 0x0F;
+//A20150601 : For integrating with W5300
+#elif _WIZCHIP_ == W5300
+   ret = getIMR();
+   imr = (uint8_t)(ret &gt;&gt; 8);
+   simr = (uint8_t)ret;
+#else
+   imr  = getIMR();
+   simr = getSIMR();
+#endif         
+
+#if _WIZCHIP_ &lt; W5500
+   imr &amp;= ~(1&lt;&lt;4); // IK_WOL
+#endif
+#if _WIZCHIP_ == W5200
+   imr &amp;= ~(1 &lt;&lt; 6);  // IK_DEST_UNREACH
+#endif
+  ret = simr;
+  ret = (ret &lt;&lt; 8) + imr;
+  return (intr_kind)ret;
+}
+
+int8_t wizphy_getphylink(void)
+{
+   int8_t tmp = PHY_LINK_OFF;
+#if _WIZCHIP_ == W5100S
+   if(getPHYSR() &amp; PHYSR_LNK)
+	   tmp = PHY_LINK_ON;
+#elif   _WIZCHIP_ == W5200
+   if(getPHYSTATUS() &amp; PHYSTATUS_LINK)
+      tmp = PHY_LINK_ON;
+#elif _WIZCHIP_ == W5500
+   if(getPHYCFGR() &amp; PHYCFGR_LNK_ON)
+      tmp = PHY_LINK_ON;
+
+#else
+   tmp = -1;
+#endif
+   return tmp;
+}
+
+#if _WIZCHIP_ &gt; W5100
+
+int8_t wizphy_getphypmode(void)
+{
+   int8_t tmp = 0;
+   #if   _WIZCHIP_ == W5200
+      if(getPHYSTATUS() &amp; PHYSTATUS_POWERDOWN)
+         tmp = PHY_POWER_DOWN;
+      else          
+         tmp = PHY_POWER_NORM;
+   #elif _WIZCHIP_ == 5500
+      if((getPHYCFGR() &amp; PHYCFGR_OPMDC_ALLA) == PHYCFGR_OPMDC_PDOWN)
+         tmp = PHY_POWER_DOWN;
+      else 
+         tmp = PHY_POWER_NORM;
+   #else
+      tmp = -1;
+   #endif
+   return tmp;
+}
+#endif
+
+#if _WIZCHIP_ == W5100S
+void wizphy_reset(void)
+{
+	uint16_t tmp = wiz_mdio_read(PHYMDIO_BMCR);
+	tmp |= BMCR_RESET;
+	wiz_mdio_write(PHYMDIO_BMCR, tmp);
+	while(wiz_mdio_read(PHYMDIO_BMCR)&amp;BMCR_RESET){}
+}
+
+void wizphy_setphyconf(wiz_PhyConf* phyconf)
+{
+   uint16_t tmp = wiz_mdio_read(PHYMDIO_BMCR);
+   if(phyconf-&gt;mode == PHY_MODE_AUTONEGO)
+      tmp |= BMCR_AUTONEGO;
+   else
+   {
+	  tmp &amp;= ~BMCR_AUTONEGO;
+      if(phyconf-&gt;duplex == PHY_DUPLEX_FULL)
+      {
+    	  tmp |= BMCR_DUP;
+      }
+      else
+      {
+    	  tmp &amp;= ~BMCR_DUP;
+      }
+      if(phyconf-&gt;speed == PHY_SPEED_100)
+      {
+    	  tmp |= BMCR_SPEED;
+      }
+      else
+      {
+    	  tmp &amp;= ~BMCR_SPEED;
+      }
+   }
+   wiz_mdio_write(PHYMDIO_BMCR, tmp);
+}
+
+void wizphy_getphyconf(wiz_PhyConf* phyconf)
+{
+   uint16_t tmp = 0;
+   tmp = wiz_mdio_read(PHYMDIO_BMCR);
+   phyconf-&gt;by   = PHY_CONFBY_SW;
+   if(tmp &amp; BMCR_AUTONEGO)
+   {
+	   phyconf-&gt;mode = PHY_MODE_AUTONEGO;
+   }
+   else
+   {
+	   phyconf-&gt;mode = PHY_MODE_MANUAL;
+	   if(tmp&amp;BMCR_DUP) phyconf-&gt;duplex = PHY_DUPLEX_FULL;
+	   else phyconf-&gt;duplex = PHY_DUPLEX_HALF;
+	   if(tmp&amp;BMCR_SPEED) phyconf-&gt;speed = PHY_SPEED_100;
+	   else phyconf-&gt;speed = PHY_SPEED_10;
+   }
+}
+
+int8_t wizphy_setphypmode(uint8_t pmode)
+{
+   uint16_t tmp = 0;
+   tmp = wiz_mdio_read(PHYMDIO_BMCR);
+   if( pmode == PHY_POWER_DOWN)
+   {
+      tmp |= BMCR_PWDN;
+   }
+   else
+   {
+	   tmp &amp;= ~BMCR_PWDN;
+   }
+   wiz_mdio_write(PHYMDIO_BMCR, tmp);
+   tmp = wiz_mdio_read(PHYMDIO_BMCR);
+   if( pmode == PHY_POWER_DOWN)
+   {
+      if(tmp &amp; BMCR_PWDN) return 0;
+   }
+   else
+   {
+      if((tmp &amp; BMCR_PWDN) != BMCR_PWDN) return 0;
+   }
+   return -1;
+}
+
+#endif
+#if _WIZCHIP_ == W5500
+void wizphy_reset(void)
+{
+   uint8_t tmp = getPHYCFGR();
+   tmp &amp;= PHYCFGR_RST;
+   setPHYCFGR(tmp);
+   tmp = getPHYCFGR();
+   tmp |= ~PHYCFGR_RST;
+   setPHYCFGR(tmp);
+}
+
+void wizphy_setphyconf(wiz_PhyConf* phyconf)
+{
+   uint8_t tmp = 0;
+   if(phyconf-&gt;by == PHY_CONFBY_SW)
+      tmp |= PHYCFGR_OPMD;
+   else
+      tmp &amp;= ~PHYCFGR_OPMD;
+   if(phyconf-&gt;mode == PHY_MODE_AUTONEGO)
+      tmp |= PHYCFGR_OPMDC_ALLA;
+   else
+   {
+      if(phyconf-&gt;duplex == PHY_DUPLEX_FULL)
+      {
+         if(phyconf-&gt;speed == PHY_SPEED_100)
+            tmp |= PHYCFGR_OPMDC_100F;
+         else
+            tmp |= PHYCFGR_OPMDC_10F;
+      }   
+      else
+      {
+         if(phyconf-&gt;speed == PHY_SPEED_100)
+            tmp |= PHYCFGR_OPMDC_100H;
+         else
+            tmp |= PHYCFGR_OPMDC_10H;
+      }
+   }
+   setPHYCFGR(tmp);
+   wizphy_reset();
+}
+
+void wizphy_getphyconf(wiz_PhyConf* phyconf)
+{
+   uint8_t tmp = 0;
+   tmp = getPHYCFGR();
+   phyconf-&gt;by   = (tmp &amp; PHYCFGR_OPMD) ? PHY_CONFBY_SW : PHY_CONFBY_HW;
+   switch(tmp &amp; PHYCFGR_OPMDC_ALLA)
+   {
+      case PHYCFGR_OPMDC_ALLA:
+      case PHYCFGR_OPMDC_100FA: 
+         phyconf-&gt;mode = PHY_MODE_AUTONEGO;
+         break;
+      default:
+         phyconf-&gt;mode = PHY_MODE_MANUAL;
+         break;
+   }
+   switch(tmp &amp; PHYCFGR_OPMDC_ALLA)
+   {
+      case PHYCFGR_OPMDC_100FA:
+      case PHYCFGR_OPMDC_100F:
+      case PHYCFGR_OPMDC_100H:
+         phyconf-&gt;speed = PHY_SPEED_100;
+         break;
+      default:
+         phyconf-&gt;speed = PHY_SPEED_10;
+         break;
+   }
+   switch(tmp &amp; PHYCFGR_OPMDC_ALLA)
+   {
+      case PHYCFGR_OPMDC_100FA:
+      case PHYCFGR_OPMDC_100F:
+      case PHYCFGR_OPMDC_10F:
+         phyconf-&gt;duplex = PHY_DUPLEX_FULL;
+         break;
+      default:
+         phyconf-&gt;duplex = PHY_DUPLEX_HALF;
+         break;
+   }
+}
+
+void wizphy_getphystat(wiz_PhyConf* phyconf)
+{
+   uint8_t tmp = getPHYCFGR();
+   phyconf-&gt;duplex = (tmp &amp; PHYCFGR_DPX_FULL) ? PHY_DUPLEX_FULL : PHY_DUPLEX_HALF;
+   phyconf-&gt;speed  = (tmp &amp; PHYCFGR_SPD_100) ? PHY_SPEED_100 : PHY_SPEED_10;
+}
+
+int8_t wizphy_setphypmode(uint8_t pmode)
+{
+   uint8_t tmp = 0;
+   tmp = getPHYCFGR();
+   if((tmp &amp; PHYCFGR_OPMD)== 0) return -1;
+   tmp &amp;= ~PHYCFGR_OPMDC_ALLA;         
+   if( pmode == PHY_POWER_DOWN)
+      tmp |= PHYCFGR_OPMDC_PDOWN;
+   else
+      tmp |= PHYCFGR_OPMDC_ALLA;
+   setPHYCFGR(tmp);
+   wizphy_reset();
+   tmp = getPHYCFGR();
+   if( pmode == PHY_POWER_DOWN)
+   {
+      if(tmp &amp; PHYCFGR_OPMDC_PDOWN) return 0;
+   }
+   else
+   {
+      if(tmp &amp; PHYCFGR_OPMDC_ALLA) return 0;
+   }
+   return -1;
+}
+#endif
+
+
+void wizchip_setnetinfo(wiz_NetInfo* pnetinfo)
+{
+   setSHAR(pnetinfo-&gt;mac);
+   setGAR(pnetinfo-&gt;gw);
+   setSUBR(pnetinfo-&gt;sn);
+   setSIPR(pnetinfo-&gt;ip);
+   _DNS_[0] = pnetinfo-&gt;dns[0];
+   _DNS_[1] = pnetinfo-&gt;dns[1];
+   _DNS_[2] = pnetinfo-&gt;dns[2];
+   _DNS_[3] = pnetinfo-&gt;dns[3];
+   _DHCP_   = pnetinfo-&gt;dhcp;
+}
+
+void wizchip_getnetinfo(wiz_NetInfo* pnetinfo)
+{
+   getSHAR(pnetinfo-&gt;mac);
+   getGAR(pnetinfo-&gt;gw);
+   getSUBR(pnetinfo-&gt;sn);
+   getSIPR(pnetinfo-&gt;ip);
+   pnetinfo-&gt;dns[0]= _DNS_[0];
+   pnetinfo-&gt;dns[1]= _DNS_[1];
+   pnetinfo-&gt;dns[2]= _DNS_[2];
+   pnetinfo-&gt;dns[3]= _DNS_[3];
+   pnetinfo-&gt;dhcp  = _DHCP_;
+}
+
+int8_t wizchip_setnetmode(netmode_type netmode)
+{
+   uint8_t tmp = 0;
+#if _WIZCHIP_ != W5500
+   if(netmode &amp; ~(NM_WAKEONLAN | NM_PPPOE | NM_PINGBLOCK)) return -1;
+#else
+   if(netmode &amp; ~(NM_WAKEONLAN | NM_PPPOE | NM_PINGBLOCK | NM_FORCEARP)) return -1;
+#endif      
+   tmp = getMR();
+   tmp |= (uint8_t)netmode;
+   setMR(tmp);
+   return 0;
+}
+
+netmode_type wizchip_getnetmode(void)
+{
+   return (netmode_type) getMR();
+}
+
+void wizchip_settimeout(wiz_NetTimeout* nettime)
+{
+   setRCR(nettime-&gt;retry_cnt);
+   setRTR(nettime-&gt;time_100us);
+}
+
+void wizchip_gettimeout(wiz_NetTimeout* nettime)
+{
+   nettime-&gt;retry_cnt = getRCR();
+   nettime-&gt;time_100us = getRTR();
+}
+<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n11">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="179.09440000000006" x="3797.8149414062477" y="188.99999999999955"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="85.57658386230469" x="46.75890806884763" xml:space="preserve" y="4.827942848205566">wiz_platform.c<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n12">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="1034.9897813333325" width="740.2417919999999" x="3838.7337221787625" y="3812.830497671693"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="368.1208959999999" y="515.4948906666664">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n13">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="243.73644799999988" width="315.28179200000034" x="2873.1680487061476" y="5045.660995343388"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="155.64089600000034" y="119.86822399999983">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n14">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="42.14668800000004" width="128.62707200000034" x="1565.2929729662546" y="1547.0086561853057"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="62.31353600000011" y="19.073344000000134">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n15">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="461.5220479999998" width="849.4232319999993" x="1543.4276708527777" y="382.29327177752157"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="422.7116159999996" y="228.7610239999999">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n16">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="42.14668800000004" width="167.21466880000037" x="1561.3608129662543" y="1598.8608579706115"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="81.60733440000013" y="19.073343999999906">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n17">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="42.14668800000004" width="332.13513607441985" x="1561.3608129662541" y="1650.7130597559176"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="164.06756803720987" y="19.073343999999906">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n18">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="355.9549837972602" width="402.09574153585356" x="1535.942737747168" y="1026.0367549222665"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="199.04787076792672" y="175.97749189862998">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n19">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="82.72383916763215" width="216.93333908125953" x="3874.6277046330206" y="5998.781212858414"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="106.46666954062994" y="39.361919583816416">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n20">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="309.2407328505408" width="326.07188360109524" x="3847.5032286628348" y="10273.168827817692"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="161.0359418005478" y="152.62036642526982">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n21">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="54.58412897092353" width="248.18240952069903" x="3866.010396779526" y="10427.065169684422"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="122.09120476034968" y="25.292064485462106">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n22">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="47.08933539656891" width="350.06062959637836" x="1469.0885062275017" y="111.91066460343109"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="294.35406494140625" x="27.853282327486113" xml:space="preserve" y="13.372610546490023">#define getVERSIONR()   WIZCHIP_READ(VERSIONR)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n23">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.64887952245749" width="186.51191727394678" x="1580.8815927343428" y="573.4477151257281"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="91.25595863697345" y="7.324439761228746">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n24">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="54.58412897092376" width="350.06062959637836" x="3338.1364703803174" y="10427.065169684422"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="287.49005126953125" x="31.285289163423386" xml:space="preserve" y="17.120007333667672">#define getPHYCFGR()    WIZCHIP_READ(PHYCFGR)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n25">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="54.58412897092376" width="621.3693150884318" x="2625.78613331416" y="10427.065169684422"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="514.3515625" x="53.50887629421595" xml:space="preserve" y="17.120007333667672">#define PHYCFGR            (_W5500_IO_BASE_ + (0x002E &lt;&lt; 8) + (WIZCHIP_CREG_BLOCK &lt;&lt; 3))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n26">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="513.3362241581376" width="621.3693150884318" x="2625.78613331416" y="10556.529009188287"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="477.97931480407715" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="462.7032165527344" x="79.33304926784876" xml:space="preserve" y="17.67845467703046">uint8_t  WIZCHIP_READ(uint32_t AddrSel)
+{
+   uint8_t ret;
+   uint8_t spi_data[3];
+
+   WIZCHIP_CRITICAL_ENTER();
+   WIZCHIP.CS._select();
+
+   AddrSel |= (_W5500_SPI_READ_ | _W5500_SPI_VDM_OP_);
+
+   if(!WIZCHIP.IF.SPI._read_burst || !WIZCHIP.IF.SPI._write_burst) 	// byte operation
+   {
+	   WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x00FF0000) &gt;&gt; 16);
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x0000FF00) &gt;&gt;  8);
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x000000FF) &gt;&gt;  0);
+   }
+   else																// burst operation
+   {
+		spi_data[0] = (AddrSel &amp; 0x00FF0000) &gt;&gt; 16;
+		spi_data[1] = (AddrSel &amp; 0x0000FF00) &gt;&gt; 8;
+		spi_data[2] = (AddrSel &amp; 0x000000FF) &gt;&gt; 0;
+		WIZCHIP.IF.SPI._write_burst(spi_data, 3);
+   }
+   ret = WIZCHIP.IF.SPI._read_byte();
+
+   WIZCHIP.CS._deselect();
+   WIZCHIP_CRITICAL_EXIT();
+   return ret;
+}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n27">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="271.7891966876315" width="628.4455388283328" x="1469.0885062275017" y="-178.70182675233195"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="200.1293716430664" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="565.628173828125" x="31.40868250010385" xml:space="preserve" y="35.82991252228254">#define PHY_CONFBY_HW            0     ///&lt; Configured PHY operation mode by HW pin
+#define PHY_CONFBY_SW            1     ///&lt; Configured PHY operation mode by SW register   
+#define PHY_MODE_MANUAL          0     ///&lt; Configured PHY operation mode with user setting.
+#define PHY_MODE_AUTONEGO        1     ///&lt; Configured PHY operation mode with auto-negotiation
+#define PHY_SPEED_10             0     ///&lt; Link Speed 10
+#define PHY_SPEED_100            1     ///&lt; Link Speed 100
+#define PHY_DUPLEX_HALF          0     ///&lt; Link Half-Duplex
+#define PHY_DUPLEX_FULL          1     ///&lt; Link Full-Duplex
+#define PHY_LINK_OFF             0     ///&lt; Link Off
+#define PHY_LINK_ON              1     ///&lt; Link On
+#define PHY_POWER_NORM           0     ///&lt; PHY power normal mode
+#define PHY_POWER_DOWN           1     ///&lt; PHY power down mode <y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n28">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.64887952245749" width="186.51191727394678" x="1576.9336689761753" y="1244.165131396831"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="91.25595863697345" y="7.324439761228859">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n29">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="117.15341201215585" width="574.0625779278615" x="1543.4276708527777" y="898.7391759181039"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="285.0312889639308" y="56.576706006077984">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n30">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="32.05509050093656" width="289.7918126102501" x="484.5042299073445" y="1074.996520788422"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="142.89590630512504" y="14.027545250468393">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n31">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="256.8618360503431" width="406.85922574904896" x="1543.7216382293054" y="3264.2401630996387"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="201.42961287452454" y="126.43091802517165">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n32">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.622654252341135" width="383.8188663504169" x="1559.878688658139" y="3319.914864968363"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="189.9094331752085" y="7.311327126170454">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n33">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="214.88547277348312" width="345.5270949611919" x="3858.093215698855" y="14127.67794470792"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="170.76354748059612" y="105.44273638674167">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n34">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="54.58412897092376" width="372.6520751099664" x="4690.805957130949" y="14152.962988897692"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="337.77032470703125" x="17.44087520146786" xml:space="preserve" y="17.120007333667672">#define setSHAR(shar)  WIZCHIP_WRITE_BUF(SHAR, shar, 6)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n35">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="17.433323959497784" width="162.23030865223575" x="3881.549353229913" y="14170.91600138666"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="79.11515432611804" y="6.716661979748096">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n36">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="54.58412897092376" width="549.8491711302544" x="5123.273269841255" y="14152.962988897692"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="501.55950927734375" x="24.144830926455143" xml:space="preserve" y="17.120007333667672">#define SHAR               (_W5500_IO_BASE_ + (0x0009 &lt;&lt; 8) + (WIZCHIP_CREG_BLOCK &lt;&lt; 3))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n37">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="546.1666957835291" width="549.8491711302544" x="5123.273269841255" y="14237.547117868617"/>
+          <y:Fill color="#FFCC99" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="494.323429107666" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="416.5867919921875" x="66.63118956903327" xml:space="preserve" y="25.92163333793178">void     WIZCHIP_WRITE_BUF(uint32_t AddrSel, uint8_t* pBuf, uint16_t len)
+{
+   uint8_t spi_data[3];
+   uint16_t i;
+
+   WIZCHIP_CRITICAL_ENTER();
+   WIZCHIP.CS._select();
+
+   AddrSel |= (_W5500_SPI_WRITE_ | _W5500_SPI_VDM_OP_);
+
+   if(!WIZCHIP.IF.SPI._write_burst) 	// byte operation
+   {
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x00FF0000) &gt;&gt; 16);
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x0000FF00) &gt;&gt;  8);
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x000000FF) &gt;&gt;  0);
+		for(i = 0; i &lt; len; i++)
+			WIZCHIP.IF.SPI._write_byte(pBuf[i]);
+   }
+   else									// burst operation
+   {
+		spi_data[0] = (AddrSel &amp; 0x00FF0000) &gt;&gt; 16;
+		spi_data[1] = (AddrSel &amp; 0x0000FF00) &gt;&gt; 8;
+		spi_data[2] = (AddrSel &amp; 0x000000FF) &gt;&gt; 0;
+		WIZCHIP.IF.SPI._write_burst(spi_data, 3);
+		WIZCHIP.IF.SPI._write_burst(pBuf, len);
+   }
+
+   WIZCHIP.CS._deselect();
+   WIZCHIP_CRITICAL_EXIT();
+}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n38">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="17.433323959497784" width="162.23030865223575" x="3881.5493532299133" y="14188.349325346158"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="79.11515432611804" y="6.716661979748096">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n39">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="17.433323959497784" width="162.23030865223575" x="3881.5493532299133" y="14205.782649305656"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="79.11515432611804" y="6.716661979748096">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n40">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="17.433323959497784" width="162.23030865223575" x="3881.549353229914" y="14223.215973265154"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="79.11515432611804" y="6.716661979748096">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n41">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="41.0100480000001" width="499.52464741687766" x="484.5042299073445" y="1111.0240660388904"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="247.76232370843888" y="18.50502400000005">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n42">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="83.39034114703827" width="457.3411714777589" x="-232.2762931201144" y="955.5016784753695"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="435.21112060546875" x="11.065025436145078" xml:space="preserve" y="31.5231134217247">#define setSn_KPALVTR(sn, kpalvt)   WIZCHIP_WRITE(Sn_KPALVTR(sn), kpalvt)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n43">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="83.39034114703827" width="635.8002160869914" x="-953.4298220995793" y="955.5016784753694"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="543.187744140625" x="46.30623597318322" xml:space="preserve" y="31.5231134217247">#define Sn_KPALVTR(N)      (_W5500_IO_BASE_ + (0x002F &lt;&lt; 8) + (WIZCHIP_SREG_BLOCK(N) &lt;&lt; 3))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n44">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="585.5024103833496" width="635.8002160869914" x="-1714.4981525498963" y="955.5016784753694"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="477.97931480407715" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="471.6313171386719" x="82.08444947415978" xml:space="preserve" y="53.76154778963621">void     WIZCHIP_WRITE(uint32_t AddrSel, uint8_t wb )
+{
+   uint8_t spi_data[4];
+
+   WIZCHIP_CRITICAL_ENTER();
+   WIZCHIP.CS._select();
+
+   AddrSel |= (_W5500_SPI_WRITE_ | _W5500_SPI_VDM_OP_);
+
+   //if(!WIZCHIP.IF.SPI._read_burst || !WIZCHIP.IF.SPI._write_burst) 	// byte operation
+   if(!WIZCHIP.IF.SPI._write_burst) 	// byte operation
+   {
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x00FF0000) &gt;&gt; 16);
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x0000FF00) &gt;&gt;  8);
+		WIZCHIP.IF.SPI._write_byte((AddrSel &amp; 0x000000FF) &gt;&gt;  0);
+		WIZCHIP.IF.SPI._write_byte(wb);
+   }
+   else									// burst operation
+   {
+		spi_data[0] = (AddrSel &amp; 0x00FF0000) &gt;&gt; 16;
+		spi_data[1] = (AddrSel &amp; 0x0000FF00) &gt;&gt; 8;
+		spi_data[2] = (AddrSel &amp; 0x000000FF) &gt;&gt; 0;
+		spi_data[3] = wb;
+		WIZCHIP.IF.SPI._write_burst(spi_data, 4);
+   }
+
+   WIZCHIP.CS._deselect();
+   WIZCHIP_CRITICAL_EXIT();
+}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n45">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="5320.686272884991" width="824.06425" x="399.34375" y="1397.6246640481986"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="5234.1165771484375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="702.8009643554688" x="60.631642822265576" xml:space="preserve" y="43.28484786827721">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include "loopback.h"
+#include "socket.h"
+#include "wizchip_conf.h"
+
+#if LOOPBACK_MODE == LOOPBACK_MAIN_NOBLCOK
+
+/**
+ * @brief   tcp server loopback test
+ * @param   sn:    socket number
+ * @param   buf:   Data sending and receiving cache
+ * @param   port:  Listen port
+ * @return  value for SOCK_ERRORs,return 1:no error 
+*/
+int32_t loopback_tcps(uint8_t sn, uint8_t* buf, uint16_t port)
+{
+   int32_t ret;
+   uint16_t size = 0, sentsize=0;
+
+#ifdef _LOOPBACK_DEBUG_
+   uint8_t destip[4];
+   uint16_t destport;
+#endif
+
+   switch(getSn_SR(sn))
+   {
+      case SOCK_ESTABLISHED :
+         if(getSn_IR(sn) &amp; Sn_IR_CON)
+         {
+#ifdef _LOOPBACK_DEBUG_
+			getSn_DIPR(sn, destip);
+			destport = getSn_DPORT(sn);
+
+			printf("%d:Connected - %d.%d.%d.%d : %d\r\n",sn, destip[0], destip[1], destip[2], destip[3], destport);
+#endif
+			setSn_IR(sn,Sn_IR_CON);
+         }
+		 if((size = getSn_RX_RSR(sn)) &gt; 0) // Don't need to check SOCKERR_BUSY because it doesn't not occur.
+         {
+			if(size &gt; DATA_BUF_SIZE) size = DATA_BUF_SIZE;
+			ret = recv(sn, buf, size);
+         buf[ret]=0x00;
+         printf("recv: %s\n",buf); //print the receive data.
+			if(ret &lt;= 0) return ret;      // check SOCKERR_BUSY &amp; SOCKERR_XXX. For showing the occurrence of SOCKERR_BUSY.
+			size = (uint16_t) ret;
+			sentsize = 0;
+
+			while(size != sentsize)
+			{
+				ret = send(sn, buf+sentsize, size-sentsize);
+				if(ret &lt; 0)
+				{
+					close(sn);
+					return ret;
+				}
+				sentsize += ret; // Don't care SOCKERR_BUSY, because it is zero.
+			}
+         }
+         break;
+      case SOCK_CLOSE_WAIT :
+#ifdef _LOOPBACK_DEBUG_
+         //printf("%d:CloseWait\r\n",sn);
+#endif
+         if((ret = disconnect(sn)) != SOCK_OK) return ret;
+#ifdef _LOOPBACK_DEBUG_
+         printf("%d:Socket Closed\r\n", sn);
+#endif
+         break;
+      case SOCK_INIT :
+#ifdef _LOOPBACK_DEBUG_
+    	 printf("%d:Listen, TCP server loopback, port [%d]\r\n", sn, port);
+#endif
+         if( (ret = listen(sn)) != SOCK_OK) return ret;
+         break;
+      case SOCK_CLOSED:
+#ifdef _LOOPBACK_DEBUG_
+         //printf("%d:TCP server loopback start\r\n",sn);
+#endif
+         if((ret = socket(sn, Sn_MR_TCP, port, 0x00)) != sn) return ret;
+#ifdef _LOOPBACK_DEBUG_
+         //printf("%d:Socket opened\r\n",sn);
+#endif
+         break;
+      default:
+         break;
+   }
+   return 1;
+}
+
+/**
+ * @brief   tcp client loopback test
+ * @param   sn:         socket number
+ * @param   buf:        Data sending and receiving cache
+ * @param   destip:     Destination IP address
+ * @param   destport:   Destination port
+ * @return  value for SOCK_ERRORs,return 1:no error 
+*/
+int32_t loopback_tcpc(uint8_t sn, uint8_t* buf, uint8_t* destip, uint16_t destport)
+{
+   int32_t ret; // return value for SOCK_ERRORs
+   uint16_t size = 0, sentsize=0;
+
+   // Destination (TCP Server) IP info (will be connected)
+   // &gt;&gt; loopback_tcpc() function parameter
+   // &gt;&gt; Ex)
+   //	uint8_t destip[4] = 	{192, 168, 0, 214};
+   //	uint16_t destport = 	5000;
+
+   // Port number for TCP client (will be increased)
+   uint16_t any_port = 	50000;
+
+   // Socket Status Transitions
+   // Check the W5500 Socket n status register (Sn_SR, The 'Sn_SR' controlled by Sn_CR command or Packet send/recv status)
+   switch(getSn_SR(sn))
+   {
+      case SOCK_ESTABLISHED :
+         if(getSn_IR(sn) &amp; Sn_IR_CON)	// Socket n interrupt register mask; TCP CON interrupt = connection with peer is successful
+         {
+#ifdef _LOOPBACK_DEBUG_
+			printf("%d:Connected to - %d.%d.%d.%d : %d\r\n",sn, destip[0], destip[1], destip[2], destip[3], destport);
+#endif
+			setSn_IR(sn, Sn_IR_CON);  // this interrupt should be write the bit cleared to '1'
+         }
+
+         //////////////////////////////////////////////////////////////////////////////////////////////
+         // Data Transaction Parts; Handle the [data receive and send] process
+         //////////////////////////////////////////////////////////////////////////////////////////////
+		 if((size = getSn_RX_RSR(sn)) &gt; 0) // Sn_RX_RSR: Socket n Received Size Register, Receiving data length
+         {
+			if(size &gt; DATA_BUF_SIZE) size = DATA_BUF_SIZE; // DATA_BUF_SIZE means user defined buffer size (array)
+			ret = recv(sn, buf, size); // Data Receive process (H/W Rx socket buffer -&gt; User's buffer)
+         buf[ret]=0x00;            // Add a string terminator
+         printf("recv: %s\n",buf); // print the receive data
+			if(ret &lt;= 0) return ret; // If the received data length &lt;= 0, receive failed and process end
+			size = (uint16_t) ret;
+			sentsize = 0;
+
+			// Data sentsize control
+			while(size != sentsize)
+			{
+				ret = send(sn, buf+sentsize, size-sentsize); // Data send process (User's buffer -&gt; Destination through H/W Tx socket buffer)
+				if(ret &lt; 0) // Send Error occurred (sent data length &lt; 0)
+				{
+					close(sn); // socket close
+					return ret;
+				}
+				sentsize += ret; // Don't care SOCKERR_BUSY, because it is zero.
+			}
+         }
+		 //////////////////////////////////////////////////////////////////////////////////////////////
+         break;
+
+      case SOCK_CLOSE_WAIT :
+#ifdef _LOOPBACK_DEBUG_
+         //printf("%d:CloseWait\r\n",sn);
+#endif
+         if((ret=disconnect(sn)) != SOCK_OK) return ret;
+#ifdef _LOOPBACK_DEBUG_
+         printf("%d:Socket Closed\r\n", sn);
+#endif
+         break;
+
+      case SOCK_INIT :
+#ifdef _LOOPBACK_DEBUG_
+    	 printf("%d:Try to connect to the %d.%d.%d.%d : %d\r\n", sn, destip[0], destip[1], destip[2], destip[3], destport);
+#endif
+    	 if( (ret = connect(sn, destip, destport)) != SOCK_OK) return ret;	//	Try to TCP connect to the TCP server (destination)
+         break;
+
+      case SOCK_CLOSED:
+    	  close(sn);
+    	  if((ret=socket(sn, Sn_MR_TCP, any_port++, 0x00)) != sn){
+         if(any_port == 0xffff) any_port = 50000;
+         return ret; // TCP socket open with 'any_port' port number
+        } 
+#ifdef _LOOPBACK_DEBUG_
+    	 //printf("%d:TCP client loopback start\r\n",sn);
+         //printf("%d:Socket opened\r\n",sn);
+#endif
+         break;
+      default:
+         break;
+   }
+   return 1;
+}
+
+/**
+ * @brief   udp server mode loopback test
+ * @param   sn:    socket number
+ * @param   buf:   Data sending and receiving cache
+ * @param   port:  Local port
+ * @return  value for SOCK_ERRORs,return 1:no error
+*/
+
+int32_t loopback_udps(uint8_t sn, uint8_t* buf, uint16_t port)
+{
+   int32_t  ret;
+   uint16_t size, sentsize;
+   uint8_t  destip[4];
+   uint16_t destport;
+
+   switch(getSn_SR(sn))
+   {
+      case SOCK_UDP :
+         if((size = getSn_RX_RSR(sn)) &gt; 0)
+         {
+            if(size &gt; DATA_BUF_SIZE) size = DATA_BUF_SIZE;
+            ret = recvfrom(sn, buf, size, destip, (uint16_t*)&amp;destport);
+            buf[ret]=0x00;
+            printf("recv form[%d.%d.%d.%d][%d]: %s\n", destip[0],destip[1],destip[2],destip[3],destport,buf);
+            if(ret &lt;= 0)
+            {
+#ifdef _LOOPBACK_DEBUG_
+               printf("%d: recvfrom error. %ld\r\n",sn,ret);
+#endif
+               return ret;
+            }
+            size = (uint16_t) ret;
+            sentsize = 0;
+            while(sentsize != size)
+            {
+               ret = sendto(sn, buf+sentsize, size-sentsize, destip, destport);
+               if(ret &lt; 0)
+               {
+#ifdef _LOOPBACK_DEBUG_
+                  printf("%d: sendto error. %ld\r\n",sn,ret);
+#endif
+                  return ret;
+               }
+               sentsize += ret; // Don't care SOCKERR_BUSY, because it is zero.
+            }
+         }
+         break;
+      case SOCK_CLOSED:
+#ifdef _LOOPBACK_DEBUG_
+         //printf("%d:UDP loopback start\r\n",sn);
+#endif
+         if((ret = socket(sn, Sn_MR_UDP, port, 0x00)) != sn)
+            return ret;
+#ifdef _LOOPBACK_DEBUG_
+         printf("%d:Opened, UDP loopback, port [%d]\r\n", sn, port);
+#endif
+         printf("local port:%d\n",port);
+         break;
+      default :
+         break;
+   }
+   return 1;
+}
+
+
+/**
+ * @brief   udp client loopback test
+ * @param   sn:         socket number
+ * @param   buf:        Data sending and receiving cache
+ * @param   destip:     Destination IP address
+ * @param   destport:   Destination port
+ * @return  value for SOCK_ERRORs,return 1:no error
+*/
+int32_t loopback_udpc(uint8_t sn, uint8_t* buf, uint8_t* destip, uint16_t destport)
+{
+   int32_t ret;
+   uint16_t size = 0, sentsize=0;
+   static uint16_t any_port = 50000;
+   // uint8_t* strtest = "\r\nhello world";
+   switch(getSn_SR(sn))
+   {
+      case SOCK_UDP :
+         // sendto(sn, strtest, strlen(strtest), destip, destport);
+         if((size = getSn_RX_RSR(sn)) &gt; 0)
+         {
+            if(size &gt; DATA_BUF_SIZE) size = DATA_BUF_SIZE;
+            ret = recvfrom(sn, buf, size, destip, (uint16_t*)&amp;destport);
+            buf[ret]=0x00;
+            printf("recv form[%d.%d.%d.%d][%d]: %s\n", destip[0],destip[1],destip[2],destip[3],destport,buf);
+            if(ret &lt;= 0)
+            {
+#ifdef _LOOPBACK_DEBUG_
+               printf("%d: recvfrom error. %ld\r\n",sn,ret);
+#endif
+               return ret;
+            }
+            size = (uint16_t) ret;
+            sentsize = 0;
+            while(sentsize != size)
+            {
+               ret = sendto(sn, buf+sentsize, size-sentsize, destip, destport);
+               if(ret &lt; 0)
+               {
+#ifdef _LOOPBACK_DEBUG_
+                  printf("%d: sendto error. %ld\r\n",sn,ret);
+#endif
+                  return ret;
+               }
+               sentsize += ret; // Don't care SOCKERR_BUSY, because it is zero.
+            }
+         }
+         break;
+      case SOCK_CLOSED:
+#ifdef _LOOPBACK_DEBUG_
+         //printf("%d:UDP loopback start\r\n",sn);
+#endif
+         if((ret = socket(sn, Sn_MR_UDP, any_port, 0x00)) != sn)
+            return ret;
+#ifdef _LOOPBACK_DEBUG_
+         printf("%d:Opened, UDP loopback, port [%d]\r\n", sn, any_port);
+#endif   
+         break;
+      default :
+         break;
+   }
+   return 1;
+   
+}
+
+
+
+
+#endif
+<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n46">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="41.0100480000001" width="355.9608500553993" x="517.5961795693042" y="1184.8409419998538"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="175.98042502769965" y="18.50502400000005">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n47">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="1577.4124979274911" width="716.7342519898742" x="424.84378166665766" y="2910.487305245317"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="356.36712599493706" y="786.7062489637456">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n48">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="17.52119387947687" width="138.23018275851553" x="464.57149198048575" y="3307.6422191891443"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="67.11509137925776" y="6.760596939738207">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n49">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="50.4557675132578" width="378.9386623398117" x="-174.54074232172684" y="3291.1749323722534"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="278.75390625" x="50.09237804490584" xml:space="preserve" y="15.055826604834692">#define getSn_SR(sn)   WIZCHIP_READ(Sn_SR(sn))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n50">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="50.4557675132578" width="576.0649710295078" x="-842.0103273102643" y="3291.1749323722534"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="523.49560546875" x="26.28468278037883" xml:space="preserve" y="15.055826604834692">#define Sn_SR(N)           (_W5500_IO_BASE_ + (0x0003 &lt;&lt; 8) + (WIZCHIP_SREG_BLOCK(N) &lt;&lt; 3))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n51">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="588.5566273457928" width="726.3288144610167" x="442.36855707357563" y="3340.653547279116"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="361.16440723050835" y="292.2783136728963">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n52">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="160.84032568519774" width="726.3288144610167" x="442.36855707357563" y="3937.101779589774"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="361.16440723050835" y="78.42016284259898">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n53">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="118.49998398845332" width="726.3288144610167" x="442.36855707357563" y="4097.942105274973"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="361.16440723050835" y="57.24999199422655">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n54">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="182.7273194742604" width="726.3288144610167" x="442.36855707357563" y="4216.442089263426"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#00FF00" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="361.16440723050835" y="89.36365973713055">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n55">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="17.52119387947687" width="138.23018275851553" x="463.9535562029834" y="4238.449162859814"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="67.11509137925782" y="6.760596939738207">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n56">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="822.0612947591967" width="870.6577322993245" x="-816.8995459967525" y="3836.1791124199544"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="690.4528007507324" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="722.6614990234375" x="73.99811663794344" xml:space="preserve" y="65.80424700423191">int8_t close(uint8_t sn)
+{
+	CHECK_SOCKNUM();
+//A20160426 : Applied the erratum 1 of W5300
+#if   (_WIZCHIP_ == 5300) 
+   //M20160503 : Wrong socket parameter. s -&gt; sn 
+   //if( ((getSn_MR(s)&amp; 0x0F) == Sn_MR_TCP) &amp;&amp; (getSn_TX_FSR(s) != getSn_TxMAX(s)) ) 
+   if( ((getSn_MR(sn)&amp; 0x0F) == Sn_MR_TCP) &amp;&amp; (getSn_TX_FSR(sn) != getSn_TxMAX(sn)) ) 
+   { 
+      uint8_t destip[4] = {0, 0, 0, 1};
+      // TODO
+      // You can wait for completing to sending data;
+      // wait about 1 second;
+      // if you have completed to send data, skip the code of erratum 1
+      // ex&gt; wait_1s();
+      //     if (getSn_TX_FSR(s) == getSn_TxMAX(s)) continue;
+      // 
+      //M20160503 : The socket() of close() calls close() itself again. It occures a infinite loop - close()-&gt;socket()-&gt;close()-&gt;socket()-&gt; ~
+      //socket(s,Sn_MR_UDP,0x3000,0);
+      //sendto(s,destip,1,destip,0x3000); // send the dummy data to an unknown destination(0.0.0.1).
+      setSn_MR(sn,Sn_MR_UDP);
+      setSn_PORTR(sn, 0x3000);
+      setSn_CR(sn,Sn_CR_OPEN);
+      while(getSn_CR(sn) != 0);
+      while(getSn_SR(sn) != SOCK_UDP);
+      sendto(sn,destip,1,destip,0x3000); // send the dummy data to an unknown destination(0.0.0.1).
+   };   
+#endif 
+	setSn_CR(sn,Sn_CR_CLOSE);
+   /* wait to process the command... */
+	while( getSn_CR(sn) );
+	/* clear all interrupt of the socket. */
+	setSn_IR(sn, 0xFF);
+	//A20150401 : Release the sock_io_mode of socket n.
+	sock_io_mode &amp;= ~(1&lt;&lt;sn);
+	//
+	sock_is_sending &amp;= ~(1&lt;&lt;sn);
+	sock_remained_size[sn] = 0;
+	sock_pack_info[sn] = 0;
+	while(getSn_SR(sn) != SOCK_CLOSED);
+	return SOCK_OK;
+}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n57">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="51.28642167772932" width="233.16430149563132" x="-751.2174554834637" y="4361.298033330662"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="114.5821507478156" y="23.643210838864434">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n58">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="32.935754396070024" width="233.16430149563132" x="-751.2174554834637" y="4412.584455008391"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="114.5821507478156" y="14.46787719803524">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n59">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="22.995809618504154" width="233.16430149563132" x="-751.2174554834637" y="4537.568357792436"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="114.5821507478156" y="9.49790480925185">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n60">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.109477361407244" width="648.3242546451426" x="-1942.8690728609727" y="4359.386505488823"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="524.49169921875" x="61.91627771319622" xml:space="preserve" y="17.382681528909416">#define Sn_CR(N)           (_W5500_IO_BASE_ + (0x0001 &lt;&lt; 8) + (WIZCHIP_SREG_BLOCK(N) &lt;&lt; 3))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n61">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.10947736140815" width="342.1213884804815" x="-1239.401255363935" y="4359.386505488823"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="318.690185546875" x="11.715601466803264" xml:space="preserve" y="17.382681528909416">#define setSn_CR(sn, cr)   WIZCHIP_WRITE(Sn_CR(sn), cr)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n62">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.109477361407244" width="233.16430149563132" x="-1527.7091197114614" y="4304.277028127415"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="209.7415008544922" x="11.71140032056951" xml:space="preserve" y="17.382681528909416">#define Sn_CR_CLOSE                  0x10<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n63">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="65.47760437554507" width="339.3229117200285" x="463.95355620298346" y="4255.970356739292"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="167.66145586001426" y="30.738802187772308">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n64">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="1582.4489629967834" width="870.6577322993245" x="-816.8995459967525" y="4743.222384891109"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="1507.6585159301758" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="574.5798950195312" x="148.03891863989656" xml:space="preserve" y="37.39522353330358">int8_t socket(uint8_t sn, uint8_t protocol, uint16_t port, uint8_t flag)
+{
+	CHECK_SOCKNUM();
+	switch(protocol)
+	{
+      case Sn_MR_TCP :
+         {
+            //M20150601 : Fixed the warning - taddr will never be NULL
+		    /*
+            uint8_t taddr[4];
+            getSIPR(taddr);
+            */
+            uint32_t taddr;
+            getSIPR((uint8_t*)&amp;taddr);
+            if(taddr == 0) return SOCKERR_SOCKINIT;
+	    break;
+         }
+      case Sn_MR_UDP :
+      case Sn_MR_MACRAW :
+	  case Sn_MR_IPRAW :
+         break;
+   #if ( _WIZCHIP_ &lt; 5200 )
+      case Sn_MR_PPPoE :
+         break;
+   #endif
+      default :
+         return SOCKERR_SOCKMODE;
+	}
+	//M20150601 : For SF_TCP_ALIGN &amp; W5300
+	//if((flag &amp; 0x06) != 0) return SOCKERR_SOCKFLAG;
+	if((flag &amp; 0x04) != 0) return SOCKERR_SOCKFLAG;
+#if _WIZCHIP_ == 5200
+   if(flag &amp; 0x10) return SOCKERR_SOCKFLAG;
+#endif
+	   
+	if(flag != 0)
+	{
+   	switch(protocol)
+   	{
+   	   case Sn_MR_TCP:
+   		  //M20150601 :  For SF_TCP_ALIGN &amp; W5300
+          #if _WIZCHIP_ == 5300
+   		     if((flag &amp; (SF_TCP_NODELAY|SF_IO_NONBLOCK|SF_TCP_ALIGN))==0) return SOCKERR_SOCKFLAG;
+          #else
+   		     if((flag &amp; (SF_TCP_NODELAY|SF_IO_NONBLOCK))==0) return SOCKERR_SOCKFLAG;
+          #endif
+
+   	      break;
+   	   case Sn_MR_UDP:
+   	      if(flag &amp; SF_IGMP_VER2)
+   	      {
+   	         if((flag &amp; SF_MULTI_ENABLE)==0) return SOCKERR_SOCKFLAG;
+   	      }
+   	      #if _WIZCHIP_ == 5500
+      	      if(flag &amp; SF_UNI_BLOCK)
+      	      {
+      	         if((flag &amp; SF_MULTI_ENABLE) == 0) return SOCKERR_SOCKFLAG;
+      	      }
+   	      #endif
+   	      break;
+   	   default:
+   	      break;
+   	}
+   }
+	close(sn);
+	//M20150601
+	#if _WIZCHIP_ == 5300
+	   setSn_MR(sn, ((uint16_t)(protocol | (flag &amp; 0xF0))) | (((uint16_t)(flag &amp; 0x02)) &lt;&lt; 7) );
+    #else
+	   setSn_MR(sn, (protocol | (flag &amp; 0xF0)));
+    #endif
+	if(!port)
+	{
+	   port = sock_any_port++;
+	   if(sock_any_port == 0xFFF0) sock_any_port = SOCK_ANY_PORT_NUM;
+	}
+   setSn_PORT(sn,port);	
+   setSn_CR(sn,Sn_CR_OPEN);
+   while(getSn_CR(sn));
+   //A20150401 : For release the previous sock_io_mode
+   sock_io_mode &amp;= ~(1 &lt;&lt;sn);
+   //
+	sock_io_mode |= ((flag &amp; SF_IO_NONBLOCK) &lt;&lt; sn);   
+   sock_is_sending &amp;= ~(1&lt;&lt;sn);
+   sock_remained_size[sn] = 0;
+   //M20150601 : repalce 0 with PACK_COMPLETED
+   //sock_pack_info[sn] = 0;
+   sock_pack_info[sn] = PACK_COMPLETED;
+   //
+   while(getSn_SR(sn) == SOCK_CLOSED);
+   return (int8_t)sn;
+}	   <y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n65">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="32.78283216872251" width="230.96222142183223" x="-644.7978246659316" y="4980.0950161091"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="113.48111071091614" y="14.391416084361481">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n66">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.10947736140815" width="373.78106836094787" x="-1267.4230280798715" y="4968.931693512757"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="313.002197265625" x="30.389435547661378" xml:space="preserve" y="17.382681528909416">#define getSIPR(sipr) WIZCHIP_READ_BUF(SIPR, sipr, 4)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n67">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="21.160742890338497" width="244.41937742838218" x="-668.233060588931" y="5908.882233106182"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="120.20968871419109" y="8.580371445169476">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n68">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.10947736140815" width="373.78106836094787" x="-1267.3935208344208" y="5891.907865870648"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="333.09033203125" x="20.345368164848878" xml:space="preserve" y="17.382681528909416">#define setSn_MR(sn, mr)   WIZCHIP_WRITE(Sn_MR(sn),mr)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n69">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.86690948013029" width="182.33295312543595" x="-659.1346439587023" y="6023.4593580737155"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="89.166476562718" y="7.433454740064917">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n70">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="90.47274243543916" width="468.4016965320021" x="-1362.0141490054748" y="5987.656441596061"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="69.37645721435547" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="403.45867919921875" x="32.47150866639163" xml:space="preserve" y="10.548142610541618">#define setSn_PORT(sn, port)  { \
+		WIZCHIP_WRITE(Sn_PORT(sn),   (uint8_t)(port &gt;&gt; 8)); \
+		WIZCHIP_WRITE(WIZCHIP_OFFSET_INC(Sn_PORT(sn),1), (uint8_t) port); \
+	}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n71">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.10947736140815" width="619.2929255472058" x="-2030.982965198603" y="6005.338074133077"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="533.9716796875" x="42.660622929852934" xml:space="preserve" y="17.382681528909416">#define Sn_PORT(N)         (_W5500_IO_BASE_ + (0x0004 &lt;&lt; 8) + (WIZCHIP_SREG_BLOCK(N) &lt;&lt; 3))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n72">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.86690948013029" width="182.33295312543595" x="-659.1346439587023" y="6042.326267553846"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="89.166476562718" y="7.433454740064917">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n73">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="15.808464933187224" width="182.33295312543595" x="-659.1346439587023" y="6061.193177033976"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="89.166476562718" y="5.904232466593385">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n74">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.548831247248472" width="238.91417724388447" x="-669.1174069599249" y="6236.016165860326"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="117.45708862194226" y="7.274415623624009">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n75">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="715.89123030156" width="752.8206277913974" x="-2927.883819197645" y="3765.4879869791584"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="641.4204578399658" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="530.2757568359375" x="111.27243547773014" xml:space="preserve" y="37.2353862307973">int8_t connect(uint8_t sn, uint8_t * addr, uint16_t port)
+{
+   CHECK_SOCKNUM();
+   CHECK_SOCKMODE(Sn_MR_TCP);
+   CHECK_SOCKINIT();
+   //M20140501 : For avoiding fatal error on memory align mismatched
+   //if( *((uint32_t*)addr) == 0xFFFFFFFF || *((uint32_t*)addr) == 0) return SOCKERR_IPINVALID;
+   {
+      uint32_t taddr;
+      taddr = ((uint32_t)addr[0] &amp; 0x000000FF);
+      taddr = (taddr &lt;&lt; 8) + ((uint32_t)addr[1] &amp; 0x000000FF);
+      taddr = (taddr &lt;&lt; 8) + ((uint32_t)addr[2] &amp; 0x000000FF);
+      taddr = (taddr &lt;&lt; 8) + ((uint32_t)addr[3] &amp; 0x000000FF);
+      if( taddr == 0xFFFFFFFF || taddr == 0) return SOCKERR_IPINVALID;
+   }
+   //
+	
+	if(port == 0) return SOCKERR_PORTZERO;
+	setSn_DIPR(sn,addr);
+	setSn_DPORT(sn,port);
+	setSn_CR(sn,Sn_CR_CONNECT);
+   while(getSn_CR(sn));
+   if(sock_io_mode &amp; (1&lt;&lt;sn)) return SOCK_BUSY;
+   while(getSn_SR(sn) != SOCK_ESTABLISHED)
+   {
+		if (getSn_IR(sn) &amp; Sn_IR_TIMEOUT)
+		{
+			setSn_IR(sn, Sn_IR_TIMEOUT);
+            return SOCKERR_TIMEOUT;
+		}
+
+		if (getSn_SR(sn) == SOCK_CLOSED)
+		{
+			return SOCKERR_SOCKCLOSED;
+		}
+	}
+   
+   return SOCK_OK;
+}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n76">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.98924726200903" width="233.16430149563132" x="-2836.84576347562" y="4097.504581674813"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="114.58215074781583" y="7.494623631004288">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n77">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.10947736140815" width="342.1213884804815" x="-3439.7099790162374" y="3900.0204797229453"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="36.688228607177734" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="240.1855926513672" x="50.9678979145574" xml:space="preserve" y="9.210624377114982">#define setSn_DIPR(sn, dipr) \
+		WIZCHIP_WRITE_BUF(Sn_DIPR(sn), dipr, 4)<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n78">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="55.10947736140815" width="557.0189325747792" x="-3654.607523110535" y="3844.9110023615376"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.344114303588867" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="531.4757080078125" x="12.771612283483591" xml:space="preserve" y="17.382681528909416">#define Sn_DIPR(N)         (_W5500_IO_BASE_ + (0x000C &lt;&lt; 8) + (WIZCHIP_SREG_BLOCK(N) &lt;&lt; 3))<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n79">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="18.98924726200903" width="233.16430149563132" x="-2836.84576347562" y="4116.493828936822"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="114.58215074781583" y="7.494623631004288">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n80">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="94.86925647166981" width="500.39589378479013" x="-3597.9844843205456" y="3998.061323004159"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="69.37645721435547" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="422.7188720703125" x="38.838510857238816" xml:space="preserve" y="12.746399628656945">#define setSn_DPORT(sn, dport) { \
+		WIZCHIP_WRITE(Sn_DPORT(sn),   (uint8_t) (dport&gt;&gt;8)); \
+		WIZCHIP_WRITE(WIZCHIP_OFFSET_INC(Sn_DPORT(sn),1), (uint8_t)  dport); \
+	}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n81">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.305492085698916" width="233.16430149563132" x="-2836.8457634756196" y="4135.4830761988305"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="114.58215074781583" y="13.152746042849685">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n82">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="17.52119387947687" width="271.88420945993175" x="481.7847177751685" y="4008.761345492635"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="133.94210472996588" y="6.760596939738662">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n83">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="427.8611790600312" width="486.66627664416194" x="-1781.211094859992" y="3241.576880965179"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" raised="false" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="314.5381717681885" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="274.1339111328125" x="106.26618275567489" xml:space="preserve" y="56.661503645921584">int8_t disconnect(uint8_t sn)
+{
+   CHECK_SOCKNUM();
+   CHECK_SOCKMODE(Sn_MR_TCP);
+	setSn_CR(sn,Sn_CR_DISCON);
+	/* wait to process the command... */
+	while(getSn_CR(sn));
+	sock_is_sending &amp;= ~(1&lt;&lt;sn);
+   if(sock_io_mode &amp; (1&lt;&lt;sn)) return SOCK_BUSY;
+	while(getSn_SR(sn) != SOCK_CLOSED)
+	{
+	   if(getSn_IR(sn) &amp; Sn_IR_TIMEOUT)
+	   {
+	      close(sn);
+	      return SOCKERR_TIMEOUT;
+	   }
+	}
+	return SOCK_OK;
+}<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n84">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="52.02044836899495" width="233.16430149563132" x="-1689.3861483201965" y="3364.9737891054247"/>
+          <y:Fill hasColor="false" transparent="false"/>
+          <y:BorderStyle color="#FF0000" raised="false" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="114.5821507478156" y="24.010224184497474">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="e0" source="n4" target="n5">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1357.123846358763" y="1049.7423955932009"/>
+            <y:Point x="1357.123846358763" y="1590.8761680926527"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e1" source="n8" target="n9">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="2666.772883371377" y="1525.9353121853055"/>
+            <y:Point x="2666.772883371377" y="5434.338721671694"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="n9" target="n12">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="3687.955831054686" y="5434.338721671694"/>
+            <y:Point x="3687.955831054686" y="4330.3253883383595"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="n9" target="n6">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="-73.05967535005038" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="n14" target="n13">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="2632.34978283544" y="1568.0820001853058"/>
+            <y:Point x="2632.34978283544" y="5167.529219343388"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="n16" target="n15">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1418.1003683846131" y="1619.9342019706114"/>
+            <y:Point x="1418.1003683846131" y="613.0542957775215"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="n17" target="n18">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1438.1003683846131" y="1671.7864037559175"/>
+            <y:Point x="1438.1003683846131" y="1204.0142468208965"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="n18" target="n19">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="2698.345310868478" y="1204.0142468208965"/>
+            <y:Point x="2698.345310868478" y="6040.14313244223"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="n19" target="n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="4692.5630212711" y="6040.14313244223"/>
+            <y:Point x="4692.5630212711" y="10427.789194242961"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="n23" target="n22">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1418.1003683846131" y="582.7721548869569"/>
+            <y:Point x="1418.1003683846131" y="135.45533230171554"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e10" source="n21" target="n24">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e11" source="n24" target="n25">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e12" source="n25" target="n26">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e13" source="n18" target="n27">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1438.1003683846131" y="1204.0142468208965"/>
+            <y:Point x="1438.1003683846131" y="-42.80722840851621"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e14" source="n28" target="n29">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1383.4178354263888" y="1253.4895711580598"/>
+            <y:Point x="1383.4178354263888" y="957.3158819241819"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e15" source="n30" target="n31">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1305.4759677376421" y="1091.0240660388904"/>
+            <y:Point x="1305.4759677376421" y="3392.6710811248104"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e16" source="n32" target="n33">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="1438.6637043089233" y="3329.2261920945334"/>
+            <y:Point x="1438.6637043089233" y="14235.120681094662"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e17" source="n35" target="n34">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-0.622390016746067"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e18" source="n34" target="n36">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e19" source="n34" target="n37">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="4877.131994685932" y="14510.630465760381"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e20" source="n41" target="n42">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="296.950255128242" y="1131.5290900388904"/>
+            <y:Point x="296.950255128242" y="997.1968490488887"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e21" source="n42" target="n43">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="315.96200333742433" ty="1.1368683772161603E-13"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e22" source="n43" target="n44">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="-251.05603461815565"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e23" source="n46" target="n47">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="263.02398385965455" y="1205.345965999854"/>
+            <y:Point x="263.02398385965455" y="3699.1935542090628"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e24" source="n48" target="n49">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e25" source="n49" target="n50">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e26" source="n55" target="n56">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e27" source="n57" target="n61">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e28" source="n61" target="n60">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e29" source="n63" target="n64">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="155.03270904834608" y="4288.709158927064"/>
+            <y:Point x="155.03270904834608" y="5534.4468663895"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e30" source="n65" target="n66">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e31" source="n67" target="n68">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e32" source="n69" target="n70">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e33" source="n70" target="n71">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e34" source="n53" target="n75">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="134.5475367252327" y="4157.1920972692"/>
+            <y:Point x="134.5475367252327" y="3784.8987033826515"/>
+            <y:Point x="-1763.3108409537615" y="3784.8987033826515"/>
+            <y:Point x="-1763.3108409537615" y="4123.433602129939"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e35" source="n76" target="n77">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="-2996.679370995249" y="4106.999205305818"/>
+            <y:Point x="-2996.679370995249" y="3927.575218403649"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e36" source="n79" target="n80">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="-3060.5755086731715" y="4125.988452567826"/>
+            <y:Point x="-3060.5755086731715" y="4045.4959512399937"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e37" source="n82" target="n83">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
+            <y:Point x="192.50576115780905" y="4017.521942432373"/>
+            <y:Point x="192.50576115780905" y="3742.6467144787466"/>
+            <y:Point x="-1180.1798929270037" y="3742.6467144787466"/>
+            <y:Point x="-1180.1798929270037" y="3455.507470495195"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d7">
+    <y:Resources/>
+  </data>
+</graphml>

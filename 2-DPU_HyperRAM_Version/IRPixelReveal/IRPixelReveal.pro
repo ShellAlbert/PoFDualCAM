@@ -25,8 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ZDialogHexCheck/zdialoghexcheck.cpp \
+    ZDialogInputFileParameter/zdialoginputfileparameter.cpp \
     ZDialogTempChart/zdialogtempchart.cpp \
     ZJpegWidget/zjpegwidget.cpp \
+    ZLaserWidget/zlaserwidget.cpp \
+    ZLaserWidget/zuartlaser.cpp \
         main.cpp \
         zmainwidget.cpp \
     zrgb.cpp \
@@ -39,8 +42,11 @@ SOURCES += \
 
 HEADERS += \
     ZDialogHexCheck/zdialoghexcheck.h \
+    ZDialogInputFileParameter/zdialoginputfileparameter.h \
     ZDialogTempChart/zdialogtempchart.h \
     ZJpegWidget/zjpegwidget.h \
+    ZLaserWidget/zlaserwidget.h \
+    ZLaserWidget/zuartlaser.h \
         zmainwidget.h \
     zrgb.h \
     zycbcr.h \
